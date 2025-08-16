@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Életkert - Őstermelői Lekvárok és Szörpök</title>
+    <link rel="stylesheet" href="src/styles.css"> <!-- Cseréld ki a 'styles.css'-t a tényleges stíluslap fájl elérési útjára -->
+</head>
+<body>
+    <header>
+        <img src="logo-removebg-preview.png" alt="Eletkert Logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
+        <!--<h1>Életkert</h1>-->
+        <button class="vegburger" aria-label="Menü megnyitása">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+        <a href="#about">Rólam</a>
+        <a href="#markets">Piacok</a>
+        <a href="#photos">Fényképek</a>
+        <a href="#contact">Kapcsolat</a>
+        </nav>
+    </header>
+    
+    
+    
+    <section id="about">
+        <h2>Rólam</h2>
+        <p>Üdvözlünk az Életkert oldalán! Kis őstermelői vállalkozásként friss, házi készítésű lekvárokat, szörpöket és egyéb befőtteket készítünk természetes alapanyagokból. Termékeinket hétvégente árusítjuk helyi őstermelői piacokon. Célunk, hogy a természet ízeit elhozzuk az asztalodra, fenntartható és egészséges módon.</p>
+        <div class="fb-highlight">
+        <a href="https://www.facebook.com/eletkertjudittal" target="_blank" class="fb-link">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="fb-icon">
+            Kövess minket Facebookon!
+        </a>
+        </div>
+    </section>
+    
+    <section id="markets">
+        <h2>Aktuális Piacok</h2>
+        <p>Itt találod a legfrissebb információkat arról, hol leszünk jelen a következő hetekben. </p>
+        <ul>
+            <li>Augusztus 23-24: Budapesti Őstermelői Piac, Városháza Park</li>
+            <li>Augusztus 30-31: Szegedi Piac, Mars tér</li>
+            <li>Szeptember 6-7: Debreceni Piac, Kossuth tér</li>
+            <!-- Adj hozzá több elemet szükség szerint -->
+        </ul>
+    </section>
+    <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <img class="lightbox-img" src="" alt="">
+                <div class="lightbox-nav">
+                    <button class="lightbox-prev">&#10094;</button>
+                    <button class="lightbox-next">&#10095;</button>
+                </div>
+            </div>
+    </div>
+    <section id="photos">
+        <h2>Fényképek</h2>
+        <div class="gallery">
+            <img src="src/lekvárok.jpg" alt="Lekvár készítés" data-index="0"> <!-- Cseréld ki a képek elérési útjait -->
+            <img src="src/szörp.jpg" alt="Szörpök" data-index="1">
+            <img src="src/stand.jpg" alt="Piaci stand" data-index="2">
+            <!-- Adj hozzá több képet szükség szerint -->
+        </div>
+        <div id ="youtube" style="margin-top: 30px; text-align: center;">
+        <iframe width="800" height="500" src="https://www.youtube.com/embed/wfzQshLSMvE" 
+            title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Kapcsolat</h2>
+        <p>Ha kérdésed van, vagy rendelni szeretnél, keress minket!</p>
+        <p>Telefon: +36 123 4567</p>
+        <p>Email: kormendine.a.judit@gmail.com</p>
+        <div class="fb-highlight">
+        <a href="https://www.facebook.com/eletkertjudittal" target="_blank" class="fb-link">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="fb-icon">
+            Facebook oldalunk: Életkert Judittal
+        </a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Életkert. Minden jog fenntartva.</p>
+        <p>Impresszum</p>
+    </footer>
+    <button id="scrollTopBtn" title="Vissza a tetejére">&#8679;</button>
+    <script src="src/script.js"></script> <!-- Cseréld ki a 'script.js'-t a tényleges JavaScript fájl elérési útjára -->
+</body>
+</html>
