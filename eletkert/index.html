@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <img src="logo-removebg-preview.png" alt="Eletkert Logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
+        <img src="src/logo-removebg-preview.png" alt="Eletkert Logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
         <!--<h1>Életkert</h1>-->
         <button class="vegburger" aria-label="Menü megnyitása">
             <span></span>
@@ -46,7 +46,7 @@
             <!-- Adj hozzá több elemet szükség szerint -->
         </ul>
     </section>
-    <div id="lightbox" class="lightbox">
+    <!-- <div id="lightbox" class="lightbox">
             <div class="lightbox-content">
                 <span class="lightbox-close">&times;</span>
                 <img class="lightbox-img" src="" alt="">
@@ -55,15 +55,57 @@
                     <button class="lightbox-next">&#10095;</button>
                 </div>
             </div>
-    </div>
+    </div> -->
     <section id="photos">
         <h2>Fényképek</h2>
-        <div class="gallery">
-            <img src="src/lekvárok.jpg" alt="Lekvár készítés" data-index="0"> <!-- Cseréld ki a képek elérési útjait -->
+        </section>
+        <!-- <div id="my-gallery" class="gallery">
+            <img src="src/lekvárok.jpg" alt="Lekvár készítés" data-index="0"> 
             <img src="src/szörp.jpg" alt="Szörpök" data-index="1">
             <img src="src/stand.jpg" alt="Piaci stand" data-index="2">
-            <!-- Adj hozzá több képet szükség szerint -->
-        </div>
+        </div> -->
+        <div class="pswp-gallery pswp-gallery--single-column" id="my-gallery">
+            <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+              data-pswp-width="1669" 
+              data-pswp-height="2500" 
+              target="_blank">
+              <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+            </a>
+            <!-- cropped thumbnail: -->
+            <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-2500.jpg" 
+              data-pswp-width="1875" 
+              data-pswp-height="2500" 
+              data-cropped="true" 
+              target="_blank">
+              <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-200.jpg" alt="" />
+              Cropped
+            </a>
+            <!-- data-pswp-src with custom URL in href -->
+            <a href="https://unsplash.com" 
+              data-pswp-src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg"
+              data-pswp-width="2500" 
+              data-pswp-height="1666" 
+              target="_blank">
+              <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg" alt="" />
+            </a>
+            <!-- Without thumbnail: -->
+            <a href="http://example.com" 
+              data-pswp-src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/5/img-2500.jpg"
+              data-pswp-width="2500" 
+              data-pswp-height="1668" 
+              target="_blank">
+              No thumbnail
+            </a>
+            <!-- wrapped with any element: -->
+            <div>
+              <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/6/img-2500.jpg"
+                data-pswp-width="2500" 
+                data-pswp-height="1667" 
+                target="_blank">
+                <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/6/img-200.jpg" alt="" />
+              </a>
+            </div>
+          </div>
         <div id ="youtube" style="margin-top: 30px; text-align: center;">
         <iframe width="800" height="500" src="https://www.youtube.com/embed/wfzQshLSMvE" 
             title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -1,3 +1,17 @@
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#my-gallery',
+  children: 'a',
+  pswpModule: () => import('photoswipe')
+});
+lightbox.init();
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('nav a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
