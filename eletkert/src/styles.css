@@ -252,6 +252,15 @@ body {
             margin-top: 20px;
             color: #388e3c;
         }
+        footer a {
+            color: #388e3c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
         #scrollTopBtn {
             position: fixed;
             right: 24px;
