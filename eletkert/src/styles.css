@@ -259,6 +259,18 @@ body {
         footer a:hover {
             text-decoration: underline;
         }
+
+/* SVG ikonok stilizálása a kontakt szekcióban */
+        #contact svg {
+            width: 1em; /* Méret igazítása a szöveg font-size-ához */
+            height: 1em;
+            vertical-align: middle; /* Középre igazítás a szöveg sorához */
+            margin-right: 0.5em; /* Kis távolság a szöveg előtt */
+            display: inline-block;
+        }
+        #contact p {
+            font-weight: bold;
+        }
         #scrollTopBtn {
             position: fixed;
             right: 24px;
@@ -299,6 +311,7 @@ body {
             to {
                 opacity: 1;
             }
+            
 }
         /* Mobile responsiveness */
         @media (max-width: 768px) {
