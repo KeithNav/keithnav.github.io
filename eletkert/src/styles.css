@@ -207,11 +207,9 @@ body {
             grid-column: span 2;
             grid-row: span 2;
         }
-
         .pswp-gallery a:nth-child(2) { /* Második kép - pl. normál négyzet */
             /* Nincs speciális beállítás */
         }
-
         .pswp-gallery a:nth-child(3) { /* Harmadik kép - pl. normál négyzet */
             /* Nincs speciális beállítás */
         }
