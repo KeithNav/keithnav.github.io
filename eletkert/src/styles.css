@@ -156,6 +156,9 @@ body {
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+        .piacok li:first-child {
+            font-weight: bold;
+        }
         #photos {
             background: rgba(255,255,255,0.55);
             border-radius: 24px;

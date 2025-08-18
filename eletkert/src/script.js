@@ -55,5 +55,34 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-
 });
+
+
+fetch("http://localhost:1337/api/piacoks", {
+    method: "GET",
+    headers: {
+        "Authorization": "Bearer cf90cc6bdb5494a9040ca41a8994397ef25e1e4b378f049ffee99ca78776f88573cd6cb4d49c9b8a1d870bac80cdcffca02cff15ef246fab1260ec3ca2b2104b9ad37e6d7ebd3b7cf5e7723870ff65417e3797adc2791917b5350627c255779a75e79c6310b9488294a613f8e2e7cadd8f218f408db105b94c4b25bc570478fd"
+    }
+    // …
+  }).then(res=>res.json()).then(res=>{
+    console.log(res)
+
+    const lista = document.querySelector(".piacok"); 
+    lista.innerHTML = ""; // előző törlése, ha frissíted
+    
+    res.data.forEach(item => {
+        // dátum formázás emberibbé
+        const datum = new Date(item.date).toLocaleDateString("hu-HU", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+
+        const li = document.createElement("li");
+        li.textContent = `${item.city} – ${item.marketName} (${datum})`;
+        lista.appendChild(li);
+      });
+    })
+    .catch(err => console.error("Hiba történt:", err));
