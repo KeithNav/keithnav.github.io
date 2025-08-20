@@ -10,44 +10,80 @@
 </head>
 <body>
     <header>
-        <img src="/logo-removebg-preview.png" alt="Eletkert Logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
+        <div class="header-bar">
+            <nav class="nav-left">
+                <a href="#about">Rólam</a>
+                <a href="#markets">Piacok</a>
+            </nav>
+
+            <img src="/logo-removebg-preview.png" alt="Eletkert Logo" class="site-logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
+
+            <nav class="nav-right">
+                <a href="#photos">Fényképek</a>
+                <a href="#contact">Kapcsolat</a>
+            </nav>
+        </div>
         <!--<h1>Életkert</h1>-->
-        <button class="vegburger" aria-label="Menü megnyitása">
+        <button class="vegburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav>
-        <a href="#about">Rólam</a>
-        <a href="#markets">Piacok</a>
-        <a href="#photos">Fényképek</a>
-        <a href="#contact">Kapcsolat</a>
+        <!-- Mobil menü (hamburger nyitja) -->
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobil navigáció">
+            <a href="#about">Rólam</a>
+            <a href="#markets">Piacok</a>
+            <a href="#photos">Fényképek</a>
+            <a href="#contact">Kapcsolat</a>
         </nav>
+        
+        <!-- Hullámos elválasztó a header alján -->
+        <svg class="header-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <!-- Egyetlen, finom félhullám -->
+            <path d="M0,75 C360,140 1080,10 1440,75 L1440,140 L0,140 Z" fill="#f2e8cf"></path>
+        </svg>
     </header>
+    <!-- Mobil menü hátterének halvány overlaye -->
+    <div class="menu-backdrop" aria-hidden="true"></div>
     
     
     
     <section id="about">
-        <h2>Rólam</h2>
-        <p>Üdvözlünk az Életkert oldalán! Kis őstermelői vállalkozásként friss, házi készítésű lekvárokat, szörpöket és egyéb befőtteket készítünk természetes alapanyagokból. Termékeinket hétvégente árusítjuk helyi őstermelői piacokon. Célunk, hogy a természet ízeit elhozzuk az asztalodra, fenntartható és egészséges módon.</p>
-        <div id="rolamvideo" class="video-responsive-container">
-            <iframe 
-              src="https://www.youtube.com/embed/Ufqoe2QDbyw?controls=1&modestbranding=1&rel=0" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-            </iframe>
-          </div>
+        <div class="about-grid">
+            <div class="about-media">
+                <div id="rolamvideo" class="video-responsive-container">
+                    <iframe 
+                      src="https://www.youtube.com/embed/Ufqoe2QDbyw?controls=1&modestbranding=1&rel=0" 
+                      title="Bemutatkozó videó" 
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      referrerpolicy="strict-origin-when-cross-origin" 
+                      allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2 class="about-title">Néhány gondolat rólam</h2>
+                <p>Őstermelőként a természet közelsége és tisztasága határozza meg a mindennapjaimat. Szezonális gyümölcsökből és gyógynövényekből készítek házi <strong>lekvárokat</strong>, illatos <strong>szörpöket</strong>, könnyed <strong>fermentált italokat</strong> és más, adalékmentes finomságokat. Minden üvegben benne van a kert szeretete, az odafigyelés és a kézműves gondosság.</p>
+                <p>Helyi piacokon találkozom a vásárlókkal – hiszem, hogy az igazi érték a közvetlen kapcsolatokban és az átlátható, fenntartható készítésben rejlik. A célom egyszerű: olyan egészséges, természetes ízeket adni, amelyek valóban jót tesznek a testnek és a léleknek is.</p>
+                <p>Ha kíváncsi vagy, merre járok legközelebb, nézd meg az <a href="#markets">aktuális piacok</a> szekciót, és ha szeretnél naprakész maradni, kövess a Facebookon is!</p>
+            </div>
+        </div>
         <div class="fb-highlight">
-        <a href="https://www.facebook.com/eletkertjudittal" target="_blank" class="fb-link">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="fb-icon">
-            Kövess engem a Facebookon!
-        </a>
+            <a href="https://www.facebook.com/eletkertjudittal" target="_blank" class="fb-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="fb-icon">
+                Kövess engem a Facebookon!
+            </a>
         </div>
     </section>
-    
+    <!-- Köztes hullám Rólam és Aktuális Piacok között -->
+    <div class="section-wave wave-about-to-markets" aria-hidden="true" style="background:#e8dfbf">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+            <!-- Látványos félhullám, felül a korábbi szín -->
+            <path d="M0,0 L1440,0 L1440,110 C1080,40 360,40 0,110 Z" fill="#f2e8cf"></path>
+        </svg>
+    </div>
+
     <section id="markets">
         <h2>Aktuális Piacok</h2>
         <p>Itt találod a legfrissebb információkat arról, hol leszünk jelen a következő hetekben. </p>
@@ -55,9 +91,13 @@
         </ul>
         <div id="map" style="width: 100%; height: 500px;"></div>
     </section>
-
+    <div class="section-wave wave-markets-to-photos" aria-hidden="true" style="background:#e1d6ae">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+            <path d="M0,0 L1440,0 L1440,110 C1080,40 360,40 0,110 Z" fill="#e8dfbf"></path>
+        </svg>
+    </div>
     <section id="photos">
-        <h2>Fényképek</h2>
+        <h2>Galéria</h2>
         <div id="my-gallery" class="pswp-gallery">
             <a href="/lekvárok.jpg" data-pswp-width="1200" data-pswp-height="800">
                 <img src ="/lekvárok.jpg" alt="Lekvár készítés">
@@ -80,22 +120,34 @@
             <!-- Adj hozzá több képet szükség szerint -->
         </div>
     </section>
+    <div class="section-wave wave-photos-to-youtube" aria-hidden="true" style="background:#dacd9f">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+            <path d="M0,0 L1440,0 L1440,110 C1080,40 360,40 0,110 Z" fill="#e1d6ae"></path>
+        </svg>
+    </div>
     <section id="youtube-video">
-        <div id="youtube-1" class="video-responsive-container">
-            <iframe src="https://www.youtube.com/embed/uZZqD2pFUpY?si=k8tcc_q-Lz_7nxCe" 
-                title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+        <div class="videos-grid">
+            <div id="youtube-1" class="video-responsive-container">
+                <iframe src="https://www.youtube.com/embed/uZZqD2pFUpY?si=k8tcc_q-Lz_7nxCe" 
+                    title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
             </div>
-        <div id="youtube-2" class="video-responsive-container">
-        <iframe src="https://www.youtube.com/embed/wfzQshLSMvE" 
-            title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+            <div id="youtube-2" class="video-responsive-container">
+                <iframe src="https://www.youtube.com/embed/wfzQshLSMvE" 
+                    title="YouTube videó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
         </div>
     </section>
+    <div class="section-wave wave-youtube-to-contact" aria-hidden="true" style="background:#d3c590">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+            <path d="M0,0 L1440,0 L1440,110 C1080,40 360,40 0,110 Z" fill="#dacd9f"></path>
+        </svg>
+    </div>
     
     <section id="contact">
         <h2>Kapcsolat</h2>
-        <p>Ha kérdésed van, vagy rendelni szeretnél, keress minket!</p>
+        <p>Ha kérdésed van, vagy rendelni szeretnél, keress engem!</p>
         <div class="contact-cards">
             <div class="contact-card">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="contact-icon">
@@ -116,9 +168,50 @@
         </div>
     </section>
     
-    <footer>
-        <p>&copy; 2025 Életkert. Minden jog fenntartva.</p>
-        <a href="/impresszum-minta.pdf" target="_blank">Impresszum</a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid">
+                <div class="foot-brand">
+                    <h3>Életkert</h3>
+                    <p>Őstermelői lekvárok, szörpök és befőttek természetes alapanyagokból. Fedezd fel a természet ízeit!</p>
+                </div>
+                <div class="foot-col">
+                    <h4>Gyors linkek</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">Rólam</a></li>
+                        <li><a href="#markets">Piacok</a></li>
+                        <li><a href="#photos">Galéria</a></li>
+                        <li><a href="#contact">Kapcsolat</a></li>
+                    </ul>
+                </div>
+                <div class="foot-col">
+                    <h4>Termékek</h4>
+                    <ul class="footer-links">
+                        <li><a href="#photos">Lekvárok</a></li>
+                        <li><a href="#photos">Szörpök</a></li>
+                        <li><a href="#photos">Teák</a></li>
+                        <li><a href="#photos">Befőttek</a></li>
+                    </ul>
+                </div>
+                <div class="foot-col">
+                    <h4>Kapcsolat</h4>
+                    <ul class="footer-links">
+                        <li><strong>Email: </strong><a href="mailto:kormendine.a.judit@gmail.com">kormendine.a.judit@gmail.com</a></li>
+                        <li><strong>Telefon: </strong><a href="tel:+361234567">+36 123 4567</a></li>
+                        <li><strong>Facebook: </strong><a href="https://www.facebook.com/eletkertjudittal" target="_blank">Életkert Judittal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="bottom-row">
+                <p>© 2025 Életkert. Minden jog fenntartva.</p>
+                <div class="legal-links">
+                    <a href="/impresszum-minta.pdf" target="_blank">Adatvédelmi tájékoztató</a>
+                    <span class="sep">•</span>
+                    <a href="#" target="_blank">Impresszum</a>
+                </div>
+            </div>
+        </div>
     </footer>
     <button id="scrollTopBtn" title="Vissza a tetejére">&#8679;</button>
     <script type="module" src="src/script.js"></script>

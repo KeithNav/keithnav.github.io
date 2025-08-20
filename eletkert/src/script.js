@@ -40,21 +40,46 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     
-    // Vegburger mobil menü
-    const vegburger = document.querySelector('.vegburger');
-    const nav = document.querySelector('header nav');
-    vegburger.addEventListener('click', function() {
-        nav.classList.toggle('open');
-    });
+  // Vegburger mobil menü
+  const vegburger = document.querySelector('.vegburger');
+  const mobileMenu = document.querySelector('#mobile-menu');
+  const backdrop = document.querySelector('.menu-backdrop');
 
-    // Bezárás kattintásra a nav linkre mobilon
-    nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            if(window.innerWidth <= 768) {
-                nav.classList.remove('open');
-            }
-        });
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    vegburger.classList.add('open');
+    vegburger.setAttribute('aria-expanded', 'true');
+    backdrop.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    vegburger.classList.remove('open');
+    vegburger.setAttribute('aria-expanded', 'false');
+    backdrop.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  function toggleMenu() {
+    if (mobileMenu.classList.contains('open')) closeMenu(); else openMenu();
+  }
+
+  vegburger.addEventListener('click', toggleMenu);
+  backdrop.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // Bezárás kattintásra a mobil nav linkre
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if(window.innerWidth <= 768) closeMenu();
     });
+  });
+
+  // Ha visszanagyítunk desktopra, menü zárása és overlay eltüntetése
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
 });
 
 
