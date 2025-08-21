@@ -2,6 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 /* Elegáns, címsorhoz használt serif betű a bemutatkozó részhez */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+:root {
+  --primary-900: #2c0b0b;
+  --primary-800: #471616;
+  --primary-700: #652324;
+  --primary-600: #8e3435;
+  --primary-500: #bd4749;
+  --primary-400: #da6b6d;
+  --primary-300: #e09495;
+  --primary-200: #e9bbbb;
+  --primary-100: #f2dbdb;
+  --primary-50: #faf2f2;
+
+  --neutral-900: #18160f;
+  --neutral-800: #2a261b;
+  --neutral-700: #3e392a;
+  --neutral-600: #59523e;
+  --neutral-500: #786e55;
+  --neutral-400: #988c6d;
+  --neutral-300: #b5a783;
+  --neutral-200: #d5c59a;
+  --neutral-100: #eedfb9;
+  --neutral-50: #f8f4e9;
+}
 
 body {
             font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
