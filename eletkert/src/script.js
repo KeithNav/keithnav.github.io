@@ -113,7 +113,7 @@ fetch("http://localhost:1337/api/piacoks", {
     .catch(err => console.error("Hiba történt:", err));
 
     // Alap térkép beállítás
-const map = L.map('map').setView([47.5825, 17.6333], 8); // Magyarország közepe
+const map = L.map('map').setView([47.4825, 17.6333], 8.5); // Magyarország közepe
 
 // OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
