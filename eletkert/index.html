@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="src/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/site.webmanifest" />
 </head>
 <body>
     <header>
@@ -19,7 +25,7 @@
             <img src="/logojo.png" alt="Eletkert Logo" class="site-logo"> <!-- Cseréld ki a 'logo.png'-t a tényleges logó fájl elérési útjára -->
 
             <nav class="nav-right">
-                <a href="#photos">Fényképek</a>
+                <a href="#photos">Galéria</a>
                 <a href="#contact">Kapcsolat</a>
             </nav>
         </div>
@@ -53,7 +59,7 @@
             <div class="about-media">
                 <div id="rolamvideo" class="video-responsive-container">
                     <iframe 
-                      src="https://www.youtube.com/embed/Ufqoe2QDbyw?controls=1&modestbranding=1&rel=0" 
+                      src="https://www.youtube.com/embed/Ufqoe2QDbyw?controls=0&modestbranding=0&rel=0" 
                       title="Bemutatkozó videó" 
                       frameborder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -139,31 +145,26 @@
             </div>
         </div>
     </section>
-    <div class="section-wave wave-youtube-to-contact" aria-hidden="true" style="background:#d3c590">
+    <div class="section-wave wave-youtube-to-contact" aria-hidden="true" >
         <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
             <path d="M0,0 L1440,0 L1440,110 C1080,40 360,40 0,110 Z" fill="#dacd9f"></path>
         </svg>
     </div>
     
     <section id="contact">
-        <h2>Kapcsolat</h2>
-        <p>Ha kérdésed van, vagy rendelni szeretnél, keress engem!</p>
-        <div class="contact-cards">
-            <div class="contact-card">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="contact-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                </svg>
-                <a href="tel:+361234567">Telefon: <br>+36 123 4567</a>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Látogass meg</h3>
+                <p><a href="#markets">Aktuális helyszínek a Piacok szekcióban</a></p>
+                <p><a href="https://www.facebook.com/eletkertjudittal" target="_blank" rel="noopener">Facebook: Életkert Judittal</a></p>
             </div>
-            <div class="contact-card">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="contact-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-                <a href="mailto:kormendine.a.judit@gmail.com">Email: kormendine.a.judit@gmail.com</a>
+            <div class="contact-item">
+                <h3>Hívj engem</h3>
+                <p>Telefon: <a href="tel:+361234567">+36 123 4567</a></p>
             </div>
-            <div class="contact-card fb-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="fb-icon">
-                <a href="https://www.facebook.com/eletkertjudittal" target="_blank">Facebook oldalam: <br>Életkert Judittal</a>
+            <div class="contact-item">
+                <h3>Írj nekem</h3>
+                <p>Email: <a href="mailto:kormendine.a.judit@gmail.com">kormendine.a.judit@gmail.com</a></p>
             </div>
         </div>
     </section>
@@ -206,9 +207,9 @@
             <div class="bottom-row">
                 <p>© 2025 Életkert. Minden jog fenntartva.</p>
                 <div class="legal-links">
-                    <a href="/impresszum-minta.pdf" target="_blank">Adatvédelmi tájékoztató</a>
+                    <a href="#" target="_blank">Adatvédelmi tájékoztató</a>
                     <span class="sep">•</span>
-                    <a href="#" target="_blank">Impresszum</a>
+                    <a href="/impresszum-minta.pdf" target="_blank">Impresszum</a>
                 </div>
             </div>
         </div>
