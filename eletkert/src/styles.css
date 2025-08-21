@@ -608,3 +608,16 @@ body {
 @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; gap: 18px; }
 }
+
+/* About szekció – 'aktuális piacok' link (index.html 73. sor) */
+#about .about-content a[href="#markets"] {
+  color: #bc4749;
+  text-decoration: none;
+  font-weight: 700;
+}
+#about .about-content a[href="#markets"]:hover,
+#about .about-content a[href="#markets"]:focus {
+  color: #a23d3f;
+  transition: color 0.3s;
+  text-decoration: none;
+}
