@@ -13,19 +13,23 @@ lightbox.init();
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('nav a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const target = document.getElementById(targetId);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 10,
-                    behavior: 'smooth'
-                });
-            }
-        });
+  // Smooth scroll: minden belső horgony linkre (nav + footer)
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      const targetId = hash.slice(1);
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 10;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+
+      // URL frissítése ugrás nélkül
+      history.replaceState(null, '', hash);
     });
+  });
+    
 
     const scrollBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', function() {
@@ -113,7 +117,22 @@ fetch("http://localhost:1337/api/piacoks", {
     .catch(err => console.error("Hiba történt:", err));
 
     // Alap térkép beállítás
-const map = L.map('map').setView([47.4825, 17.6333], 8.5); // Magyarország közepe
+const map = L.map('map', {
+  scrollWheelZoom: false
+}).setView([47.4825, 17.6333], 8.5);
+
+// Csak Ctrl/Meta nyomva tartásakor engedélyezzük a görgős zoomot
+const enableWheel = () => map.scrollWheelZoom.enable();
+const disableWheel = () => map.scrollWheelZoom.disable();
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Control' || e.key === 'Meta') enableWheel();
+});
+window.addEventListener('keyup', (e) => {
+  if (e.key === 'Control' || e.key === 'Meta') disableWheel();
+});
+window.addEventListener('blur', disableWheel);
+map.getContainer().addEventListener('mouseleave', disableWheel);
 
 // OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
