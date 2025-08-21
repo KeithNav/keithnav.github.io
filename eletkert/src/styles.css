@@ -427,7 +427,7 @@ body {
             border-radius: 50%;
             background: #bc4749;
             box-shadow: 0 4px 16px rgba(56,142,60,0.18);
-            color: #ffffff;
+            fill: #ffffff;
             border: none;
             font-size: 2em;
             cursor: pointer;
@@ -448,6 +448,7 @@ body {
         #scrollTopBtn:hover {
             opacity: 1;
             background: #f0e0b8;
+            fill: #bc4749;
             box-shadow: 0 8px 32px rgba(56,142,60,0.22);
             transform: scale(1.12);
         }
