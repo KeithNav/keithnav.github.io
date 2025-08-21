@@ -121,8 +121,26 @@ fetch("http://localhost:1337/api/piacoks", {
 
     // Alap térkép beállítás
 const map = L.map('map', {
-  scrollWheelZoom: false
+  scrollWheelZoom: false,
+  dragging: window.innerWidth > 900,
+  tap: window.innerWidth > 900, 
+  touchZoom: true
 }).setView([47.4825, 17.6333], 8.5);
+function updateMapTouch() {
+  if (window.innerWidth <= 900) {
+    map.dragging.disable();
+    map.tap && map.tap.disable();
+    map.scrollWheelZoom.disable();
+    map.touchZoom.enable(); // csak pinch
+  } else {
+    map.dragging.enable();
+    map.tap && map.tap.enable();
+    map.scrollWheelZoom.disable();
+    map.touchZoom.enable();
+  }
+}
+window.addEventListener('resize', updateMapTouch);
+updateMapTouch();
 
 // Csak Ctrl/Meta nyomva tartásakor engedélyezzük a görgős zoomot
 const enableWheel = () => map.scrollWheelZoom.enable();
