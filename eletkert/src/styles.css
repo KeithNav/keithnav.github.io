@@ -621,7 +621,7 @@ body {
     margin: 0 0 12px 0;
     font-size: clamp(1.2rem, 2.2vw, 1.8rem);
     letter-spacing: 0.1em;
-    font-weight: 800;
+    font-weight: 400;
     text-transform: uppercase;
     color: #f8f4e9;
 }
