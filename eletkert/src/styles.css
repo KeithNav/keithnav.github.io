@@ -620,13 +620,21 @@ body {
 .contact-item h3 {
     margin: 0 0 12px 0;
     font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    letter-spacing: 0.1em;
     font-weight: 800;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #f8f4e9;
 }
-.contact-item p { margin: 8px 0; color: #e8e6e1; font-weight: 600; }
-.contact-item a { color: #ffffff; text-decoration: none; border-bottom: 1px solid transparent; }
-.contact-item a:hover { color: #ffb9a8; border-bottom-color: #ffb9a8; }
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 3em;
+    margin: 20px;
+    fill: #f8f4e9;
+}
+.contact-item p { margin: 8px 0; color: #eedfb9; font-weight: 600; }
+.contact-item a { color: #eedfb9; text-decoration: none; border-bottom: 1px solid transparent; }
+.contact-item a:hover { color: #da6b6d; border-bottom-color: #da6b6d; }
 
 @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; gap: 18px; }
