@@ -79,13 +79,22 @@ body {
 
         /* Hullám az alján */
         .header-wave {
-            position: absolute;
+            /* position: absolute; */
             left: 0;
             bottom: -1px; /* finom illesztés */
             width: 100%;
             height: 140px; /* vastagabb hullám */
             display: block;
             z-index: 5; /* a navigáció alatt legyen, de a háttér felett hatásra nincs szükség */
+        }
+        .header-fullwave {
+            position: absolute;
+            left: 0;
+            bottom: -1px; /* finom illesztés */
+            width: 100%;
+            height: 140px; /* vastagabb hullám */
+            display: block;
+            z-index: 5; /* a navigáció alatt legyen, de a háttér felett hatásra nincs szükség */   
         }
 
     /* Mobil menü (desktopon rejtve) */
@@ -425,17 +434,18 @@ body {
             width: 54px;
             height: 54px;
             border-radius: 50%;
-            background: #bc4749;
+            background: var(--primary-500, #bc4749);
             box-shadow: 0 4px 16px rgba(56,142,60,0.18);
-            fill: #ffffff;
             border: none;
-            font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             z-index: 9999;
             opacity: 0;
-            pointer-events: fill;
+            pointer-events: none;
             transform: scale(0.8);
-            transition: 
+            transition:
                 opacity 0.5s cubic-bezier(.4,0,.2,1),
                 transform 0.5s cubic-bezier(.4,0,.2,1),
                 background 0.3s, box-shadow 0.3s;
@@ -446,11 +456,18 @@ body {
             transform: scale(1);
         }
         #scrollTopBtn:hover {
-            opacity: 1;
-            background: #f0e0b8;
-            fill: #bc4749;
+            background: #f2e8cf;
             box-shadow: 0 8px 32px rgba(56,142,60,0.22);
             transform: scale(1.12);
+        }
+        #scrollTopBtn svg {
+            display: block;
+            margin: 0 auto;
+            width: 32px;
+            height: 32px;
+        }
+        #scrollTopBtn:hover svg {
+            fill: #bc4749;
         }
         @keyframes fadeInMenu {
             from {
