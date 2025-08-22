@@ -102,6 +102,9 @@ fetch("http://localhost:1337/api/piacoks", {
     const lista = document.querySelector(".piacok"); 
     lista.innerHTML = ""; // előző törlése, ha frissíted
     
+    // Tároljuk el a város koordinátákat a linkekhez
+    const cityLinksData = {};
+    
     res.data.forEach(item => {
         // dátum formázás emberibbé
         const datum = new Date(item.date).toLocaleDateString("hu-HU", {
@@ -113,9 +116,90 @@ fetch("http://localhost:1337/api/piacoks", {
         });
 
         const li = document.createElement("li");
-        li.textContent = `${item.city} – ${item.marketName} (${datum})`;
+        
+        // Város link létrehozása
+        const cityLink = document.createElement("a");
+        cityLink.href = "#";
+        cityLink.textContent = item.city;
+        cityLink.style.color = "#bc4749";
+        cityLink.style.textDecoration = "none";
+        cityLink.style.fontWeight = "bold";
+        
+        // Hover effekt
+        cityLink.addEventListener("mouseenter", () => {
+          cityLink.style.textDecoration = "underline";
+        });
+        cityLink.addEventListener("mouseleave", () => {
+          cityLink.style.textDecoration = "none";
+        });
+        
+        // Tároljuk a város adatait későbbi használatra
+        cityLinksData[item.city] = {
+          coords: cityCoordinates[item.city] || null,
+          needsGeocoding: !cityCoordinates[item.city]
+        };
+
+        li.appendChild(cityLink);
+        li.appendChild(document.createTextNode(` – ${item.marketName} (${datum})`));
         lista.appendChild(li);
       });
+
+    // Kattintás események hozzáadása a city linkekhez
+    Object.keys(cityLinksData).forEach(cityName => {
+      const cityLink = [...lista.querySelectorAll('a')].find(link => link.textContent === cityName);
+      if (cityLink) {
+        cityLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          const cityData = cityLinksData[cityName];
+          if (cityData.coords) {
+            // Ha van koordináta, zoomolunk rá
+            map.setView([cityData.coords.lat, cityData.coords.lon], 12);
+            
+            // Megnyitjuk a marker popup-ját
+            if (window.cityMarkers && window.cityMarkers[cityName]) {
+              const markers = window.cityMarkers[cityName];
+              if (markers.length > 0) {
+                // Ha több marker van, az elsőt nyitjuk meg
+                setTimeout(() => {
+                  markers[0].openPopup();
+                }, 500); // Kis késleltetés a zoom után
+              }
+            }
+          } else if (cityData.needsGeocoding) {
+            // Ha nincs koordináta, geocodoljuk
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}, Hungary&limit=1`)
+              .then(resp => resp.json())
+              .then(data => {
+                if (data && data.length > 0) {
+                  const lat = parseFloat(data[0].lat);
+                  const lon = parseFloat(data[0].lon);
+                  
+                  // Eltároljuk a koordinátát később használatra
+                  cityLinksData[cityName].coords = { lat, lon };
+                  cityLinksData[cityName].needsGeocoding = false;
+                  
+                  // Zoomolunk a városra
+                  map.setView([lat, lon], 12);
+                  
+                  // Popup megnyitása geocoding után is
+                  if (window.cityMarkers && window.cityMarkers[cityName]) {
+                    const markers = window.cityMarkers[cityName];
+                    if (markers.length > 0) {
+                      setTimeout(() => {
+                        markers[0].openPopup();
+                      }, 500);
+                    }
+                  }
+                } else {
+                  console.warn("Nem található:", cityName);
+                }
+              })
+              .catch(err => console.error("Geocoding hiba:", err));
+          }
+        });
+      }
+    });
     })
     .catch(err => console.error("Hiba történt:", err));
 
@@ -161,6 +245,30 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// Előre geocodolt magyar városok (gyors cache)
+const cityCoordinates = {
+  'Budapest': { lat: 47.4979, lon: 19.0402 },
+  'Debrecen': { lat: 47.5316, lon: 21.6273 },
+  'Szeged': { lat: 46.2530, lon: 20.1414 },
+  'Miskolc': { lat: 48.1036, lon: 20.7784 },
+  'Pécs': { lat: 46.0727, lon: 18.2329 },
+  'Győr': { lat: 47.6875, lon: 17.6504 },
+  'Nyíregyháza': { lat: 47.9565, lon: 21.7172 },
+  'Kecskemét': { lat: 46.9069, lon: 19.6925 },
+  'Székesfehérvár': { lat: 47.1903, lon: 18.4092 },
+  'Szombathely': { lat: 47.2306, lon: 16.6218 },
+  'Szolnok': { lat: 47.1817, lon: 20.1992 },
+  'Tatabánya': { lat: 47.5692, lon: 18.3981 },
+  'Kaposvár': { lat: 46.3661, lon: 17.7956 },
+  'Érd': { lat: 47.3964, lon: 18.9195 },
+  'Veszprém': { lat: 47.0930, lon: 17.9093 },
+  'Békéscsaba': { lat: 46.6758, lon: 21.0951 },
+  'Zalaegerszeg': { lat: 46.8456, lon: 16.8443 },
+  'Sopron': { lat: 47.6850, lon: 16.5900 },
+  'Eger': { lat: 47.9028, lon: 20.3707 },
+  'Nagykanizsa': { lat: 46.4613, lon: 16.9902 }
+};
+
 // Piacok betöltése Strapi-ból
 fetch("http://localhost:1337/api/piacoks", {
   method: "GET",
@@ -169,33 +277,89 @@ fetch("http://localhost:1337/api/piacoks", {
   }
 })
   .then(res => res.json())
-  .then(res => {
+  .then(async res => {
+    // Marker referenciák tárolása városonként
+    const cityMarkers = {};
+    
+    // Ossza fel: ismert városok (instant) vs ismeretlen városok (geocoding)
+    const knownCities = {};
+    const unknownCities = [];
+    
+    const uniqueCities = [...new Set(res.data.map(item => item.city))];
+    
+    uniqueCities.forEach(city => {
+      if (cityCoordinates[city]) {
+        knownCities[city] = cityCoordinates[city];
+      } else {
+        unknownCities.push(city);
+      }
+    });
+
+    // Ismert városok markereit azonnal hozzáadjuk
     res.data.forEach(item => {
       const city = item.city;
       const marketName = item.marketName;
       const date = new Date(item.date).toLocaleDateString("hu-HU");
-
-      // OpenStreetMap Nominatim API (ingyenes geocoding)
-      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`)
-        .then(resp => resp.json())
-        .then(data => {
-          if (data && data.length > 0) {
-            const lat = data[0].lat;
-            const lon = data[0].lon;
-
-            // Marker a térképre
-            const marker = L.marker([lat, lon]).addTo(map);
-
-            // Popup tartalom
-            marker.bindPopup(`
-              <strong>${marketName}</strong><br>
-              Város: ${city}<br>
-              Dátum: ${date}
-            `);
-          } else {
-            console.warn("Nem találtam koordinátát:", city);
-          }
-        });
+      
+      if (knownCities[city]) {
+        const coords = knownCities[city];
+        const marker = L.marker([coords.lat, coords.lon]).addTo(map);
+        marker.bindPopup(`
+          <strong>${marketName}</strong><br>
+          Város: ${city}<br>
+          Dátum: ${date}
+        `);
+        
+        // Tároljuk a markert a városhoz
+        if (!cityMarkers[city]) {
+          cityMarkers[city] = [];
+        }
+        cityMarkers[city].push(marker);
+      }
     });
+
+    // Ismeretlen városokat geocodoljuk (ha vannak)
+    if (unknownCities.length > 0) {
+      const geocodePromises = unknownCities.map(city => 
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}, Hungary&limit=1`)
+          .then(resp => resp.json())
+          .then(data => ({
+            city,
+            coords: data && data.length > 0 ? { lat: data[0].lat, lon: data[0].lon } : null
+          }))
+          .catch(() => ({ city, coords: null }))
+      );
+
+      const geocodedCities = await Promise.all(geocodePromises);
+      const unknownCityCoords = Object.fromEntries(
+        geocodedCities.map(item => [item.city, item.coords])
+      );
+
+      // Ismeretlen városok markereit hozzáadjuk
+      res.data.forEach(item => {
+        const city = item.city;
+        const marketName = item.marketName;
+        const date = new Date(item.date).toLocaleDateString("hu-HU");
+        const coords = unknownCityCoords[city];
+
+        if (coords && !knownCities[city]) {
+          const marker = L.marker([coords.lat, coords.lon]).addTo(map);
+          marker.bindPopup(`
+            <strong>${marketName}</strong><br>
+            Város: ${city}<br>
+            Dátum: ${date}
+          `);
+          
+          // Tároljuk a markert a városhoz
+          if (!cityMarkers[city]) {
+            cityMarkers[city] = [];
+          }
+          cityMarkers[city].push(marker);
+        }
+      });
+    }
+    
+    // Globális hozzáférés a marker referenciákhoz
+    window.cityMarkers = cityMarkers;
   });
 
