@@ -45,7 +45,7 @@ body {
             padding: 40px 20px 120px; /* nagyobb felső rész + hely a hullámnak */
             position: relative; /* a hullám pozicionálásához */
             overflow: hidden; /* a hullám túlfutásának elkerülése */
-            min-height: 420px; /* vastagabb, látványosabb header */
+            min-height: 500px; /* vastagabb, látványosabb header */
         }
         .site-logo,
         header img {
@@ -107,7 +107,7 @@ body {
             right: 24px;
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.7);
+            background: #bc4749;
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(56,142,60,0.12);
             border: none;
@@ -126,7 +126,7 @@ body {
             display: block;
             width: 24px;
             height: 3px;
-            background: #bc4749;
+            background: #f2e8cf;
             margin: 2px auto;
             border-radius: 2px;
             transition: all 0.3s;
