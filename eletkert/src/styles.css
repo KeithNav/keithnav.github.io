@@ -649,10 +649,37 @@ body {
     font-size: 3em;
     margin: 20px;
     fill: #f8f4e9;
+    transition: fill 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1);
 }
 .contact-item p { margin: 8px 0; color: #eedfb9; font-weight: 600; }
 .contact-item a { color: #eedfb9; text-decoration: none; border-bottom: 1px solid transparent; }
 .contact-item a:hover { color: #da6b6d; border-bottom-color: #da6b6d; }
+
+/* Contact hover effects */
+.contact-item {
+  transition: box-shadow 0.3s;
+}
+.contact-item:hover .contact-icon {
+  fill: var(--neutral-100, #eedfb9);
+  transform: translateY(-6px) scale(1.1);
+}
+.contact-item:hover h3 {
+  color: var(--neutral-100, #eedfb9);
+  transition: color 0.5s;
+}
+.contact-separator {
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--neutral-100, #eedfb9);
+  margin: 10px auto 10px auto;
+  opacity: 0;
+  transition: width 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
+}
+.contact-item:hover .contact-separator {
+  width: 60%;
+  opacity: 1;
+}
 
 @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; gap: 18px; }
