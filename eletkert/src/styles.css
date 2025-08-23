@@ -22,8 +22,8 @@
   --neutral-500: #786e55;
   --neutral-400: #988c6d;
   --neutral-300: #b5a783;
-  --neutral-200: #d5c59a;
-  --neutral-100: #eedfb9;
+  --neutral-200: #d5caab;
+  --neutral-100: #eee6d1;
   --neutral-50: #f8f4e9;
   --neutral-opacity-100: #eedfb944;
 }
@@ -156,7 +156,9 @@ body {
                 transform 0.18s cubic-bezier(.4,0,.2,1);
             backdrop-filter: blur(2px);
         }
-
+    .fb-icon {
+       fill: var(--primary-500);
+    }
     .nav-left a:hover, .nav-left a:focus,
     .nav-right a:hover, .nav-right a:focus,
     nav a:hover, nav a:focus {
@@ -266,10 +268,8 @@ body {
             transition: background 0.3s, color 0.3s;
             color: var(--neutral-100);
         }
-        .fb-icon {
-            width: 28px;
-            height: 28px;
-            vertical-align: middle;
+        .fb-link:hover .fb-icon {
+            fill: var(--neutral-100);
         }
         h1, h2 {
             color: var(--primary-500);
@@ -338,7 +338,7 @@ body {
         
         /* YouTube szekció – tovább sötétedő háttér és kétoszlopos elrendezés (nincs doboz) */
         #youtube-video {
-            background: var(--primary-500); /* 3. lépcső */
+            background: var(--neutral-100); /* 3. lépcső */
             padding: 40px 20px;
             margin: 0; /* nincs külső margó */
             border: none;
@@ -466,6 +466,9 @@ body {
             margin: 0 auto;
             width: 32px;
             height: 32px;
+        }
+        .arrow {
+            fill: var(--primary-500);
         }
         @keyframes fadeInMenu {
             from {
