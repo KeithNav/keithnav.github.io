@@ -601,22 +601,8 @@ body {
     position: relative;
     padding: 60px 20px;
     color: var(--neutral-50);
-    background: var(--primary-500);
+    background: var(--primary-700);
     isolation: isolate; /* overlay rétegzéshez */
-}
-#contact::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /* background: url('/vegyes.jpg') center/cover no-repeat; /* állítsd a kívánt képre */
-    z-index: -2;
-}
-#contact::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55); /* sötét overlay */
-    z-index: -1;
 }
 #contact > * { max-width: 1200px; margin: 0 auto; }
 #contact h2 {
