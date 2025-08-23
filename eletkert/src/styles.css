@@ -270,6 +270,7 @@ body {
         }
         .fb-link:hover .fb-icon {
             fill: var(--neutral-100);
+            transition: fill 0.3s;
         }
         h1, h2 {
             color: var(--primary-500);
