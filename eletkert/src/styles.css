@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 /* Elegáns, címsorhoz használt serif betű a bemutatkozó részhez */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
 :root {
   --primary-900: #2c0b0b;
   --primary-800: #471616;
@@ -24,6 +25,7 @@
   --neutral-200: #d5c59a;
   --neutral-100: #eedfb9;
   --neutral-50: #f8f4e9;
+  --neutral-opacity-100: #eedfb944;
 }
 
 body {
@@ -31,9 +33,9 @@ body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: #f2e8cf;
+            background: var(--neutral-50);
             /* halvány színátmenet, modern hatás */
-            color: #263a29;
+            color: var(--neutral-800);
         }
         header {
             background-color: #f2e8cf9c;
@@ -140,28 +142,26 @@ body {
         .nav-left a,
         .nav-right a,
         nav a {
-            color: #1e1d19;
-            background: rgba(255, 255, 255, 0.250);
+            color: var(--neutral-900);
+            background: var(--neutral-opacity-100);
             text-decoration: none;
             font-weight: 700; /* hangsúlyosabb */
             font-size: 1.5em; /* kicsit nagyobb */
-            padding: 12px 30px;
+            padding: 12px 35px;
             border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(56,142,60,0.07);
             transition:
                 background 0.35s cubic-bezier(.4,0,.2,1),
                 color 0.25s cubic-bezier(.4,0,.2,1),
                 box-shadow 0.25s cubic-bezier(.4,0,.2,1),
                 transform 0.18s cubic-bezier(.4,0,.2,1);
             backdrop-filter: blur(2px);
-            border: 1px solid rgba(56,142,60,0.08);
         }
 
     .nav-left a:hover, .nav-left a:focus,
     .nav-right a:hover, .nav-right a:focus,
     nav a:hover, nav a:focus {
-            background: #bc4749;
-            color: #f2e8cf;
+            background: var(--primary-500);
+            color: var(--neutral-100);
             box-shadow: 0 6px 24px rgba(56,142,60,0.18);
             transform: translateY(-2px) scale(1.06);
             outline: none;
@@ -171,7 +171,7 @@ body {
 
         /* Rólam – teljes szélességű szakasz, a háttér a body alapszíne */
         #about {
-            background: #f2e8cf; /* body háttér */
+            background: var(--neutral-50); /* body háttér */
             padding: 40px 20px;
         }
         /* a belső tartalom szélességkorlátja */
@@ -190,26 +190,28 @@ body {
             align-items: start;
         }
     .about-media { max-width: 960px; width: 100%; margin-top: 100px; }
-        .about-content { color: #263a29; font-size: 1.05rem; line-height: 1.8; }
+        .about-content { color: var(--neutral-600); font-size: 1.05rem; line-height: 1.8; }
         .about-title {
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: 700;
             font-size: clamp(1.8rem, 2.6vw, 2.6rem);
             font-style: italic;
-            color: #263a29;
+            color: var(--neutral-700);
             margin: 0 0 16px 0;
         }
         /* Bemutatkozó videó vizuális közelítése a referenciához */
         .about-media .video-responsive-container {
             border-radius: 16px;
-            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
             overflow: hidden;
         }
 
         /* Aktuális Piacok – sötétebb háttér az abouthoz képest */
         #markets {
-            background: #e8dfbf; /* 1. lépcső */
+            background: var(--neutral-100); /* 1. lépcső */
             padding: 40px 20px;
+        }
+        #markets p, #markets li {
+            color: var(--neutral-700);
         }
         #markets > p:first-of-type {
             font-size: clamp(1.06rem, 1.2vw, 1.25rem);
@@ -220,6 +222,12 @@ body {
             margin-left: auto;
             margin-right: auto;
             
+        }
+        #markets a {
+            font-weight: bold;
+        }
+        a {
+            color: var(--primary-500);
         }
 
         /* Köztes hullám blokk stílus */
@@ -243,22 +251,20 @@ body {
         .fb-link {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(90deg, #f2e8cf 0%, #eed79c 100%);
-            color: #bc4749;
+            background: var(--neutral-100);
+            color: var(--primary-500);
             font-weight: bold;
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 30px;
-            box-shadow: 0 2px 8px rgba(56,142,60,0.10);
-            transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
             font-size: 1.1em;
             gap: 10px;
         }
         .fb-link:hover {
-            background: #bc4749;
+            background: var(--primary-500);
             transition: background 0.3s, color 0.3s;
-            color: #f2e8cf;
-            box-shadow: 0 4px 16px rgba(56,142,60,0.18);
+            color: var(--neutral-100);
         }
         .fb-icon {
             width: 28px;
@@ -266,7 +272,7 @@ body {
             vertical-align: middle;
         }
         h1, h2 {
-            color: #bc4749;
+            color: var(--primary-500);
             font-size: 2em;
         }
         .gallery {
@@ -274,19 +280,12 @@ body {
             flex-wrap: wrap;
             justify-content: center;
         }
-        .gallery img {
-            width: calc(90.333% - 20px);
-            height: auto;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
         .piacok li:first-child {
             font-weight: bold;
         }
         /* Fényképek – egy árnyalattal sötétebb, de a bento grid marad */
         #photos {
-            background: #e1d6ae; /* 2. lépcső */
+            background: var(--neutral-200); /* 2. lépcső */
             padding: 40px 20px;
         }
         #photos > * {
@@ -339,7 +338,7 @@ body {
         
         /* YouTube szekció – tovább sötétedő háttér és kétoszlopos elrendezés (nincs doboz) */
         #youtube-video {
-            background: #dacd9f; /* 3. lépcső */
+            background: var(--primary-500); /* 3. lépcső */
             padding: 40px 20px;
             margin: 0; /* nincs külső margó */
             border: none;
@@ -382,10 +381,14 @@ body {
         }
         /* Sötét, elegáns lábléc */
         .site-footer {
-            background: #1e1d19; /* sötétbarna-fekete közeli */
-            color: #d6cfbf; /* halvány bézs szöveg */
+            background: var(--neutral-900); /* sötétbarna-fekete közeli */
+            color: var(--neutral-100); /* halvány bézs szöveg */
             padding: 48px 20px 28px;
         }
+        .site-footer .footer-links a {
+            color: var(--neutral-300);
+            text-decoration: none;
+        } 
         .site-footer .container { max-width: 1200px; margin: 0 auto; }
         .site-footer .grid {
             display: grid;
@@ -393,20 +396,20 @@ body {
             gap: 32px;
             align-items: start;
         }
-        .site-footer h3 { margin: 0 0 12px; font-size: 1.6rem; color: #efe8d6; }
-        .site-footer h4 { margin: 0 0 12px; font-size: 1.05rem; color: #efe8d6; }
-        .site-footer p { margin: 0 0 8px; color: #bfb7a6; line-height: 1.7; }
+        .site-footer h3 { margin: 0 0 12px; font-size: 1.6rem; color: var(--neutral-100); }
+        .site-footer h4 { margin: 0 0 12px; font-size: 1.05rem; color: var(--neutral-100); }
+        .site-footer p { margin: 0 0 8px; color: var(--neutral-200); line-height: 1.7; }
         .footer-links { list-style: none; padding: 0; margin: 0; }
         .footer-links li { margin: 8px 0; }
-        .site-footer a { color: #e3d8bf; text-decoration: none; }
-        .site-footer a:hover { color: #ffb9a8; text-decoration: none; }
-        .footer-divider { height: 1px; background: #3a372f; margin: 28px 0; }
+        /* .site-footer a { color: #e3d8bf; text-decoration: none; } */
+        .site-footer a:hover { color: var(--primary-300); text-decoration: none; }
+        .footer-divider { height: 1px; background: var(--neutral-600); margin: 28px 0; }
         .bottom-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-        .bottom-row p { margin: 0; color: #bfb7a6; }
-        .legal-links { display: flex; align-items: center; gap: 12px; color: #bfb7a6; }
-        .legal-links a { color: #bfb7a6; }
-        .legal-links a:hover { color: #ffb9a8; }
-        .legal-links .sep { color: #534f44; }
+        .bottom-row p { margin: 0; color: var(--neutral-200); }
+        .legal-links { display: flex; align-items: center; gap: 12px; color: var(--neutral-200); }
+        .legal-links a { color: var(--neutral-200); }
+        .legal-links a:hover { color: var(--primary-300); }
+        .legal-links .sep { color: var(--neutral-600); }
 
         @media (max-width: 900px) {
             .site-footer .grid { grid-template-columns: 1fr 1fr; }
@@ -434,8 +437,7 @@ body {
             width: 54px;
             height: 54px;
             border-radius: 50%;
-            background: var(--primary-500, #bc4749);
-            box-shadow: 0 4px 16px rgba(56,142,60,0.18);
+            background: var(--primary-500);
             border: none;
             display: flex;
             align-items: center;
@@ -456,8 +458,7 @@ body {
             transform: scale(1);
         }
         #scrollTopBtn:hover {
-            background: #f2e8cf;
-            box-shadow: 0 8px 32px rgba(56,142,60,0.22);
+            background: var(--neutral-100);
             transform: scale(1.12);
         }
         #scrollTopBtn svg {
@@ -465,9 +466,6 @@ body {
             margin: 0 auto;
             width: 32px;
             height: 32px;
-        }
-        #scrollTopBtn:hover svg {
-            fill: #bc4749;
         }
         @keyframes fadeInMenu {
             from {
@@ -506,7 +504,7 @@ body {
                 left: 0; right: 0; top: 0;
                 display: flex;
                 flex-direction: column;
-                background: rgba(255,255,255,0.97);
+                background: var(--neutral-50);
                 backdrop-filter: saturate(150%) blur(8px);
                 padding: 70px 20px 16px; /* hely a fejléchez */
                 gap: 8px;
@@ -602,8 +600,8 @@ body {
 #contact {
     position: relative;
     padding: 60px 20px;
-    color: #ffffff;
-    background: #bc4749; /* fallback szín */
+    color: var(--neutral-50);
+    background: var(--primary-500);
     isolation: isolate; /* overlay rétegzéshez */
 }
 #contact::before {
@@ -623,7 +621,7 @@ body {
 #contact > * { max-width: 1200px; margin: 0 auto; }
 #contact h2 {
     text-align: center;
-    color: #ffffff;
+    color: var(--neutral-50);
     letter-spacing: 0.06em;
 }
 .contact-grid {
@@ -641,37 +639,37 @@ body {
     letter-spacing: 0.1em;
     font-weight: 400;
     text-transform: uppercase;
-    color: #f8f4e9;
+    color: var(--neutral-50);
 }
 .contact-icon {
     width: 24px;
     height: 24px;
     font-size: 3em;
     margin: 20px;
-    fill: #f8f4e9;
+    fill: var(--neutral-50);
     transition: fill 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1);
 }
-.contact-item p { margin: 8px 0; color: #eedfb9; font-weight: 600; }
-.contact-item a { color: #eedfb9; text-decoration: none; border-bottom: 1px solid transparent; }
-.contact-item a:hover { color: #da6b6d; border-bottom-color: #da6b6d; }
+.contact-item p { margin: 8px 0; color: var(--neutral-100); font-weight: 600; }
+.contact-item a { color: var(--neutral-100); text-decoration: none; border-bottom: 1px solid transparent; }
+.contact-item a:hover { color: var(--primary-300); border-bottom-color: var(--primary-300); }
 
 /* Contact hover effects */
 .contact-item {
   transition: box-shadow 0.3s;
 }
 .contact-item:hover .contact-icon {
-  fill: var(--neutral-100, #eedfb9);
+  fill: var(--neutral-100);
   transform: translateY(-6px) scale(1.1);
 }
 .contact-item:hover h3 {
-  color: var(--neutral-100, #eedfb9);
+  color: var(--neutral-100);
   transition: color 0.5s;
 }
 .contact-separator {
   display: block;
   width: 0;
   height: 2px;
-  background: var(--neutral-100, #eedfb9);
+  background: var(--neutral-100);
   margin: 10px auto 10px auto;
   opacity: 0;
   transition: width 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
@@ -687,13 +685,13 @@ body {
 
 /* About szekció – 'aktuális piacok' link (index.html 73. sor) */
 #about .about-content a[href="#markets"] {
-  color: #bc4749;
+  color: var(--primary-500);
   text-decoration: none;
   font-weight: 700;
 }
 #about .about-content a[href="#markets"]:hover,
 #about .about-content a[href="#markets"]:focus {
-  color: #a23d3f;
+  color: var(--primary-700);
   transition: color 0.3s;
   text-decoration: none;
 }

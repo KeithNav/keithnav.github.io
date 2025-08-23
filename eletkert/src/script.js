@@ -5,8 +5,8 @@ const lightbox = new PhotoSwipeLightbox({
   gallery: '#my-gallery',
   children: 'a',
   showHideAnimationType: 'zoom',
-  showAnimationDuration: 500,
-  hideAnimationDuration: 500,
+  showAnimationDuration: 250,
+  hideAnimationDuration: 250,
   pswpModule: () => import('photoswipe')
 });
 lightbox.init();
@@ -121,9 +121,6 @@ fetch("http://localhost:1337/api/piacoks", {
         const cityLink = document.createElement("a");
         cityLink.href = "#";
         cityLink.textContent = item.city;
-        cityLink.style.color = "#bc4749";
-        cityLink.style.textDecoration = "none";
-        cityLink.style.fontWeight = "bold";
         
         // Hover effekt
         cityLink.addEventListener("mouseenter", () => {
@@ -266,7 +263,9 @@ const cityCoordinates = {
   'Zalaegerszeg': { lat: 46.8456, lon: 16.8443 },
   'Sopron': { lat: 47.6850, lon: 16.5900 },
   'Eger': { lat: 47.9028, lon: 20.3707 },
-  'Nagykanizsa': { lat: 46.4613, lon: 16.9902 }
+  'Nagykanizsa': { lat: 46.4613, lon: 16.9902 },
+  'Dunaszeg': { lat: 47.7517, lon: 17.4536 },
+  'Kunsziget': { lat: 47.7712, lon: 17.4282 }
 };
 
 // Piacok betöltése Strapi-ból
