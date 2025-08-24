@@ -137,7 +137,10 @@ fetch("http://localhost:1337/api/piacoks", {
         };
 
         li.appendChild(cityLink);
-        li.appendChild(document.createTextNode(` – ${item.marketName} (${datum})`));
+        
+        // Utca hozzáadása, ha van
+        const streetText = item.street ? `, ${item.street}` : '';
+        li.appendChild(document.createTextNode(`${streetText} – ${item.marketName} (${datum})`));
         lista.appendChild(li);
       });
 
@@ -299,13 +302,15 @@ fetch("http://localhost:1337/api/piacoks", {
       const city = item.city;
       const marketName = item.marketName;
       const date = new Date(item.date).toLocaleDateString("hu-HU");
+      const street = item.street || '';
       
       if (knownCities[city]) {
         const coords = knownCities[city];
         const marker = L.marker([coords.lat, coords.lon]).addTo(map);
+        const streetInfo = street ? `<br>Utca: ${street}` : '';
         marker.bindPopup(`
           <strong>${marketName}</strong><br>
-          Város: ${city}<br>
+          Város: ${city}${streetInfo}<br>
           Dátum: ${date}
         `);
         
@@ -339,13 +344,15 @@ fetch("http://localhost:1337/api/piacoks", {
         const city = item.city;
         const marketName = item.marketName;
         const date = new Date(item.date).toLocaleDateString("hu-HU");
+        const street = item.street || '';
         const coords = unknownCityCoords[city];
 
         if (coords && !knownCities[city]) {
           const marker = L.marker([coords.lat, coords.lon]).addTo(map);
+          const streetInfo = street ? `<br>Utca: ${street}` : '';
           marker.bindPopup(`
             <strong>${marketName}</strong><br>
-            Város: ${city}<br>
+            Város: ${city}${streetInfo}<br>
             Dátum: ${date}
           `);
           
