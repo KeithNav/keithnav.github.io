@@ -11,6 +11,112 @@ const lightbox = new PhotoSwipeLightbox({
 });
 lightbox.init();
 
+// Cookie Consent Management
+const COOKIE_CONSENT_KEY = 'eletkert_youtube_consent';
+
+function showCookieBanner() {
+  const banner = document.getElementById('cookie-consent-banner');
+  if (banner) {
+    banner.style.display = 'block';
+  }
+}
+
+function hideCookieBanner() {
+  const banner = document.getElementById('cookie-consent-banner');
+  if (banner) {
+    banner.style.display = 'none';
+  }
+}
+
+function setCookieConsent(accepted) {
+  localStorage.setItem(COOKIE_CONSENT_KEY, accepted ? 'accepted' : 'declined');
+  hideCookieBanner();
+  
+  if (accepted) {
+    enableYouTubeVideos();
+  } else {
+    disableYouTubeVideos();
+  }
+}
+
+function getCookieConsent() {
+  return localStorage.getItem(COOKIE_CONSENT_KEY);
+}
+
+function enableYouTubeVideos() {
+  // Enable YouTube videos by removing overlays and enabling interaction
+  const videoContainers = document.querySelectorAll('.video-responsive-container');
+  videoContainers.forEach(container => {
+    const iframe = container.querySelector('iframe');
+    const overlay = container.querySelector('.video-overlay');
+    
+    // Remove overlay if exists
+    if (overlay) {
+      overlay.remove();
+    }
+    
+    // Ensure iframe is interactive
+    if (iframe) {
+      iframe.style.pointerEvents = 'auto';
+    }
+  });
+}
+
+function disableYouTubeVideos() {
+  // Disable YouTube videos by adding click-blocking overlay
+  const videoContainers = document.querySelectorAll('.video-responsive-container');
+  videoContainers.forEach(container => {
+    const iframe = container.querySelector('iframe');
+    
+    if (iframe && !container.querySelector('.video-overlay')) {
+      // Add overlay to block interaction
+      const overlay = document.createElement('div');
+      overlay.className = 'video-overlay';
+      overlay.innerHTML = `
+        <div class="video-overlay-content">
+          <div class="overlay-icon">🍪</div>
+          <h4>YouTube videó</h4>
+          <p>A videó megtekintéséhez el kell fogadnod a YouTube sütiket.</p>
+          <button onclick="showCookieBanner()" class="overlay-button">
+            Süti beállítások
+          </button>
+        </div>
+      `;
+      container.appendChild(overlay);
+      
+      // Disable iframe interaction
+      iframe.style.pointerEvents = 'none';
+    }
+  });
+}
+
+// Initialize cookie consent on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const consent = getCookieConsent();
+  
+  if (consent === null) {
+    // First visit - show banner and disable video interaction
+    showCookieBanner();
+    disableYouTubeVideos();
+  } else if (consent === 'accepted') {
+    enableYouTubeVideos();
+  } else {
+    disableYouTubeVideos();
+  }
+  
+  // Event listeners for cookie buttons
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    setCookieConsent(true);
+  });
+  
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    setCookieConsent(false);
+  });
+});
+
+// Make showCookieBanner globally available for placeholder buttons
+window.showCookieBanner = showCookieBanner;
+
 
 
 
