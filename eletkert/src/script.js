@@ -102,10 +102,17 @@ fetch("http://localhost:1337/api/piacoks", {
     const lista = document.querySelector(".piacok"); 
     lista.innerHTML = ""; // előző törlése, ha frissíted
     
+    // Dátum szerint növekvő sorrendbe rendezés
+    const sortedData = res.data.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB; // növekvő sorrend (korábbi dátumok előbb)
+    });
+    
     // Tároljuk el a város koordinátákat a linkekhez
     const cityLinksData = {};
     
-    res.data.forEach(item => {
+    sortedData.forEach(item => {
         // dátum formázás emberibbé
         const datum = new Date(item.date).toLocaleDateString("hu-HU", {
           year: "numeric",
@@ -153,17 +160,22 @@ fetch("http://localhost:1337/api/piacoks", {
           
           const cityData = cityLinksData[cityName];
           if (cityData.coords) {
-            // Ha van koordináta, zoomolunk rá
-            map.setView([cityData.coords.lat, cityData.coords.lon], 12);
+            // Ha van koordináta, zoomolunk rá nagyobb zoommal
+            map.setView([cityData.coords.lat, cityData.coords.lon], 16);
             
             // Megnyitjuk a marker popup-ját
             if (window.cityMarkers && window.cityMarkers[cityName]) {
               const markers = window.cityMarkers[cityName];
               if (markers.length > 0) {
-                // Ha több marker van, az elsőt nyitjuk meg
+                // A marker koordinátáira zoomolunk, nem a város koordinátáira
+                const marker = markers[0];
+                const markerLatLng = marker.getLatLng();
+                map.setView([markerLatLng.lat, markerLatLng.lng], 16);
+                
+                // Popup megnyitása rövidebb késleltetéssel
                 setTimeout(() => {
-                  markers[0].openPopup();
-                }, 500); // Kis késleltetés a zoom után
+                  marker.openPopup();
+                }, 200); // Rövidebb késleltetés a jobb UX érdekében
               }
             }
           } else if (cityData.needsGeocoding) {
@@ -179,16 +191,21 @@ fetch("http://localhost:1337/api/piacoks", {
                   cityLinksData[cityName].coords = { lat, lon };
                   cityLinksData[cityName].needsGeocoding = false;
                   
-                  // Zoomolunk a városra
-                  map.setView([lat, lon], 12);
+                  // Zoomolunk a városra nagyobb zoommal
+                  map.setView([lat, lon], 16);
                   
                   // Popup megnyitása geocoding után is
                   if (window.cityMarkers && window.cityMarkers[cityName]) {
                     const markers = window.cityMarkers[cityName];
                     if (markers.length > 0) {
+                      // A marker pontos koordinátáira zoomolunk
+                      const marker = markers[0];
+                      const markerLatLng = marker.getLatLng();
+                      map.setView([markerLatLng.lat, markerLatLng.lng], 16);
+                      
                       setTimeout(() => {
-                        markers[0].openPopup();
-                      }, 500);
+                        marker.openPopup();
+                      }, 200);
                     }
                   }
                 } else {
@@ -271,6 +288,66 @@ const cityCoordinates = {
   'Kunsziget': { lat: 47.7712, lon: 17.4282 }
 };
 
+// Geocoding gyorsítótár (localStorage-ben tárolva)
+const GEOCODE_CACHE_KEY = 'eletkert_geocode_cache';
+const CACHE_EXPIRY_DAYS = 30; // 30 napig érvényes a cache
+
+function getGeocodingCache() {
+  try {
+    const cached = localStorage.getItem(GEOCODE_CACHE_KEY);
+    if (cached) {
+      const data = JSON.parse(cached);
+      const now = Date.now();
+      // Ellenőrizzük, hogy nem járt-e le a cache
+      if (data.expiry > now) {
+        return data.cache || {};
+      }
+    }
+  } catch (e) {
+    console.warn('Cache olvasási hiba:', e);
+  }
+  return {};
+}
+
+function saveGeocodingCache(cache) {
+  try {
+    const expiry = Date.now() + (CACHE_EXPIRY_DAYS * 24 * 60 * 60 * 1000);
+    localStorage.setItem(GEOCODE_CACHE_KEY, JSON.stringify({
+      cache: cache,
+      expiry: expiry
+    }));
+  } catch (e) {
+    console.warn('Cache mentési hiba:', e);
+  }
+}
+
+async function geocodeWithCache(searchQuery) {
+  const cache = getGeocodingCache();
+  
+  // Ha már van cache-ben, azonnal visszaadjuk
+  if (cache[searchQuery]) {
+    return cache[searchQuery];
+  }
+  
+  // Ha nincs cache-ben, geocodoljuk
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}, Hungary&limit=1`);
+    const data = await response.json();
+    
+    const result = data && data.length > 0 ? 
+      { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) } : null;
+    
+    // Mentjük a cache-be
+    cache[searchQuery] = result;
+    saveGeocodingCache(cache);
+    
+    return result;
+  } catch (error) {
+    console.warn('Geocoding hiba:', searchQuery, error);
+    return null;
+  }
+}
+
 // Piacok betöltése Strapi-ból
 fetch("http://localhost:1337/api/piacoks", {
   method: "GET",
@@ -280,38 +357,51 @@ fetch("http://localhost:1337/api/piacoks", {
 })
   .then(res => res.json())
   .then(async res => {
+    // Dátum szerint növekvő sorrendbe rendezés a térképhez is
+    const sortedData = res.data.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB; // növekvő sorrend (korábbi dátumok előbb)
+    });
+    
     // Marker referenciák tárolása városonként
     const cityMarkers = {};
-    
-    // Ossza fel: ismert városok (instant) vs ismeretlen városok (geocoding)
-    const knownCities = {};
-    const unknownCities = [];
-    
-    const uniqueCities = [...new Set(res.data.map(item => item.city))];
-    
-    uniqueCities.forEach(city => {
-      if (cityCoordinates[city]) {
-        knownCities[city] = cityCoordinates[city];
-      } else {
-        unknownCities.push(city);
-      }
-    });
 
-    // Ismert városok markereit azonnal hozzáadjuk
-    res.data.forEach(item => {
+    // Optimalizált geocoding - fokozatos marker megjelenítés
+    // Először próbáljuk a cache-ből, majd aszinkron geocodoljuk a többit
+    
+    const processItem = async (item, index) => {
       const city = item.city;
-      const marketName = item.marketName;
-      const date = new Date(item.date).toLocaleDateString("hu-HU");
       const street = item.street || '';
+      const houseNumber = item.houseNumber || '';
       
-      if (knownCities[city]) {
-        const coords = knownCities[city];
+      // Keresési lekérdezés felépítése
+      let searchQuery = city;
+      if (street) {
+        searchQuery = `${street}, ${city}`;
+        if (houseNumber) {
+          searchQuery = `${street} ${houseNumber}, ${city}`;
+        }
+      }
+      
+      // Geocoding cache-szel
+      let coords = await geocodeWithCache(searchQuery);
+      
+      // Fallback ha nem találta a pontos címet
+      if (!coords && street) {
+        coords = await geocodeWithCache(city);
+      }
+      
+      // Ha van koordináta, rögtön hozzáadjuk a markert
+      if (coords) {
+        const formattedDate = new Date(item.date).toLocaleDateString("hu-HU");
         const marker = L.marker([coords.lat, coords.lon]).addTo(map);
         const streetInfo = street ? `<br>Utca: ${street}` : '';
+        
         marker.bindPopup(`
-          <strong>${marketName}</strong><br>
+          <strong>${item.marketName}</strong><br>
           Város: ${city}${streetInfo}<br>
-          Dátum: ${date}
+          Dátum: ${formattedDate}
         `);
         
         // Tároljuk a markert a városhoz
@@ -319,50 +409,24 @@ fetch("http://localhost:1337/api/piacoks", {
           cityMarkers[city] = [];
         }
         cityMarkers[city].push(marker);
+        
+        console.log(`Marker hozzáadva: ${city} (${index + 1}/${sortedData.length})`);
       }
-    });
-
-    // Ismeretlen városokat geocodoljuk (ha vannak)
-    if (unknownCities.length > 0) {
-      const geocodePromises = unknownCities.map(city => 
-        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}, Hungary&limit=1`)
-          .then(resp => resp.json())
-          .then(data => ({
-            city,
-            coords: data && data.length > 0 ? { lat: data[0].lat, lon: data[0].lon } : null
-          }))
-          .catch(() => ({ city, coords: null }))
-      );
-
-      const geocodedCities = await Promise.all(geocodePromises);
-      const unknownCityCoords = Object.fromEntries(
-        geocodedCities.map(item => [item.city, item.coords])
-      );
-
-      // Ismeretlen városok markereit hozzáadjuk
-      res.data.forEach(item => {
-        const city = item.city;
-        const marketName = item.marketName;
-        const date = new Date(item.date).toLocaleDateString("hu-HU");
-        const street = item.street || '';
-        const coords = unknownCityCoords[city];
-
-        if (coords && !knownCities[city]) {
-          const marker = L.marker([coords.lat, coords.lon]).addTo(map);
-          const streetInfo = street ? `<br>Utca: ${street}` : '';
-          marker.bindPopup(`
-            <strong>${marketName}</strong><br>
-            Város: ${city}${streetInfo}<br>
-            Dátum: ${date}
-          `);
-          
-          // Tároljuk a markert a városhoz
-          if (!cityMarkers[city]) {
-            cityMarkers[city] = [];
-          }
-          cityMarkers[city].push(marker);
-        }
-      });
+    };
+    
+    // Első körben a cache-ből azonnal hozzáadjuk a markereket
+    const cachePromises = sortedData.map((item, index) => processItem(item, index));
+    
+    // Kis késleltetéssel dolgozzuk fel őket, hogy ne blokkoljuk a UI-t
+    for (let i = 0; i < cachePromises.length; i += 3) {
+      // 3-asával dolgozzuk fel párhuzamosan
+      const batch = cachePromises.slice(i, i + 3);
+      await Promise.all(batch);
+      
+      // Kis szünet a batch-ek között, hogy ne túlterheljük a nominatim API-t
+      if (i + 3 < cachePromises.length) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
     }
     
     // Globális hozzáférés a marker referenciákhoz
