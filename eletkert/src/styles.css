@@ -374,12 +374,13 @@ body {
             top: 0;
             left: 0;
             right: 0;
-            height: 2px; /* paint over the seam */
+            height: 2px; 
             background: var(--neutral-200);
             pointer-events: none;
-            z-index: 6; /* above the wave SVG which has z-index:5 */
+            z-index: 6; 
             transform: translateY(-1px);
         }
+        
         #photos > * {
             max-width: 1200px;
             margin-left: auto;
@@ -437,6 +438,7 @@ body {
             border-radius: 0;
             box-shadow: none;
             max-width: none;
+            position: relative; /* for desktop overlay to hide hairline */
         }
         #youtube-video > * {
             max-width: 1200px;
@@ -470,6 +472,22 @@ body {
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* Desktop-only overlay to hide light hairline between Photos wave and Videos */
+        @media (min-width: 769px) {
+            #youtube-video::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--neutral-100);
+                z-index: 6; /* above wave SVG */
+                pointer-events: none;
+                transform: translateY(-1px);
+            }
         }
         /* Sötét, elegáns lábléc */
         .site-footer {
