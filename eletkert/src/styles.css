@@ -295,28 +295,50 @@ body {
             margin: 18px 0;
             text-align: center;
         }
-        .fb-link {
-            display: inline-flex;
-            align-items: center;
-            background: var(--neutral-100);
-            color: var(--primary-500);
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 30px;
-            transition: background 0.3s, color 0.3s;
-            font-size: 1.1em;
-            gap: 10px;
-        }
-        .fb-link:hover {
-            background: var(--primary-500);
-            transition: background 0.3s, color 0.3s;
-            color: var(--neutral-100);
-        }
-        .fb-link:hover .fb-icon {
-            fill: var(--neutral-100);
-            transition: fill 0.3s;
-        }
+                /* Social badges container (Facebook + Instagram) */
+                .social-highlights {
+                    margin: 18px 0;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    gap: 12px;
+                    align-items: center;
+                    flex-wrap: wrap; /* stack on small screens */
+                }
+
+                .social-link {
+                    display: inline-flex;
+                    align-items: center;
+                    background: var(--neutral-100);
+                    color: var(--primary-500);
+                    font-weight: 700;
+                    text-decoration: none;
+                    padding: 10px 18px;
+                    border-radius: 30px;
+                    transition: background 0.28s ease, color 0.28s ease, transform 0.18s ease;
+                    font-size: 1.05em;
+                    gap: 10px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                }
+                .social-link:hover {
+                    background: var(--primary-500);
+                    color: var(--neutral-100);
+                    transform: translateY(-2px);
+                }
+                .social-icon { width: 28px; height: 28px; display: block; flex-shrink: 0; }
+                .social-link span { display: inline-block; vertical-align: middle; }
+
+                /* Individual brand color accents */
+                .fb-icon { fill: var(--primary-500); }
+                .ig-icon { fill: #E1306C; } /* Instagram-like accent */
+
+                /* Ensure icon color in hover state matches text color */
+                .social-link:hover .social-icon { fill: var(--neutral-100); transition: fill 0.28s ease; }
+
+                @media (max-width: 540px) {
+                    .social-link { width: 100%; justify-content: center; }
+                    .social-icon { margin-right: 6px; }
+                }
         h1, h2 {
             color: var(--primary-500);
             font-size: 2em;
@@ -523,6 +545,17 @@ body {
 
         @media (max-width: 900px) {
             .site-footer .grid { grid-template-columns: 1fr 1fr; }
+        }
+        /* Footer: keep social icons and labels on a single line without wrapping */
+        .footer-social-line { display: flex; gap: 12px; align-items: center; white-space: nowrap; }
+        .footer-social-link { display: inline-flex; align-items: center; gap: 8px; color: var(--neutral-200); text-decoration: none; }
+        .footer-social-link .footer-social-label { color: var(--neutral-200); font-weight: 600; }
+        .footer-social-link:hover .footer-social-label { color: var(--primary-300); }
+        .footer-social-link .social-icon { width: 18px; height: 18px; flex-shrink: 0; }
+        @media (max-width: 600px) {
+            /* On very small screens, allow ellipsis but don't wrap to new line */
+            .footer-social-line { overflow: hidden; text-overflow: ellipsis; }
+            .footer-social-link .footer-social-label { max-width: 110px; overflow: hidden; text-overflow: ellipsis; }
         }
         @media (max-width: 600px) {
             .site-footer .grid { grid-template-columns: 1fr; }
