@@ -227,6 +227,19 @@ const map = L.map('map', {
   tap: window.innerWidth > 900, 
   touchZoom: true
 }).setView([47.4825, 17.6333], 8.5);
+
+// Térkép alaphelyzet tárolása a reset gombhoz
+const DEFAULT_MAP_VIEW = {
+  center: [47.4825, 17.6333],
+  zoom: 8.5
+};
+
+// Reset gomb eseménykezelő
+document.getElementById('map-reset-btn').addEventListener('click', () => {
+  map.setView(DEFAULT_MAP_VIEW.center, DEFAULT_MAP_VIEW.zoom);
+  // Minden popup bezárása
+  map.closePopup();
+});
 function updateMapTouch() {
   if (window.innerWidth <= 900) {
     map.dragging.disable();

@@ -232,6 +232,36 @@ body {
             color: var(--primary-500);
         }
 
+        /* Térkép visszaállító gomb */
+        .map-reset-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000; /* Leaflet vezérlők felett */
+            background: var(--primary-500);
+            color: var(--neutral-50);
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .map-reset-button:hover {
+            background: var(--primary-600);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .map-reset-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
         /* Köztes hullám blokk stílus */
         .section-wave {
             position: relative;
@@ -294,9 +324,10 @@ body {
         
         .piacok li {
             font-size: 1.2rem; /* nagyobb szöveg */
-            line-height: 1.3;
+            color: var(--neutral-700);
+            line-height: 1;
             margin-bottom: 12px;
-            padding: 12px 0;
+            padding: 8px 0;
             border-bottom: 1px solid var(--neutral-300);
         }
         
@@ -313,7 +344,7 @@ body {
         
         .piacok li a:hover {
             color: var(--primary-500);
-            text-decoration: underline;
+            /* text-decoration: underline; */
         }
         /* Fényképek – egy árnyalattal sötétebb, de a bento grid marad */
         #photos {
