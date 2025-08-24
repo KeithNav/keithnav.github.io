@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Életkert Galéria - Őstermelői Lekvárok és Szörpök</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="src/galeria.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Életkert" />
+    <link rel="manifest" href="/site.webmanifest" />
+</head>
+<body>
+     <header>
+        <div class="header-bar">
+            <nav class="nav-left">
+                <a href="index.html/#about">Rólam</a>
+                <a href="index.html/#markets">Piacok</a>
+            </nav>
+
+            <img src="/logojo.png" alt="Eletkert Logo" class="site-logo">
+
+            <nav class="nav-right">
+                <a href="index.html/#photos">Galéria</a>
+                <a href="index.html/#contact">Kapcsolat</a>
+            </nav>
+        </div>
+        
+        <button class="vegburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobil navigáció">
+            <a href="#about">Rólam</a>
+            <a href="#markets">Piacok</a>
+            <a href="#photos">Fényképek</a>
+            <a href="#contact">Kapcsolat</a>
+        </nav>
+        
+        
+        <svg class="header-fullwave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path d="M0,75 C360,140 1080,10 1440,75 L1440,140 L0,140 Z" fill="var(--neutral-50)"></path>
+        </svg>
+    </header>
+    <div class="menu-backdrop" aria-hidden="true"></div>
+
+    <main>
+        <section id="gallery">
+            <h1 class="gallery-title">Életkert Galéria</h1>
+            <p class="gallery-subtitle">Természetes finomságaink, színes pillanatok a piacról és termelésből</p>
+            
+            <!-- Loading state -->
+            <div id="loading-state" class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Képek betöltése...</p>
+            </div>
+            
+            <!-- Error state -->
+            <div id="error-state" class="error-container" style="display: none;">
+                <p>Hiba történt a képek betöltése során. Kérjük, próbálja újra később.</p>
+                <button id="retry-btn" class="retry-btn">Újrapróbálás</button>
+            </div>
+            
+            <!-- Gallery grid - will be populated by JavaScript -->
+            <div id="gallery-photoswipe" class="pswp-gallery gallery-grid" style="display: none;">
+                <!-- Pictures will be loaded here from Strapi -->
+            </div>
+            
+            <!-- Floating back button -->
+            <a href="index.html" class="floating-back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Vissza a főoldalra
+            </a>
+        </section>
+    </main>
+
+    <script src="https://kit.fontawesome.com/994d36c4a8.js" crossorigin="anonymous"></script>
+    <script type="module" src="src/galeria.js"></script>
+</body>
+</html>
