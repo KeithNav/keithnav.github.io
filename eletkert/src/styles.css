@@ -88,6 +88,15 @@ body {
             height: 140px; /* vastagabb hullám */
             display: block;
             z-index: 5; /* a navigáció alatt legyen, de a háttér felett hatásra nincs szükség */
+            /* Mobil böngészőknél előforduló anti-alias csíkok eltüntetése */
+            margin-top: -2px;   /* fedjen rá a felette lévő szakaszra */
+            margin-bottom: -2px;/* fedjen rá az alatta lévő szakaszra */
+            line-height: 0;
+            /* Kényszerített kompozitálás és minimális Y-nagyítás a hajszálhézag ellen */
+            transform: translateZ(0) scaleY(1.003);
+            transform-origin: bottom center;
+            backface-visibility: hidden;
+            will-change: transform;
         }
         .header-fullwave {
             position: absolute;
@@ -96,7 +105,12 @@ body {
             width: 100%;
             height: 140px; /* vastagabb hullám */
             display: block;
-            z-index: 5; /* a navigáció alatt legyen, de a háttér felett hatásra nincs szükség */   
+            z-index: 5;
+            line-height: 0;
+            transform: translateZ(0) scaleY(1.002);
+            transform-origin: bottom center;
+            backface-visibility: hidden;
+            will-change: transform;
         }
 
     /* Mobil menü (desktopon rejtve) */
@@ -269,7 +283,8 @@ body {
             height: 120px; /* kicsit alacsonyabb, hogy ne legyen hosszú sáv */
             overflow: hidden;
             line-height: 0;
-            margin-top: -1px; /* átfedés a felette lévő szakaszzal */
+            margin-top: -2px; /* átfedés a felette lévő szakaszzal */
+            margin-bottom: -2px; /* átfedés az alatta lévő szakaszzal */
         }
         .section-wave svg { width: 100%; height: 100%; display: block; position: relative; }
         .wave-youtube-to-contact {
@@ -350,6 +365,20 @@ body {
         #photos {
             background: var(--neutral-200); /* 2. lépcső */
             padding: 40px 20px;
+            position: relative; /* needed for the overlay pseudo-element */
+        }
+        /* Small overlay to hide hairline seam on some devices */
+        #photos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px; /* paint over the seam */
+            background: var(--neutral-200);
+            pointer-events: none;
+            z-index: 6; /* above the wave SVG which has z-index:5 */
+            transform: translateY(-1px);
         }
         #photos > * {
             max-width: 1200px;
@@ -548,6 +577,7 @@ body {
             .about-media { margin-top: 0; }
             .videos-grid {
                 grid-template-columns: 1fr;
+                gap: 0.01em;
             }
             body {
                 width: 100vw;
