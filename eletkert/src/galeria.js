@@ -283,7 +283,7 @@ function initializeFloatingBackButton() {
             
             // Navigate after animation
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = '/';
             }, galleryItems.length * 30 + 300);
         });
     }
