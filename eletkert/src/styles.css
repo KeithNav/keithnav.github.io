@@ -255,15 +255,15 @@ body {
             right: 10px;
             z-index: 1000; /* Leaflet vezérlők felett */
             background: var(--primary-500);
-            color: var(--neutral-50);
+            color: #ffffff;
             border: none;
             border-radius: 8px;
             padding: 8px 12px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            /* box-shadow: 0 2px 8px rgba(0,0,0,0.2); */
             transition: all 0.3s ease;
         }
         
@@ -277,6 +277,22 @@ body {
             transform: translateY(0);
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
+
+        .leaflet-control-attribution {
+            background-color: #ffffff !important;  /* Háttérszín a weboldaladhoz illeszkedően */
+            color: var(--primary-700) !important;             /* Szövegszín kontraszt javítására */
+            font-size: 13px;                       /* Ha szükséges, méret állítás */
+            opacity: 0.8;                          /* Átlátszóság, ha kell */
+        }
+
+        .leaflet-control-attribution a {
+            color: var(--primary-700) !important;            /* Linkek színe, pl. kék a jobb kontraszthoz */
+            font-size: 1.1em;
+        }
+        .leaflet-control-attribution a span {
+            font-size: 1.2em;
+        }
+
 
         /* Köztes hullám blokk stílus */
         .section-wave {
@@ -312,7 +328,7 @@ body {
                     display: inline-flex;
                     align-items: center;
                     background: var(--neutral-100);
-                    color: var(--primary-500);
+                    color: var(--primary-600);
                     font-weight: 700;
                     text-decoration: none;
                     padding: 10px 18px;
@@ -367,7 +383,7 @@ body {
             line-height: 1;
             margin-bottom: 12px;
             padding: 8px 0;
-            border-bottom: 1px solid var(--neutral-300);
+            border-bottom: 3px solid var(--neutral-300);
         }
         
         .piacok li:last-child {
@@ -591,7 +607,7 @@ body {
         .legal-links { display: flex; align-items: center; gap: 12px; color: var(--neutral-200); }
         .legal-links a { color: var(--neutral-200); }
         .legal-links a:hover { color: var(--primary-300); }
-        .legal-links .sep { color: var(--neutral-600); }
+        .legal-links .sep { color: var(--neutral-200); }
 
         @media (max-width: 900px) {
             .site-footer .grid { grid-template-columns: 1fr 1fr; }
