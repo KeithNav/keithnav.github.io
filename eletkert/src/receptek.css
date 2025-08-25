@@ -1,6 +1,20 @@
 /* Gallery Page Specific Styles - Integrates with main styles.css */
 
 /* Gallery Page Header - Ensure consistent styling with index.html */
+
+:root {
+  --recipes-900: #101808;
+  --recipes-800: #1e2a11;
+  --recipes-700: #2e3e1c;
+  --recipes-600: #43592b;
+  --recipes-500: #5c773d;
+  --recipes-400: #75974e;
+  --recipes-300: #8cb45f;
+  --recipes-200: #a9d973;
+  --recipes-100: #c1f684;
+  --recipes-50: #e4fcd0;
+}
+
 body header {
     background-color: #f2e8cf9c;
     background-image: url('/stand.jpg');
@@ -39,8 +53,23 @@ header img {
             filter: drop-shadow(0 2px 8px rgba(56,142,60,0.12));
         }
 
-/* Gallery Section - Following the existing pattern */
-
+/* Recipes Section - Following the existing pattern */
+.receptek-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--recipes-800);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+}
+.receptek-subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--recipes-600);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 32px;
+    text-align: center;
+}
 
 /* Loading and Error States */
 .loading-container, .error-container {
