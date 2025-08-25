@@ -62,7 +62,7 @@ body {
         }
         /* Felső fejléc sáv: bal menü – logó – jobb menü */
         .header-bar {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr auto 1fr;
@@ -687,7 +687,7 @@ body {
             }
             /* A rácsos fejléc elrendezés mobilon: logó felül, alatta menü egyben */
             .header-bar {
-                right: 12px;
+                left: 30px;
                 display: flex;
                 flex-direction: column;
                 gap: 10px;

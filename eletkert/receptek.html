@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Életkert Galéria - Őstermelői Lekvárok és Szörpök</title>
     <link rel="stylesheet" href="src/styles.css">
-    <link rel="stylesheet" href="src/galeria.css">
+    <link rel="stylesheet" href="src/receptek.css">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -54,33 +54,8 @@
     <div class="menu-backdrop" aria-hidden="true"></div>
 
     <main>
-        <section id="gallery">
-            <h1 class="gallery-title">Életkert Galéria</h1>
-            <p class="gallery-subtitle">Természetes finomságaink, színes pillanatok a piacról és termelésből</p>
-            
-            <!-- Loading state -->
-            <div id="loading-state" class="loading-container">
-                <div class="loading-spinner"></div>
-                <p>Képek betöltése...</p>
-            </div>
-            
-            <!-- Error state -->
-            <div id="error-state" class="error-container" style="display: none;">
-                <p>Hiba történt a képek betöltése során. Kérjük, próbálja újra később.</p>
-                <button id="retry-btn" class="retry-btn">Újrapróbálás</button>
-            </div>
-            
-            <!-- Gallery grid - will be populated by JavaScript -->
-            <div id="gallery-photoswipe" class="pswp-gallery gallery-grid" style="display: none;">
-                <!-- Pictures will be loaded here from Strapi -->
-            </div>
-            
-            <!-- Floating back button -->
-            <a href="/" class="floating-back-btn">
-                <i class="fas fa-arrow-left"></i>
-                Vissza a főoldalra
-            </a>
-        </section>
+        <h1>Életkert Receptek</h1>
+        <p>Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!</p>
     </main>
 
     <footer class="site-footer">
@@ -145,6 +120,6 @@
     </button>
 
     <script src="https://kit.fontawesome.com/994d36c4a8.js" crossorigin="anonymous"></script>
-    <script type="module" src="src/galeria.js"></script>
+    <script type="module" src="src/receptek.js"></script>
 </body>
 </html>
