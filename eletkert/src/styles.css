@@ -358,7 +358,7 @@ body {
                     .social-icon { margin-right: 6px; }
                 }
         h1, h2 {
-            color: var(--primary-500);
+            color: var(--neutral-700);
             font-size: 2em;
         }
         .gallery {
@@ -783,9 +783,10 @@ body {
                 max-width: 100vw; /* A logó maximális szélessége 90% a nézetablak szélességéből */
                 margin-left: auto;
                 margin-right: auto;
+
     
             }
-            header .site-logo { display:block; margin: 0 auto; }
+            header .site-logo { display:block; margin: 0 auto; margin-left: 8px; }
             /* Mobil menü overlay: bal és jobb menü egybe nyílik */
             /* A korábbi, középre dobott menüt kiváltjuk a fenti fix, top dropdown megoldással */
             .vegburger {

@@ -54,9 +54,76 @@
     <div class="menu-backdrop" aria-hidden="true"></div>
 
     <main>
-        <h1 class="receptek-title">Életkert Receptek</h1>
-        <p class="receptek-subtitle">Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!</p>
+        <section id="receptek">
+            <div class="container">
+                <h1 class="receptek-title">Életkert Receptek</h1>
+                <p class="receptek-subtitle">Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!</p>
+                
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p>Receptek betöltése...</p>
+                </div>
+                
+                <!-- Error State -->
+                <div id="error-state" class="error-container" style="display: none;">
+                    <p>Hiba történt a receptek betöltése során.</p>
+                    <button id="retry-btn" class="retry-btn">Újrapróbálás</button>
+                </div>
+                
+                <!-- Receptek Grid -->
+                <div id="receptek-grid" class="receptek-grid" style="display: none;">
+                    <!-- Receptek dinamikusan betöltve -->
+                </div>
+            </div>
+        </section>
     </main>
+    
+    <!-- Vissza a főoldalra gomb -->
+    <div class="back-to-home-section">
+        <div class="container">
+            <a href="/index.html" class="back-to-home-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                </svg>
+                Vissza a főoldalra
+            </a>
+        </div>
+    </div>
+    
+    <!-- Recept Modal -->
+    <div id="recept-modal" class="recept-modal" style="display: none;">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Modal bezárása">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="recept-image-container" style="height: 600px !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important;">
+                    <img id="modal-image" src="" alt="" class="recept-image" style="object-fit: contain !important; max-width: none !important;">
+                </div>
+                
+                <div class="recept-details">
+                    <h2 id="modal-title" class="recept-title"></h2>
+                    <div id="modal-short-description" class="recept-short-description"></div>
+                    <div class="recept-content">
+                        <div class="ingredients-section">
+                            <h3>Hozzávalók</h3>
+                            <div id="modal-ingredients" class="ingredients-list"></div>
+                        </div>
+                        <div class="description-section">
+                            <h3>Elkészítés</h3>
+                            <div id="modal-description" class="recept-description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="container">
