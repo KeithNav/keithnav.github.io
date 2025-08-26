@@ -1,4 +1,9 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   // Development server konfigurálása
@@ -11,12 +16,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: 'index.html',
-        receptek: 'receptek.html',
-        galeria: 'galeria.html'
+        main: resolve(__dirname, 'index.html'),
+        receptek: resolve(__dirname, 'receptek.html'),
+        galeria: resolve(__dirname, 'galeria.html')
       }
     }
   }
+  
 })
 
 
