@@ -91,10 +91,54 @@ function initializeMobileMenu() {
 const API_BASE_URL = 'http://localhost:1337';
 const API_TOKEN = 'Bearer cf90cc6bdb5494a9040ca41a8994397ef25e1e4b378f049ffee99ca78776f88573cd6cb4d49c9b8a1d870bac80cdcffca02cff15ef246fab1260ec3ca2b2104b9ad37e6d7ebd3b7cf5e7723870ff65417e3797adc2791917b5350627c255779a75e79c6310b9488294a613f8e2e7cadd8f218f408db105b94c4b25bc570478fd';
 
+// Global variable to store all recipes for filtering
+let allReceptek = [];
+
+// Format rich text ingredients from Strapi
+function formatRichTextIngredients(text) {
+    if (!text || typeof text !== 'string') {
+        return '<p>Hozzávalók nem elérhetők.</p>';
+    }
+    
+    // Split by lines and filter empty ones
+    const lines = text.split('\n').filter(line => line.trim());
+    
+    let formattedHtml = '';
+    let currentList = [];
+    
+    lines.forEach(line => {
+        const trimmedLine = line.trim();
+        
+        // Check if line is a bold header (starts and ends with **)
+        if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
+            // If we have items in current list, output them first
+            if (currentList.length > 0) {
+                formattedHtml += '<ul>' + currentList.map(item => `<li>${item}</li>`).join('') + '</ul>';
+                currentList = [];
+            }
+            
+            // Extract header text without ** markers and add as header
+            const headerText = trimmedLine.slice(2, -2);
+            formattedHtml += `<h4 class="ingredients-header">${headerText}</h4>`;
+        } else {
+            // Regular ingredient item
+            currentList.push(trimmedLine);
+        }
+    });
+    
+    // Output any remaining items
+    if (currentList.length > 0) {
+        formattedHtml += '<ul>' + currentList.map(item => `<li>${item}</li>`).join('') + '</ul>';
+    }
+    
+    return formattedHtml;
+}
+
 // Initialize receptek functionality
 function initializeReceptek() {
     loadReceptek();
     initializeModal();
+    initializeCategoryFilter();
 }
 
 // Load receptek from Strapi API
@@ -137,7 +181,10 @@ async function loadReceptek() {
 
         if (data.data && data.data.length > 0) {
             console.log('Displaying receptek:', data.data.length, 'items');
+            allReceptek = data.data; // Store all recipes for filtering
             displayReceptek(data.data);
+            populateCategoryFilter(data.data); // Populate filter options
+            updateResultCount(data.data.length, data.data.length); // Initialize result count
         } else {
             console.log('No receptek found, showing error');
             showError(`Nem találhatók receptek. Szerver válasz: ${data.data?.length || 0} elem`);
@@ -319,18 +366,11 @@ function openReceptModal(recept) {
     document.getElementById('modal-title').textContent = recept.nev || 'Névtelen recept';
     document.getElementById('modal-short-description').textContent = recept.rovidid || '';
     
-    // Format ingredients
+    // Format ingredients with rich text support
     const ingredientsContainer = document.getElementById('modal-ingredients');
     if (recept.hozzavalok) {
-        // If ingredients is a string, split by lines or format as needed
-        let ingredientsList;
-        if (typeof recept.hozzavalok === 'string') {
-            const ingredientsArray = recept.hozzavalok.split('\n').filter(item => item.trim());
-            ingredientsList = `<ul>${ingredientsArray.map(ingredient => `<li>${ingredient.trim()}</li>`).join('')}</ul>`;
-        } else {
-            ingredientsList = `<p>${recept.hozzavalok}</p>`;
-        }
-        ingredientsContainer.innerHTML = ingredientsList;
+        const formattedIngredients = formatRichTextIngredients(recept.hozzavalok);
+        ingredientsContainer.innerHTML = formattedIngredients;
     } else {
         ingredientsContainer.innerHTML = '<p>Hozzávalók nem elérhetők.</p>';
     }
@@ -347,6 +387,14 @@ function openReceptModal(recept) {
         descriptionContainer.innerHTML = formattedDescription || `<p>${recept.teljes}</p>`;
     } else {
         descriptionContainer.innerHTML = '<p>Részletes leírás nem elérhető.</p>';
+    }
+
+    // Display category
+    const categoryContainer = document.getElementById('modal-category');
+    if (recept.kategoria) {
+        categoryContainer.innerHTML = `<span class="category-tag">Kategória: ${recept.kategoria}</span>`;
+    } else {
+        categoryContainer.innerHTML = '';
     }
 
     // Show modal
@@ -370,4 +418,120 @@ function closeReceptModal() {
     setTimeout(() => {
         modal.style.display = 'none';
     }, 300);
+}
+
+// Initialize category filter functionality
+function initializeCategoryFilter() {
+    const categoryFilter = document.getElementById('category-filter');
+    const searchInput = document.getElementById('search-input');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            applyFilters();
+        });
+    }
+    
+    if (searchInput) {
+        // Add debouncing to search input for better performance
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                applyFilters();
+            }, 300); // 300ms delay after user stops typing
+        });
+    }
+    
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', function() {
+            clearAllFilters();
+        });
+    }
+}
+
+// Populate category filter with dynamic options
+function populateCategoryFilter(receptek) {
+    const categoryFilter = document.getElementById('category-filter');
+    if (!categoryFilter) return;
+    
+    // Get unique categories from recipes
+    const categories = [...new Set(receptek.map(recept => recept.kategoria).filter(cat => cat))];
+    
+    // Clear existing options except "Összes kategória"
+    const allOption = categoryFilter.querySelector('option[value=""]');
+    categoryFilter.innerHTML = '';
+    if (allOption) {
+        categoryFilter.appendChild(allOption);
+    } else {
+        categoryFilter.innerHTML = '<option value="">Összes kategória</option>';
+    }
+    
+    // Add dynamic category options
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        categoryFilter.appendChild(option);
+    });
+}
+
+// Apply all active filters (search + category)
+function applyFilters() {
+    const categoryFilter = document.getElementById('category-filter');
+    const searchInput = document.getElementById('search-input');
+    
+    const selectedCategory = categoryFilter ? categoryFilter.value : '';
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    
+    let filteredReceptek = allReceptek;
+    
+    // Apply category filter
+    if (selectedCategory && selectedCategory !== '') {
+        filteredReceptek = filteredReceptek.filter(recept => recept.kategoria === selectedCategory);
+    }
+    
+    // Apply search filter
+    if (searchTerm && searchTerm !== '') {
+        filteredReceptek = filteredReceptek.filter(recept => {
+            const receptName = (recept.nev || '').toLowerCase();
+            return receptName.includes(searchTerm);
+        });
+    }
+    
+    // Display filtered recipes
+    displayReceptek(filteredReceptek);
+    
+    // Show result count
+    updateResultCount(filteredReceptek.length, allReceptek.length);
+}
+
+// Clear all filters
+function clearAllFilters() {
+    const categoryFilter = document.getElementById('category-filter');
+    const searchInput = document.getElementById('search-input');
+    
+    if (categoryFilter) categoryFilter.value = '';
+    if (searchInput) searchInput.value = '';
+    
+    // Display all recipes
+    displayReceptek(allReceptek);
+    updateResultCount(allReceptek.length, allReceptek.length);
+}
+
+// Update result count display
+function updateResultCount(filteredCount, totalCount) {
+    const subtitleElement = document.querySelector('.receptek-subtitle');
+    if (subtitleElement) {
+        if (filteredCount === totalCount) {
+            subtitleElement.textContent = 'Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!';
+        } else {
+            subtitleElement.textContent = `${filteredCount} recept találat a ${totalCount} receptből`;
+        }
+    }
+}
+
+// Filter recipes by category (legacy function for compatibility)
+function filterReceptekByCategory(selectedCategory) {
+    applyFilters();
 }

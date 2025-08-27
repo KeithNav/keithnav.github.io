@@ -59,6 +59,27 @@
                 <h1 class="receptek-title">Életkert Receptek</h1>
                 <p class="receptek-subtitle">Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!</p>
                 
+                <!-- Category Filter -->
+                <div class="filter-container">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="search-input" class="filter-label">Keresés név alapján:</label>
+                            <input type="text" id="search-input" class="search-input" placeholder="Pl.: pite, túrós, szörp, gombás...">
+                        </div>
+                        <div class="filter-group">
+                            <label for="category-filter" class="filter-label">Szűrés kategória szerint:</label>
+                            <select id="category-filter" class="category-filter">
+                                <option value="">Összes kategória</option>
+                                <option value="édességek">Édességek</option>
+                                <option value="lekvárok">Lekvárok</option>
+                                <option value="szörpök">Szörpök</option>
+                                <option value="főételek">Főételek</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="clear-filters" class="clear-filters-btn">Szűrők törlése</button>
+                </div>
+                
                 <!-- Loading State -->
                 <div id="loading-state" class="loading-container">
                     <div class="loading-spinner"></div>
@@ -118,6 +139,9 @@
                         <div class="description-section">
                             <h3>Elkészítés</h3>
                             <div id="modal-description" class="recept-description"></div>
+                        </div>
+                        <div class="category-section">
+                            <div id="modal-category" class="recept-category"></div>
                         </div>
                     </div>
                 </div>
