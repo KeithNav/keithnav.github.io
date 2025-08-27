@@ -88,8 +88,8 @@ function initializeMobileMenu() {
 }
 
 // Strapi API configuration
-const API_BASE_URL = 'http://localhost:1337';
-const API_TOKEN = 'Bearer cf90cc6bdb5494a9040ca41a8994397ef25e1e4b378f049ffee99ca78776f88573cd6cb4d49c9b8a1d870bac80cdcffca02cff15ef246fab1260ec3ca2b2104b9ad37e6d7ebd3b7cf5e7723870ff65417e3797adc2791917b5350627c255779a75e79c6310b9488294a613f8e2e7cadd8f218f408db105b94c4b25bc570478fd';
+const API_BASE_URL = 'https://keithzilla.bmartin97.space';
+const API_TOKEN = 'Bearer 38451b957f97cba837045367880d7fce3f18362908410403df3f3ca76fe3c2e4287aabffa9aab76abba46d031b12e0f957192e621bff3e31109d6d6a050614d7bfaea27b5b6668c8a6f2cbfc0309c6021b369154ec25e8417499572f54bf172400dca53bb3a41d4cec30e33b46e825e9435e1c7c26bf399ff9039ba7c19263da';
 
 // Global variable to store all recipes for filtering
 let allReceptek = [];
