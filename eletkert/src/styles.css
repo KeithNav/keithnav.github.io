@@ -179,7 +179,7 @@ body {
         }
 
         /* Tablet breakpoint: shrink nav pills and logo to avoid overflow */
-        @media (max-width: 1200px) and (min-width: 981px) {
+        @media (max-width: 1700px) and (min-width: 981px) {
             .nav-left a, .nav-right a, nav a { font-size: 1.15rem; padding: 10px 18px; }
             .site-logo { max-width: 300px; margin-left: 16px; margin-right: 16px; }
             .header-bar { gap: 12px; }
