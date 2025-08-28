@@ -53,12 +53,24 @@ body {
         header img {
             display: block;
             margin: 0 auto;
+            fill: var(--neutral-900);
             max-width: 90vw; /* A logó maximális szélessége 90% a nézetablak szélességéből */
             max-width: 350px;
             margin-left: 50px;
             margin-right: 50px;
             height: auto;
             filter: drop-shadow(0 2px 8px rgba(56,142,60,0.12));
+        }
+        /* Colorable logo using CSS mask; set `--logo-color` to change tint */
+        .site-logo {
+            width: min(350px, 90vw);
+            aspect-ratio: 727 / 1024; /* intrinsic of eletkertlogo.svg */
+            background-color: var(--logo-color, var(--neutral-900));
+            -webkit-mask-image: url('/eletkertlogo.svg');
+            mask-image: url('/eletkertlogo.svg');
+            -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+            -webkit-mask-position: center; mask-position: center;
+            -webkit-mask-size: contain; mask-size: contain;
         }
         /* Felső fejléc sáv: bal menü – logó – jobb menü */
         .header-bar {

@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Életkert" />
     <link rel="manifest" href="/site.webmanifest" />
+    <meta name="description" content="Életkert Galéria – Őstermelői lekvárok és szörpök. Fedezd fel a kézműves, természetes ízek világát, ahol minden üvegben benne van a hagyomány és a szeretet.">
 </head>
 <body>
      <header>
@@ -22,7 +23,7 @@
                 <a href="/#photos">Termékek</a>
             </nav>
 
-            <img src="/logojo_decreased.png" alt="Eletkert Logo" class="site-logo">
+            <div class="site-logo" role="img" aria-label="Életkert logó"></div>
 
             <nav class="nav-right">
                 <a href="/galeria">Galéria</a>
@@ -54,10 +55,11 @@
     <div class="menu-backdrop" aria-hidden="true"></div>
 
     <main>
+        <h1 class="gallery-title">Életkert Galéria</h1>
+        <h2 class="gallery-subtitle">Természetes finomságaink, színes pillanatok a piacról és termelésből</h2>
+        
         <section id="gallery">
-            <h1 class="gallery-title">Életkert Galéria</h1>
-            <p class="gallery-subtitle">Természetes finomságaink, színes pillanatok a piacról és termelésből</p>
-            
+        
             <!-- Loading state -->
             <div id="loading-state" class="loading-container">
                 <div class="loading-spinner"></div>
@@ -144,7 +146,7 @@
       </svg>
     </button>
 
-    <script src="https://kit.fontawesome.com/994d36c4a8.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/994d36c4a8.js" crossorigin="anonymous"></script> -->
     <script type="module" src="src/galeria.js"></script>
 </body>
 </html>
