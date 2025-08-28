@@ -397,7 +397,7 @@ header img {
     font-size: 1.525rem;
     color: var(--recipes-600);
     text-align: center;
-    margin: 0 0 60px 0;
+    margin: 0 0 0 0;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
