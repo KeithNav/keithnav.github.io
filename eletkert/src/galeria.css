@@ -249,6 +249,21 @@ h2.gallery-subtitle {
     /* Use mobile menu styles from main styles.css */
     .nav-left, .nav-right { display: none; }
     .vegburger { display: flex; }
+    
+    /* Center logo in header */
+    body header .header-bar {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    body header .site-logo { 
+        display: block; 
+        margin: 0 auto; 
+    }
 
     #gallery {
         padding: 40px 16px;

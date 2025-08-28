@@ -732,11 +732,13 @@ body {
             }
             /* A rácsos fejléc elrendezés mobilon: logó felül, alatta menü egyben */
             .header-bar {
-                left: 30px;
+                left: 0;
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
                 align-items: center; /* minden elem középre */
+                width: 100%;
+                margin: 0 auto;
             }
             .nav-left, .nav-right {
                 display: none; /* alapból rejtve, hamburger nyitja */
@@ -815,7 +817,7 @@ body {
 
     
             }
-            header .site-logo { display:block; margin: 0 auto; margin-left: 8px; }
+            header .site-logo { display:block; margin: 0 auto; }
             /* Mobil menü overlay: bal és jobb menü egybe nyílik */
             /* A korábbi, középre dobott menüt kiváltjuk a fenti fix, top dropdown megoldással */
             .vegburger {
