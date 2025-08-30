@@ -1,0 +1,313 @@
+/* Header Styles - Centralized for all pages */
+
+/* Header basic styles */
+header {
+    background-color: #f2e8cf9c;
+    background-image: url('/stand.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    text-align: center;
+    padding: 40px 20px 120px;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+/* Site logo styles */
+.site-logo,
+header img {
+    display: block;
+    margin: 0 auto;
+    fill: var(--neutral-900);
+    max-width: 90vw;
+    max-width: 350px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(56,142,60,0.12));
+}
+
+/* Colorable logo using CSS mask */
+.site-logo {
+    width: min(350px, 90vw);
+    aspect-ratio: 727 / 1024;
+    background-color: var(--logo-color, var(--neutral-900));
+    -webkit-mask-image: url('/eletkertlogo.svg');
+    mask-image: url('/eletkertlogo.svg');
+    -webkit-mask-repeat: no-repeat; 
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center; 
+    mask-position: center;
+    -webkit-mask-size: contain; 
+    mask-size: contain;
+}
+
+/* Header bar grid layout */
+.header-bar {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Navigation containers */
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+.nav-left { 
+    justify-content: flex-end; 
+}
+
+.nav-right { 
+    justify-content: flex-start; 
+}
+
+/* Navigation links styling */
+.nav-left a,
+.nav-right a,
+nav a {
+    color: var(--neutral-900);
+    background: var(--neutral-opacity-100);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 12px 35px;
+    border-radius: 50px;
+    transition:
+        background 0.35s cubic-bezier(.4,0,.2,1),
+        color 0.25s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.25s cubic-bezier(.4,0,.2,1),
+        transform 0.18s cubic-bezier(.4,0,.2,1);
+    backdrop-filter: blur(2px);
+}
+
+/* Navigation hover effects */
+.nav-left a:hover, .nav-left a:focus,
+.nav-right a:hover, .nav-right a:focus,
+nav a:hover, nav a:focus {
+    background: var(--primary-500);
+    color: var(--neutral-100);
+    box-shadow: 0 6px 24px rgba(56,142,60,0.18);
+    transform: translateY(-2px) scale(1.06);
+    outline: none;
+}
+
+/* Facebook icon styling */
+.fb-icon {
+    fill: var(--primary-500);
+}
+
+/* Header wave effects */
+.header-wave {
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 140px;
+    display: block;
+    z-index: 5;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    line-height: 0;
+    transform: translateZ(0) scaleY(1.003);
+    transform-origin: bottom center;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.header-fullwave {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 140px;
+    display: block;
+    z-index: 5;
+    line-height: 0;
+    transform: translateZ(0) scaleY(1.002);
+    transform-origin: bottom center;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Mobile menu (hidden on desktop) */
+.mobile-menu { 
+    display: none; 
+}
+
+/* Hamburger menu button */
+.vegburger {
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: #bc4749;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(56,142,60,0.12);
+    border: none;
+    z-index: 20;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
+    flex-direction: column;
+}
+
+.vegburger:hover {
+    background: #c8f1dd;
+}
+
+.vegburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #f2e8cf;
+    margin: 2px auto;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Burger to X animation */
+.vegburger.open span:nth-child(1) { 
+    transform: translateY(5px) rotate(45deg); 
+}
+
+.vegburger.open span:nth-child(2) { 
+    opacity: 0; 
+}
+
+.vegburger.open span:nth-child(3) { 
+    transform: translateY(-5px) rotate(-45deg); 
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Tablet safety: allow wrapping so nav never overflows */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .nav-left, .nav-right { 
+        flex-wrap: wrap; 
+        gap: 10px; 
+    }
+}
+
+/* Large tablet breakpoint: shrink nav pills and logo to avoid overflow */
+@media (max-width: 1700px) and (min-width: 981px) {
+    .nav-left a, .nav-right a, nav a { 
+        font-size: 1.15rem; 
+        padding: 10px 18px; 
+    }
+    .site-logo { 
+        max-width: 300px; 
+        margin-left: 16px; 
+        margin-right: 16px; 
+    }
+    .header-bar { 
+        gap: 12px; 
+    }
+}
+
+/* Medium tablet breakpoint */
+@media (max-width: 980px) and (min-width: 769px) {
+    .nav-left a, .nav-right a, nav a { 
+        font-size: 1rem; 
+        padding: 8px 12px; 
+    }
+    .site-logo { 
+        max-width: 240px; 
+        margin-left: 12px; 
+        margin-right: 12px; 
+    }
+    .header-bar { 
+        gap: 8px; 
+    }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+    /* Show hamburger menu on mobile */
+    .vegburger {
+        display: flex;
+    }
+    
+    /* Mobile header layout: logo on top, menu below */
+    .header-bar {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .nav-left, .nav-right {
+        display: none; /* hidden by default, hamburger opens them */
+    }
+    
+    .mobile-menu {
+        position: fixed;
+        left: 0; 
+        right: 0; 
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--neutral-50);
+        backdrop-filter: saturate(150%) blur(8px);
+        padding: 70px 20px 16px;
+        gap: 8px;
+        transform: translateY(-16px);
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        z-index: 30;
+        transition: transform .28s ease, opacity .28s ease;
+    }
+    
+    .mobile-menu.open { 
+        transform: translateY(0); 
+        opacity: 1; 
+        pointer-events: auto; 
+    }
+    
+    nav a {
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        padding: 12px 0;
+    }
+    
+    /* Mobile header adjustments */
+    header {
+        padding: 32px 16px 110px;
+        min-height: 360px;
+    }
+    
+    header img {
+        margin-bottom: 16px;
+        max-width: 100vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    header .site-logo { 
+        display: block; 
+        margin: 0 auto; 
+    }
+    
+    .header-wave { 
+        height: 110px; 
+    }
+}

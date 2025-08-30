@@ -1,0 +1,165 @@
+/* Footer Styles - Centralized for all pages */
+
+/* Main footer container */
+.site-footer {
+    background: var(--neutral-900);
+    color: var(--neutral-100);
+    padding: 48px 20px 28px;
+}
+
+.site-footer .container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+/* Footer grid layout */
+.site-footer .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Footer typography */
+.site-footer h3 { 
+    margin: 0 0 12px; 
+    font-size: 1.6rem; 
+    color: var(--neutral-100); 
+}
+
+.site-footer h4 { 
+    margin: 0 0 12px; 
+    font-size: 1.05rem; 
+    color: var(--neutral-100); 
+}
+
+.site-footer p { 
+    margin: 0 0 8px; 
+    color: var(--neutral-200); 
+    line-height: 1.7; 
+}
+
+/* Footer links styling */
+.footer-links { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.footer-links li { 
+    margin: 8px 0; 
+}
+
+.site-footer .footer-links a {
+    color: var(--neutral-300);
+    text-decoration: none;
+} 
+
+.site-footer a:hover { 
+    color: var(--primary-300); 
+    text-decoration: none; 
+}
+
+/* Footer divider */
+.footer-divider { 
+    height: 1px; 
+    background: var(--neutral-600); 
+    margin: 28px 0; 
+}
+
+/* Bottom row layout */
+.bottom-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 16px; 
+}
+
+.bottom-row p { 
+    margin: 0; 
+    color: var(--neutral-200); 
+}
+
+/* Legal links */
+.legal-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    color: var(--neutral-200); 
+}
+
+.legal-links a { 
+    color: var(--neutral-200); 
+}
+
+.legal-links a:hover { 
+    color: var(--primary-300); 
+}
+
+.legal-links .sep { 
+    color: var(--neutral-200); 
+}
+
+/* Social links styling */
+.footer-social-line { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    white-space: nowrap; 
+}
+
+.footer-social-link { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    color: var(--neutral-200); 
+    text-decoration: none; 
+}
+
+.footer-social-link .footer-social-label { 
+    color: var(--neutral-200); 
+    font-weight: 600; 
+}
+
+.footer-social-link:hover .footer-social-label { 
+    color: var(--primary-300); 
+}
+
+.footer-social-link .social-icon { 
+    width: 18px; 
+    height: 18px; 
+    flex-shrink: 0; 
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Medium screens */
+@media (max-width: 900px) {
+    .site-footer .grid { 
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+    /* Keep social links on one line but allow full text */
+    .footer-social-line { 
+        overflow: visible; 
+    }
+    
+    .footer-social-link .footer-social-label { 
+        max-width: none; 
+        overflow: visible; 
+        text-overflow: clip; 
+    }
+    
+    .site-footer .grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .bottom-row { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 8px; 
+    }
+}
