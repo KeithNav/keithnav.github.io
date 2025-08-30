@@ -228,7 +228,7 @@ body {
         }
 
         .leaflet-control-attribution {
-            background-color: #ffffff !important;  /* Háttérszín a weboldaladhoz illeszkedően */
+            background-color: var(--neutral-100) !important;  /* Háttérszín a weboldaladhoz illeszkedően */
             color: var(--primary-700) !important;             /* Szövegszín kontraszt javítására */
             font-size: 13px;                       /* Ha szükséges, méret állítás */
             opacity: 0.8;                          /* Átlátszóság, ha kell */
