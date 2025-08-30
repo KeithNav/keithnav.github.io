@@ -96,8 +96,8 @@ fetch("https://keithzilla.bmartin97.space/api/piacoks", {
   }).then(res=>res.json()).then(res=>{
     console.log(res)
 
-    const lista = document.querySelector(".piacok"); 
-    lista.innerHTML = ""; // előző törlése, ha frissíted
+    const marketsGrid = document.querySelector(".markets-grid"); 
+    marketsGrid.innerHTML = ""; // előző törlése, ha frissíted
     
     // Dátum szerint növekvő sorrendbe rendezés
     const sortedData = res.data.sort((a, b) => {
@@ -111,28 +111,20 @@ fetch("https://keithzilla.bmartin97.space/api/piacoks", {
     
     sortedData.forEach(item => {
         // dátum formázás emberibbé
-        const datum = new Date(item.date).toLocaleDateString("hu-HU", {
-          year: "numeric",
+        const fullDate = new Date(item.date);
+        const dateOnly = fullDate.toLocaleDateString("hu-HU", {
           month: "long",
-          day: "numeric",
+          day: "numeric"
+        });
+        const timeOnly = fullDate.toLocaleTimeString("hu-HU", {
           hour: "2-digit",
           minute: "2-digit"
         });
 
-        const li = document.createElement("li");
-        
-        // Város link létrehozása
-        const cityLink = document.createElement("a");
-        cityLink.href = "#";
-        cityLink.textContent = item.city;
-        
-        // Hover effekt
-        cityLink.addEventListener("mouseenter", () => {
-          cityLink.style.textDecoration = "underline";
-        });
-        cityLink.addEventListener("mouseleave", () => {
-          cityLink.style.textDecoration = "none";
-        });
+        // Market card létrehozása
+        const marketCard = document.createElement("div");
+        marketCard.className = "market-card";
+        marketCard.style.position = "relative";
         
         // Tároljuk a város adatait későbbi használatra
         cityLinksData[item.city] = {
@@ -140,19 +132,48 @@ fetch("https://keithzilla.bmartin97.space/api/piacoks", {
           needsGeocoding: !cityCoordinates[item.city]
         };
 
-        li.appendChild(cityLink);
+        // Utca címe
+        const address = item.street ? item.street : '';
         
-        // Utca hozzáadása, ha van
-        const streetText = item.street ? `, ${item.street}` : '';
-        li.appendChild(document.createTextNode(`${streetText} – ${item.marketName} (${datum})`));
-        lista.appendChild(li);
+        marketCard.innerHTML = `
+            <svg class="market-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <div class="market-card-content">
+                <div class="market-header">
+                    <h3 class="market-city">${item.city}</h3>
+                    <span class="market-date-badge">${dateOnly}</span>
+                </div>
+                <div class="market-details">
+                    <div class="market-name">${item.marketName}</div>
+                    ${address ? `<div class="market-address">${address}</div>` : ''}
+                    <div class="market-time">${timeOnly}</div>
+                </div>
+            </div>
+        `;
+        
+        // Hover effekt és kattintás kezelés az egész card-ra
+        marketCard.addEventListener("mouseenter", () => {
+          marketCard.style.transform = "translateY(-4px)";
+          marketCard.style.boxShadow = "0 8px 25px rgba(0,0,0,0.15)";
+        });
+        
+        marketCard.addEventListener("mouseleave", () => {
+          marketCard.style.transform = "";
+          marketCard.style.boxShadow = "";
+        });
+        
+        marketsGrid.appendChild(marketCard);
       });
 
-    // Kattintás események hozzáadása a city linkekhez
+    // Kattintás események hozzáadása a market card-okhoz
     Object.keys(cityLinksData).forEach(cityName => {
-      const cityLink = [...lista.querySelectorAll('a')].find(link => link.textContent === cityName);
-      if (cityLink) {
-        cityLink.addEventListener('click', (e) => {
+      const marketCard = [...marketsGrid.querySelectorAll('.market-card')].find(card => 
+        card.querySelector('.market-city').textContent === cityName
+      );
+      if (marketCard) {
+        marketCard.style.cursor = 'pointer';
+        marketCard.addEventListener('click', (e) => {
           e.preventDefault();
           
           const cityData = cityLinksData[cityName];
