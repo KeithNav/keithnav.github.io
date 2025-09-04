@@ -18,7 +18,9 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         receptek: resolve(__dirname, 'receptek.html'),
-        galeria: resolve(__dirname, 'galeria.html')
+        galeria: resolve(__dirname, 'galeria.html'),
+        impresszum: resolve(__dirname, 'impresszum.html'),
+        adatkezelesi: resolve(__dirname, 'adatkezelesi-tajekoztato.html')
       }
     }
   }

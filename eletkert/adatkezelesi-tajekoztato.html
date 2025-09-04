@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Életkert Galéria - Őstermelői Lekvárok és Szörpök</title>
+    <title>Adatkezelési Tájékoztató - Életkert Őstermelői Lekvárok és Szörpök</title>
     <link rel="stylesheet" href="src/styles.css">
     <link rel="stylesheet" href="src/header.css">
     <link rel="stylesheet" href="src/footer.css">
@@ -14,8 +14,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Életkert" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="description" content="Életkert Galéria – Őstermelői lekvárok és szörpök. Fedezd fel a kézműves, természetes ízek világát, ahol minden üvegben benne van a hagyomány és a szeretet.">
-
+    <meta name="description" content="Életkert Adatkezelési Tájékoztató – Személyes adatok kezelésére vonatkozó információk.">
 </head>
 <body>
      <header>
@@ -50,107 +49,123 @@
             <a href="/#contact">Kapcsolat</a>
         </nav>
         
+        <div class="menu-backdrop"></div>
         
         <svg class="header-fullwave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <path d="M0,75 C360,140 1080,10 1440,75 L1440,140 L0,140 Z" fill="var(--neutral-50)"></path>
         </svg>
     </header>
-    <div class="menu-backdrop" aria-hidden="true"></div>
 
     <main>
-        <h1 class="receptek-title">Életkert Receptek</h1>
-        <p class="receptek-subtitle">Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!</p>
-        <section id="receptek">
+        <h1 class="receptek-title">Adatkezelési Tájékoztató</h1>
+        <p class="receptek-subtitle">Személyes adatok kezelésére vonatkozó információk</p>
+        
+        <section id="adatkezelesi-tajekoztato">
             <div class="container">
-                <!-- Category Filter -->
-                <div class="filter-container">
-                    <div class="filter-row">
-                        <div class="filter-group">
-                            <label for="search-input" class="filter-label">Keresés név alapján:</label>
-                            <input type="text" id="search-input" class="search-input" placeholder="Pl.: pite, túrós, szörp, gombás...">
-                        </div>
-                        <div class="filter-group">
-                            <label for="category-filter" class="filter-label">Szűrés kategória szerint:</label>
-                            <select id="category-filter" class="category-filter">
-                                <option value="">Összes kategória</option>
-                                <option value="édességek">Édességek</option>
-                                <option value="lekvárok">Lekvárok</option>
-                                <option value="szörpök">Szörpök</option>
-                                <option value="főételek">Főételek</option>
-                            </select>
+                <div class="impresszum-content">
+                    <div class="impresszum-card">
+                        <h2>Bevezetés</h2>
+                        <div class="adatkezelesi-text">
+                            <p>Ez az adatkezelési tájékoztató az Életkert weboldal látogatói számára nyújt tájékoztatást a személyes adatok kezelésével kapcsolatos gyakorlatunkról.</p>
                         </div>
                     </div>
-                    <button id="clear-filters" class="clear-filters-btn">Szűrők törlése</button>
-                </div>
-                
-                <!-- Loading State -->
-                <div id="loading-state" class="loading-container">
-                    <div class="loading-spinner"></div>
-                    <p>Receptek betöltése...</p>
-                </div>
-                
-                <!-- Error State -->
-                <div id="error-state" class="error-container" style="display: none;">
-                    <p>Hiba történt a receptek betöltése során.</p>
-                    <button id="retry-btn" class="retry-btn">Újrapróbálás</button>
-                </div>
-                
-                <!-- Receptek Grid -->
-                <div id="receptek-grid" class="receptek-grid" style="display: none;">
-                    <!-- Receptek dinamikusan betöltve -->
+
+                    <div class="impresszum-card">
+                        <h2>Adatkezelő és adatkezelést érintő személyek</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Adatkezelő:</strong>
+                                <span>Körmendiné Apostol Judit E.V.</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Székhely:</strong>
+                                <span>9111 Tényő, Árpád utca 11/C</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Elérhetőség:</strong>
+                                <span><a href="mailto:kormendine.a.judit@gmail.com">kormendine.a.judit@gmail.com</a></span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Weboldal:</strong>
+                                <span><a href="https://eletkertjudittal.hu" target="_blank" rel="noopener">eletkertjudittal.hu</a></span>
+                            </div>
+                        </div>
+                        <div class="adatkezelesi-text">
+                            <p>A weboldal üzemeltetője nem gyűjt és nem tárol személyes adatokat a látogatókról. Nincs automatikus adatgyűjtés, és a szervernaplókban esetlegesen rögzített technikai adatok (pl. IP-cím) kizárólag biztonsági és üzemeltetési célokra szolgálnak, és nem kerülnek feldolgozásra személyes azonosításra.</p>
+                        </div>
+                    </div>
+
+                    <div class="impresszum-card">
+                        <h2>Jogérvényesítés</h2>
+                        <div class="adatkezelesi-text">
+                            <p>Amennyiben a látogató úgy érzi, hogy adatkezelési jogai megsérültek (bár ilyen adatkezelés nem történik), jogosult panaszt benyújtani a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):</p>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Cím:</strong>
+                                <span>1055 Budapest, Falk Miksa utca 9-11.</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Postacím:</strong>
+                                <span>1363 Budapest, Pf.: 9.</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>E-mail:</strong>
+                                <span><a href="mailto:ugyfelszolgalat@naih.hu">ugyfelszolgalat@naih.hu</a></span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Weboldal:</strong>
+                                <span><a href="https://www.naih.hu" target="_blank" rel="noopener">www.naih.hu</a></span>
+                            </div>
+                        </div>
+                        <div class="adatkezelesi-text">
+                            <p>Vagy bírósághoz fordulhat a lakóhelye vagy tartózkodási helye szerinti törvényszéken.</p>
+                        </div>
+                    </div>
+
+                    <div class="impresszum-card">
+                        <h2>Kiskorúak védelme</h2>
+                        <div class="adatkezelesi-text">
+                            <p>Az Életkert weboldal nem gyűjt szándékosan kiskorúak adatait, és nem irányul kifejezetten kiskorúakhoz.</p>
+                        </div>
+                    </div>
+
+                    <div class="impresszum-card">
+                        <h2>Fogalmak</h2>
+                        <div class="adatkezelesi-text">
+                            <ul class="definition-list">
+                                <li><strong>Adatkezelő:</strong> Az a természetes vagy jogi személy, aki az adatkezelés céljait és eszközeit meghatározza.</li>
+                                <li><strong>Adatfeldolgozó:</strong> Az a természetes vagy jogi személy, aki az adatkezelő nevében adatkezelési műveleteket végez.</li>
+                                <li><strong>További fogalmak</strong> az adatvédelmi rendeletben (GDPR) találhatók.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="impresszum-card">
+                        <h2>Változások a tájékoztatóban</h2>
+                        <div class="adatkezelesi-text">
+                            <p>A jelen tájékoztató 2025. szeptember 4-től hatályos. Bármilyen változás esetén a weboldalon közzétesszük az új verziót.</p>
+                        </div>
+                    </div>
+
+                    <div class="back-to-home">
+                        <a href="/" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                            </svg>
+                            Vissza a főoldalra
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-    
-    <!-- Vissza a főoldalra gomb -->
-    <div class="back-to-home-section">
-        <div class="container">
-            <a href="/" class="back-to-home-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9,22 9,12 15,12 15,22"></polyline>
-                </svg>
-                Vissza a főoldalra
-            </a>
-        </div>
-    </div>
-    
-    <!-- Recept Modal -->
-    <div id="recept-modal" class="recept-modal" style="display: none;">
-        <div class="modal-backdrop"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Modal bezárása">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="modal-body">
-                <div class="recept-image-container" style="height: 600px !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important;">
-                    <img id="modal-image" src="" alt="" class="recept-image" style="object-fit: cover !important; max-width: none !important;">
-                </div>
-                
-                <div class="recept-details">
-                    <h2 id="modal-title" class="recept-title"></h2>
-                    <div id="modal-short-description" class="recept-short-description"></div>
-                    <div class="recept-content">
-                        <div class="ingredients-section">
-                            <h3>Hozzávalók</h3>
-                            <div id="modal-ingredients" class="ingredients-list"></div>
-                        </div>
-                        <div class="description-section">
-                            <h3>Elkészítés</h3>
-                            <div id="modal-description" class="recept-description"></div>
-                        </div>
-                        <div class="category-section">
-                            <div id="modal-category" class="recept-category"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <button id="scrollTopBtn" title="Vissza a tetejére">
+      <svg class="arrow"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="32" height="32" aria-hidden="true" focusable="false">
+        <path d="M342.6 81.4C330.1 68.9 309.8 68.9 297.3 81.4L137.3 241.4C124.8 253.9 124.8 274.2 137.3 286.7C149.8 299.2 170.1 299.2 182.6 286.7L288 181.3L288 552C288 569.7 302.3 584 320 584C337.7 584 352 569.7 352 552L352 181.3L457.4 286.7C469.9 299.2 490.2 299.2 502.7 286.7C515.2 274.2 515.2 253.9 502.7 241.4L342.7 81.4z" fill="#fff"/>
+      </svg>
+    </button>
 
     <footer class="site-footer">
         <div class="container">
@@ -207,13 +222,7 @@
             </div>
         </div>
     </footer>
-    <button id="scrollTopBtn" title="Vissza a tetejére">
-      <svg class="arrow"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="32" height="32" aria-hidden="true" focusable="false">
-        <path d="M342.6 81.4C330.1 68.9 309.8 68.9 297.3 81.4L137.3 241.4C124.8 253.9 124.8 274.2 137.3 286.7C149.8 299.2 170.1 299.2 182.6 286.7L288 181.3L288 552C288 569.7 302.3 584 320 584C337.7 584 352 569.7 352 552L352 181.3L457.4 286.7C469.9 299.2 490.2 299.2 502.7 286.7C515.2 274.2 515.2 253.9 502.7 241.4L342.7 81.4z" fill="#fff"/>
-      </svg>
-    </button>
 
-    <!-- <script src="https://kit.fontawesome.com/994d36c4a8.js" crossorigin="anonymous"></script> -->
-    <script type="module" src="src/receptek.js"></script>
+    <script type="module" src="src/script.js"></script>
 </body>
 </html>
