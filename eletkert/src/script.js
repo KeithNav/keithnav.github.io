@@ -11,6 +11,8 @@ const lightbox = new PhotoSwipeLightbox({
 });
 lightbox.init();
 
+const apiBaseUrl = import.meta.env.VITE_API;
+const apiToken = import.meta.env.VITE_API_TOKEN;
 
 document.addEventListener("DOMContentLoaded", function() {
   // Smooth scroll: minden belső horgony linkre (nav + footer)
@@ -87,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-fetch("https://keithzilla.bmartin97.space/api/piacoks", {
+fetch(`${apiBaseUrl}/api/piacoks`, {
     method: "GET",
     headers: {
-        "Authorization": "Bearer 38451b957f97cba837045367880d7fce3f18362908410403df3f3ca76fe3c2e4287aabffa9aab76abba46d031b12e0f957192e621bff3e31109d6d6a050614d7bfaea27b5b6668c8a6f2cbfc0309c6021b369154ec25e8417499572f54bf172400dca53bb3a41d4cec30e33b46e825e9435e1c7c26bf399ff9039ba7c19263da"
+        "Authorization": apiToken
     }
     // …
   }).then(res=>res.json()).then(res=>{
@@ -380,10 +382,10 @@ async function geocodeWithCache(searchQuery) {
 }
 
 // Piacok betöltése Strapi-ból
-fetch("https://keithzilla.bmartin97.space/api/piacoks", {
+fetch(`${apiBaseUrl}/api/piacoks`, {
   method: "GET",
   headers: {
-    "Authorization": "Bearer 38451b957f97cba837045367880d7fce3f18362908410403df3f3ca76fe3c2e4287aabffa9aab76abba46d031b12e0f957192e621bff3e31109d6d6a050614d7bfaea27b5b6668c8a6f2cbfc0309c6021b369154ec25e8417499572f54bf172400dca53bb3a41d4cec30e33b46e825e9435e1c7c26bf399ff9039ba7c19263da"
+    "Authorization": apiToken
   }
 })
   .then(res => res.json())

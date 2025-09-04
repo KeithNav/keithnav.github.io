@@ -3,8 +3,8 @@ import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
 // Strapi API configuration
-const API_BASE_URL = import.meta.env.VITE_API || 'https://keithzilla.bmartin97.space';
-const API_TOKEN = 'Bearer 38451b957f97cba837045367880d7fce3f18362908410403df3f3ca76fe3c2e4287aabffa9aab76abba46d031b12e0f957192e621bff3e31109d6d6a050614d7bfaea27b5b6668c8a6f2cbfc0309c6021b369154ec25e8417499572f54bf172400dca53bb3a41d4cec30e33b46e825e9435e1c7c26bf399ff9039ba7c19263da';
+const API_BASE_URL = import.meta.env.VITE_API;
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 // Initialize PhotoSwipe for gallery
 let galleryLightbox;
