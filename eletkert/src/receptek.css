@@ -247,6 +247,17 @@
         margin: 0 auto; 
     }
 
+    /* Receptek title and subtitle padding for mobile */
+    .receptek-title {
+        padding: 0 20px;
+        font-size: 2.8rem;
+    }
+    
+    .receptek-subtitle {
+        padding: 0 20px;
+        font-size: 1.3rem;
+    }
+
     #gallery {
         padding: 40px 16px;
     }
@@ -1060,6 +1071,189 @@
 
 .definition-list strong {
     color: var(--recipes-700);
+}
+
+/* Nyomtatás gomb stílusai */
+.print-button-container {
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--recipes-600);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.print-button:hover {
+    background: var(--recipes-700);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.print-button svg {
+    flex-shrink: 0;
+}
+
+/* Nyomtatási stílusok */
+@media print {
+    /* Oldal beállítások */
+    @page {
+        margin: 2cm;
+        size: A4;
+    }
+    
+    /* Elrejtjük a navigációt és egyéb UI elemeket */
+    header,
+    footer,
+    .print-button-container,
+    .back-to-home,
+    .vegburger,
+    .mobile-menu,
+    .menu-backdrop,
+    .header-wave,
+    .header-fullwave {
+        display: none !important;
+    }
+    
+    /* Alap stílusok nyomtatáshoz */
+    body {
+        font-family: 'Times New Roman', serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: white;
+    }
+    
+    /* Címek formázása */
+    .receptek-title {
+        font-size: 24pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 12pt;
+        page-break-after: avoid;
+    }
+    
+    .receptek-subtitle {
+        font-size: 14pt;
+        text-align: center;
+        margin-bottom: 24pt;
+        font-style: italic;
+        page-break-after: avoid;
+    }
+    
+    /* Fő tartalom */
+    main {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .impresszum-content {
+        padding: 0;
+    }
+    
+    /* Kártyák formázása */
+    .impresszum-card {
+        background: white;
+        border: 1px solid #ddd;
+        margin-bottom: 20pt;
+        padding: 16pt;
+        page-break-inside: avoid;
+        box-shadow: none;
+    }
+    
+    .impresszum-card h2 {
+        font-size: 16pt;
+        font-weight: bold;
+        margin-bottom: 12pt;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 6pt;
+        page-break-after: avoid;
+    }
+    
+    /* Információs elemek */
+    .info-grid {
+        display: block;
+    }
+    
+    .info-item {
+        display: block;
+        margin-bottom: 8pt;
+        page-break-inside: avoid;
+    }
+    
+    .info-item strong {
+        font-weight: bold;
+        margin-right: 8pt;
+    }
+    
+    .info-item span {
+        display: inline;
+    }
+    
+    /* Szövegek formázása */
+    .adatkezelesi-text {
+        font-size: 11pt;
+        line-height: 1.6;
+    }
+    
+    .adatkezelesi-text p {
+        margin-bottom: 10pt;
+        text-align: justify;
+    }
+    
+    /* Listák formázása */
+    .definition-list {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .definition-list li {
+        margin-bottom: 6pt;
+        padding: 4pt 0;
+        border-bottom: none;
+        background: white;
+        page-break-inside: avoid;
+    }
+    
+    /* Linkek formázása nyomtatásban */
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+    }
+    
+    /* Oldaltörések optimalizálása */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
 }
 
 /* Mobil responsive az adatkezelési oldalhoz */

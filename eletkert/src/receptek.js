@@ -224,7 +224,13 @@ function displayReceptek(receptek) {
 
     loadingState.style.display = 'none';
     errorState.style.display = 'none';
-    receptekGrid.style.display = 'grid';
+    
+    // If no recipes to display, hide the grid
+    if (receptek.length === 0) {
+        receptekGrid.style.display = 'none';
+    } else {
+        receptekGrid.style.display = 'grid';
+    }
 
     receptekGrid.innerHTML = '';
 
@@ -502,7 +508,7 @@ function applyFilters() {
     displayReceptek(filteredReceptek);
     
     // Show result count
-    updateResultCount(filteredReceptek.length, allReceptek.length);
+    updateResultCount(filteredReceptek.length, allReceptek.length, searchTerm);
 }
 
 // Clear all filters
@@ -519,10 +525,12 @@ function clearAllFilters() {
 }
 
 // Update result count display
-function updateResultCount(filteredCount, totalCount) {
+function updateResultCount(filteredCount, totalCount, searchTerm = '') {
     const subtitleElement = document.querySelector('.receptek-subtitle');
     if (subtitleElement) {
-        if (filteredCount === totalCount) {
+        if (filteredCount === 0 && searchTerm && searchTerm.trim() !== '') {
+            subtitleElement.textContent = 'Sajnálom, de a keresett kulcsszóra nincs receptünk.';
+        } else if (filteredCount === totalCount) {
             subtitleElement.textContent = 'Fedezd fel ízletes receptjeinket, amelyek természetes alapanyagokból készülnek!';
         } else {
             subtitleElement.textContent = `${filteredCount} recept találat a ${totalCount} receptből`;

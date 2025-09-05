@@ -246,11 +246,11 @@ const map = L.map('map', {
   dragging: window.innerWidth > 900,
   tap: window.innerWidth > 900, 
   touchZoom: true
-}).setView([47.4825, 17.6333], 8.5);
+}).setView([47.6825, 17.6333], 8.5);
 
 // Térkép alaphelyzet tárolása a reset gombhoz
 const DEFAULT_MAP_VIEW = {
-  center: [47.4825, 17.6333],
+  center: [47.6825, 17.6333],
   zoom: 8.5
 };
 

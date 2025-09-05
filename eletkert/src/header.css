@@ -300,11 +300,13 @@ nav a:hover, nav a:focus {
         max-width: 100vw;
         margin-left: auto;
         margin-right: auto;
+        transform: translateX(5px);
     }
     
     header .site-logo { 
         display: block; 
         margin: 0 auto; 
+        transform: translateX(5px);
     }
     
     .header-wave { 
