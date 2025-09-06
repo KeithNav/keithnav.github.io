@@ -186,7 +186,17 @@ h2.gallery-subtitle {
     transition: transform 0.3s;
 }
 
+.floating-back-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
 .floating-back-btn:hover i {
+    transform: translateX(-4px);
+}
+
+.floating-back-btn:hover svg {
     transform: translateX(-4px);
 }
 

@@ -44,23 +44,18 @@ async function loadGalleryImages() {
     galleryGrid.style.display = 'none';
 
     try {
-        console.log('Fetching images from:', `${API_BASE_URL}/api/picture?populate=*`);
-        
         const response = await fetch(`${API_BASE_URL}/api/picture?populate=*`, {
             headers: {
                 'Authorization': API_TOKEN,
                 'Content-Type': 'application/json'
             }
         });
-
-        console.log('Response status:', response.status);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log('API response data:', data);
         
         // Handle single type response with kep array
         if (data.data && data.data.kep && data.data.kep.length > 0) {
@@ -71,8 +66,6 @@ async function loadGalleryImages() {
         }
 
     } catch (error) {
-        console.error('Error loading gallery images:', error);
-        
         // For development: show a helpful message if API is not available
         if (error.message.includes('Failed to fetch') || error.message.includes('ERR_CONNECTION_REFUSED')) {
             showError('A Strapi szerver nem elérhető. Kérjük, győződjön meg róla, hogy a backend fut és elérhető.');
@@ -112,11 +105,7 @@ function displayImages(pictures) {
     // Clear previous content
     galleryGrid.innerHTML = '';
     
-    console.log('Processing pictures:', pictures);
-    
     pictures.forEach((picture, index) => {
-        console.log(`Processing picture ${index}:`, picture);
-        
         // Handle the new structure where pictures are directly in the array
         if (picture.url) {
             const imageUrl = `${API_BASE_URL}${picture.url}`;
@@ -143,28 +132,17 @@ function displayImages(pictures) {
             
             // Add error handling for individual images
             img.addEventListener('error', function() {
-                console.log('Thumbnail failed, using original:', imageUrl);
                 this.src = imageUrl; // Fallback to original if thumbnail fails
-            });
-            
-            img.addEventListener('load', function() {
-                console.log('Image loaded successfully:', this.src);
             });
             
             galleryItem.appendChild(img);
             galleryGrid.appendChild(galleryItem);
-            
-            console.log('Added gallery item:', galleryItem);
-        } else {
-            console.log('No URL found for picture:', picture);
         }
     });
     
     // Hide loading and show gallery
     loadingState.style.display = 'none';
     galleryGrid.style.display = 'grid';
-    
-    console.log('Gallery grid display set to grid, total items:', galleryGrid.children.length);
     
     // Initialize PhotoSwipe after images are loaded
     initializePhotoSwipe();

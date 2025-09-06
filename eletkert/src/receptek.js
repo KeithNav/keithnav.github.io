@@ -153,47 +153,30 @@ async function loadReceptek() {
     receptekGrid.style.display = 'none';
 
     try {
-        console.log('Fetching receptek from:', `${API_BASE_URL}/api/recepts?populate=*`);
-        console.log('Using token:', API_TOKEN.substring(0, 20) + '...');
-        
         const response = await fetch(`${API_BASE_URL}/api/recepts?populate=*`, {
             headers: {
                 'Authorization': API_TOKEN,
                 'Content-Type': 'application/json'
             }
         });
-
-        console.log('Response received:', response.status, response.statusText);
         
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('API Error response:', errorText);
             throw new Error(`HTTP error! status: ${response.status}, text: ${errorText}`);
         }
 
         const data = await response.json();
-        console.log('Receptek data received:', data);
-        console.log('Data array length:', data.data?.length);
-        console.log('First recept attributes:', data.data?.[0]?.attributes);
-        console.log('Response status:', response.status);
-        console.log('Meta info:', data.meta);
 
         if (data.data && data.data.length > 0) {
-            console.log('Displaying receptek:', data.data.length, 'items');
             allReceptek = data.data; // Store all recipes for filtering
             displayReceptek(data.data);
             populateCategoryFilter(data.data); // Populate filter options
             updateResultCount(data.data.length, data.data.length); // Initialize result count
         } else {
-            console.log('No receptek found, showing error');
             showError(`Nem találhatók receptek. Szerver válasz: ${data.data?.length || 0} elem`);
         }
 
     } catch (error) {
-        console.error('Error loading receptek:', error);
-        console.error('Error name:', error.name);
-        console.error('Error message:', error.message);
-        
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
             showError('A Strapi szerver nem elérhető. CORS hiba vagy hálózati probléma. Kérjük, ellenőrizze a backend beállításokat.');
         } else if (error.message.includes('403')) {
@@ -211,16 +194,9 @@ async function loadReceptek() {
 
 // Display receptek in grid
 function displayReceptek(receptek) {
-    console.log('displayReceptek called with:', receptek.length, 'items');
     const loadingState = document.getElementById('loading-state');
     const errorState = document.getElementById('error-state');
     const receptekGrid = document.getElementById('receptek-grid');
-
-    console.log('Elements found:', {
-        loadingState: !!loadingState,
-        errorState: !!errorState, 
-        receptekGrid: !!receptekGrid
-    });
 
     loadingState.style.display = 'none';
     errorState.style.display = 'none';
@@ -235,28 +211,19 @@ function displayReceptek(receptek) {
     receptekGrid.innerHTML = '';
 
     receptek.forEach((recept, index) => {
-        console.log(`Creating card ${index + 1}:`, recept);
         const receptCard = createReceptCard(recept);
-        console.log('Created card:', receptCard);
         receptekGrid.appendChild(receptCard);
     });
-    
-    console.log('Grid after adding cards:', receptekGrid.children.length, 'children');
 }
 
 // Create individual recept card
 function createReceptCard(recept) {
-    console.log('createReceptCard called with:', recept);
-    console.log('Recept nev:', recept.nev);
-    console.log('Recept rovidid:', recept.rovid);
-    
     const card = document.createElement('div');
     card.className = 'recept-card';
     card.setAttribute('data-recept', JSON.stringify(recept));
 
     // Get image URL
     let imageUrl = '/vegyes.jpg'; // fallback image
-    console.log('Recept kep object:', recept.kep);
     
     if (recept.kep) {
         // Check if kep has url property directly
@@ -276,10 +243,6 @@ function createReceptCard(recept) {
             }
         }
     }
-    
-    console.log('Using image URL:', imageUrl);
-    console.log('Recept name:', recept.nev);
-    console.log('Recept short desc:', recept.rovid);
 
     card.innerHTML = `
         <div class="recept-card-content">
@@ -344,7 +307,6 @@ function openReceptModal(recept) {
     
     // Get image URL
     let imageUrl = '/vegyes.jpg'; // fallback image
-    console.log('Modal kep object:', recept.kep);
     
     if (recept.kep) {
         // Check if kep has url property directly

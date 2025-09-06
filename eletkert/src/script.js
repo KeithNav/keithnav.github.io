@@ -96,8 +96,6 @@ fetch(`${apiBaseUrl}/api/piacoks`, {
     }
     // …
   }).then(res=>res.json()).then(res=>{
-    console.log(res)
-
     const marketsGrid = document.querySelector(".markets-grid"); 
     marketsGrid.innerHTML = ""; // előző törlése, ha frissíted
     
@@ -229,16 +227,20 @@ fetch(`${apiBaseUrl}/api/piacoks`, {
                     }
                   }
                 } else {
-                  console.warn("Nem található:", cityName);
+                  // Nem található város - silent fail for production
                 }
               })
-              .catch(err => console.error("Geocoding hiba:", err));
+              .catch(err => {
+                // Geocoding hiba - silent fail for production
+              });
           }
         });
       }
     });
     })
-    .catch(err => console.error("Hiba történt:", err));
+    .catch(err => {
+      // API hiba - silent fail for production
+    });
 
     // Alap térkép beállítás
 const map = L.map('map', {
@@ -337,7 +339,7 @@ function getGeocodingCache() {
       }
     }
   } catch (e) {
-    console.warn('Cache olvasási hiba:', e);
+    // Cache olvasási hiba - silent fail for production
   }
   return {};
 }
@@ -350,7 +352,7 @@ function saveGeocodingCache(cache) {
       expiry: expiry
     }));
   } catch (e) {
-    console.warn('Cache mentési hiba:', e);
+    // Cache mentési hiba - silent fail for production
   }
 }
 
@@ -376,7 +378,7 @@ async function geocodeWithCache(searchQuery) {
     
     return result;
   } catch (error) {
-    console.warn('Geocoding hiba:', searchQuery, error);
+    // Geocoding hiba - silent fail for production
     return null;
   }
 }
@@ -442,8 +444,6 @@ fetch(`${apiBaseUrl}/api/piacoks`, {
           cityMarkers[city] = [];
         }
         cityMarkers[city].push(marker);
-        
-        console.log(`Marker hozzáadva: ${city} (${index + 1}/${sortedData.length})`);
       }
     };
     
