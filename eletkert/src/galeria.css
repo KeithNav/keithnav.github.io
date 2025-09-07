@@ -256,6 +256,9 @@ h2.gallery-subtitle {
         bottom: 20px;
         padding: 14px 24px;
         font-size: 1rem;
+        white-space: nowrap;
+        max-width: calc(100vw - 40px);
+        overflow: hidden;
     }
     
     .gallery-overlay i {
