@@ -435,6 +435,7 @@
     display: flex;
     flex-direction: column;
     height: 140px;
+    position: relative;
 }
 
 .recept-card:hover {
@@ -500,6 +501,39 @@
     line-clamp: 3;
     -webkit-box-orient: vertical;
     flex: 1;
+}
+
+/* Új recept jelvény */
+.new-recipe-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, var(--recipes-600), var(--recipes-300));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    z-index: 10;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    }
 }
 
 /* Recept Modal */
@@ -841,6 +875,14 @@
     .recept-image-container {
         width: 100px;
         height: 120px;
+    }
+    
+    /* Mobilos új jelvény kis méretű */
+    .new-recipe-badge {
+        top: 6px;
+        right: 6px;
+        font-size: 0.7rem;
+        padding: 3px 6px;
     }
     
     .modal-content {

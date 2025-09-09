@@ -133,6 +133,17 @@ function formatRichTextIngredients(text) {
     return formattedHtml;
 }
 
+// Check if a recipe is new (created within the last week)
+function isNewRecipe(createdAt) {
+    if (!createdAt) return false;
+    
+    const now = new Date();
+    const recipeDate = new Date(createdAt);
+    const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    
+    return recipeDate > oneWeekAgo;
+}
+
 // Initialize receptek functionality
 function initializeReceptek() {
     loadReceptek();
@@ -244,7 +255,12 @@ function createReceptCard(recept) {
         }
     }
 
+    // Check if this is a new recipe (within last week)
+    const isNew = isNewRecipe(recept.createdAt);
+    const newBadge = isNew ? '<span class="new-recipe-badge">ÚJ!</span>' : '';
+
     card.innerHTML = `
+        ${newBadge}
         <div class="recept-card-content">
             <div class="recept-image-container">
                 <img src="${imageUrl}" 
