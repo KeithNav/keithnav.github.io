@@ -4,9 +4,7 @@
 
 .gallery-section {
   padding: 24px 0 96px;
-  background:
-    radial-gradient(circle at top, rgba(29, 168, 200, 0.09), transparent 34%),
-    linear-gradient(180deg, #fafdff 0%, #f2f9fc 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 18%, #f2f9fc 100%);
 }
 
 .gallery-intro {
