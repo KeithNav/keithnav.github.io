@@ -6,9 +6,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main:    resolve(__dirname, 'index.html'),
-        galeria: resolve(__dirname, 'galeria.html'),
-        arlista: resolve(__dirname, 'arlista.html'),
-        impresszum: resolve(__dirname, 'impresszum.html'),
+        galeria: resolve(__dirname, 'galeria/index.html'),
+        arlista: resolve(__dirname, 'arlista/index.html'),
+        impresszum: resolve(__dirname, 'impresszum/index.html'),
       },
     },
   },

@@ -17,11 +17,36 @@ const hamburger = document.getElementById('hamburger')
 const mainNav   = document.getElementById('main-nav')
 const navLinks  = mainNav ? Array.from(mainNav.querySelectorAll('a')) : []
 
+const normalizePath = path => {
+  if (!path) return '/'
+
+  const cleaned = path.replace(/index\.html$/i, '').replace(/\/+/g, '/').replace(/\\/g, '/')
+  if (cleaned === '' || cleaned === '/') return '/'
+  return cleaned.endsWith('/') ? cleaned : `${cleaned}/`
+}
+
+const currentPagePath = normalizePath(window.location.pathname)
+const isHomePage = currentPagePath === '/'
+
+const normalizeHref = href => {
+  if (!href) return href
+  if (href.startsWith('#')) return href
+
+  try {
+    const url = new URL(href, window.location.origin)
+    return normalizePath(url.pathname)
+  } catch {
+    return href
+  }
+}
+
 const setActiveNavLink = targetHref => {
   if (!navLinks.length) return
 
+  const normalizedTarget = normalizeHref(targetHref)
+
   navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === targetHref)
+    link.classList.toggle('active', normalizeHref(link.getAttribute('href')) === normalizedTarget)
   })
 }
 
@@ -33,9 +58,7 @@ const getScrollTargetTop = target => {
 
 const isSamePageHomeLink = href => {
   if (!href) return false
-
-  const normalized = href.replace(/^\.\//, '')
-  return normalized === 'index.html' || normalized === '/index.html' || normalized === '/'
+  return normalizeHref(href) === '/'
 }
 
 if (hamburger && mainNav) {
@@ -62,18 +85,16 @@ document.querySelectorAll('a[href]').forEach(anchor => {
     const href = anchor.getAttribute('href')
 
     if (!isSamePageHomeLink(href)) return
-
-    const currentPath = window.location.pathname.replace(/\\/g, '/').replace(/.*\//, '') || 'index.html'
-    if (currentPath !== 'index.html') return
+    if (!isHomePage) return
 
     e.preventDefault()
     window.scrollTo({ top: 0, behavior: 'smooth' })
 
     if (mainNav && mainNav.contains(anchor)) {
-      setActiveNavLink('index.html')
+      setActiveNavLink('/')
     }
 
-    history.replaceState(null, '', 'index.html')
+    history.replaceState(null, '', '/')
   })
 })
 
@@ -100,7 +121,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   })
 })
 
-if (navLinks.length) {
+if (navLinks.length && isHomePage) {
   const sectionMap = [
     { id: 'szolgaltatasok', href: '#szolgaltatasok' },
     { id: 'kapcsolat', href: '#kapcsolat' },
@@ -112,7 +133,7 @@ if (navLinks.length) {
     const headerOffset = header ? header.offsetHeight : 0
     const triggerLine = headerOffset + 40
 
-    let activeHref = 'index.html'
+    let activeHref = '/'
 
     for (const section of sectionMap) {
       const rect = section.element.getBoundingClientRect()
