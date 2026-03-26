@@ -43,6 +43,7 @@
 .logo img {
   height: 214px;
   width: auto;
+  max-width: none;
   margin: -10px -24px -38px;
 }
 .logo-text {
@@ -166,6 +167,8 @@
 
   .logo img {
     height: 168px;
+    width: auto;
+    max-width: none;
     margin: -8px -20px -36px;
   }
 

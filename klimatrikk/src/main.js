@@ -1,3 +1,5 @@
+import 'photoswipe/style.css'
+
 // =====================================================
 // KlímaTrikk – közös JavaScript
 // =====================================================
@@ -138,6 +140,25 @@ if (isHomePage) {
     setActiveNavLink(window.location.hash || '/')
   })
 }
+
+const initializeGalleryLightbox = async () => {
+  const galleryElement = document.querySelector('.pswp-gallery')
+  if (!galleryElement) return
+
+  const { default: PhotoSwipeLightbox } = await import('photoswipe/lightbox')
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.pswp-gallery',
+    children: 'a[data-pswp-width]',
+    pswpModule: () => import('photoswipe'),
+    showHideAnimationType: 'zoom',
+    bgOpacity: 0.9,
+  })
+
+  lightbox.init()
+}
+
+initializeGalleryLightbox()
 
 document.querySelectorAll('[data-print-page]').forEach(button => {
   button.addEventListener('click', () => {

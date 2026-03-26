@@ -4,25 +4,29 @@
 
 .gallery-section {
   padding: 24px 0 96px;
-  background: var(--white);
+  background:
+    radial-gradient(circle at top, rgba(29, 168, 200, 0.09), transparent 34%),
+    linear-gradient(180deg, #fafdff 0%, #f2f9fc 100%);
 }
 
 .gallery-intro {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 }
 
 .gallery-intro p {
   color: var(--text-gray);
   font-size: 1rem;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /* ── Bento grid ── */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
-  gap: 16px;
+  grid-auto-rows: 210px;
+  gap: 18px;
 }
 
 /* Méretosztályok */
@@ -36,49 +40,61 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  box-shadow: var(--shadow-sm);
-  background:
-    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.55) 14%, transparent 36%),
-    linear-gradient(145deg, #eef8fd 0%, #d8edf7 45%, #bfdff0 100%);
-  border: 1px solid rgba(175, 218, 235, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(0, 100, 140, 0.12);
+  border: 1px solid rgba(185, 223, 236, 0.75);
+  background: #dceef6;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .bento-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 34px rgba(32, 121, 154, 0.18);
+  box-shadow: 0 22px 42px rgba(32, 121, 154, 0.2);
+  border-color: rgba(29, 168, 200, 0.45);
   z-index: 2;
-}
-
-.bento-item.large .bento-card,
-.bento-item.tall .bento-card {
-  padding: 28px;
 }
 
 /* Kép kitöltés */
 .bento-card img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
-  filter: drop-shadow(0 18px 32px rgba(17, 110, 136, 0.18));
+  transition: transform 0.6s ease;
 }
-.bento-card:hover img { transform: scale(1.03); }
 
-.photo-1 { transform: scale(1.05); }
-.photo-2 { transform: scale(0.96) rotate(-1deg); }
-.photo-3 { transform: scale(0.97) rotate(1deg); }
-.photo-4 { transform: scale(1.01); }
-.photo-5 { transform: scale(1.08); }
-.photo-6 { transform: scale(0.95); }
-.photo-7 { transform: scale(0.96) rotate(-1.5deg); }
-.photo-8 { transform: scale(1.02); }
-.photo-9 { transform: scale(0.94); }
-.photo-10 { transform: scale(0.98) rotate(1deg); }
+.bento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgba(7, 45, 61, 0.28) 100%);
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.bento-card::before {
+  content: 'Megnyitás';
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a3a4a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 22px rgba(0, 54, 79, 0.14);
+}
+
+.bento-card:hover::after {
+  opacity: 1;
+}
+
+.bento-card:hover img { transform: scale(1.05); }
 
 /* ── Reszponzív ── */
 @media (max-width: 960px) {
@@ -94,6 +110,11 @@
   }
   .bento-item.tall { grid-row: span 1; }
   .bento-item.large { grid-column: span 2; grid-row: span 1; }
+  .bento-card::before {
+    right: 12px;
+    bottom: 12px;
+    padding: 6px 10px;
+  }
 }
 @media (max-width: 420px) {
   .bento-grid {
