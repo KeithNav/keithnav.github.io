@@ -46,8 +46,20 @@ const setActiveNavLink = targetHref => {
   const normalizedTarget = normalizeHref(targetHref)
 
   navLinks.forEach(link => {
-    link.classList.toggle('active', normalizeHref(link.getAttribute('href')) === normalizedTarget)
+    const isActive = normalizeHref(link.getAttribute('href')) === normalizedTarget
+    link.classList.toggle('active', isActive)
+
+    if (isActive) {
+      link.setAttribute('aria-current', normalizedTarget.startsWith('#') ? 'location' : 'page')
+    } else {
+      link.removeAttribute('aria-current')
+    }
   })
+}
+
+if (navLinks.length) {
+  const initialTarget = isHomePage && window.location.hash ? window.location.hash : currentPagePath
+  setActiveNavLink(initialTarget)
 }
 
 const getScrollTargetTop = target => {
@@ -121,32 +133,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   })
 })
 
-if (navLinks.length && isHomePage) {
-  const sectionMap = [
-    { id: 'szolgaltatasok', href: '#szolgaltatasok' },
-    { id: 'kapcsolat', href: '#kapcsolat' },
-  ]
-    .map(item => ({ ...item, element: document.getElementById(item.id) }))
-    .filter(item => item.element)
-
-  const updateActiveNavOnScroll = () => {
-    const headerOffset = header ? header.offsetHeight : 0
-    const triggerLine = headerOffset + 40
-
-    let activeHref = '/'
-
-    for (const section of sectionMap) {
-      const rect = section.element.getBoundingClientRect()
-      if (rect.top <= triggerLine && rect.bottom > triggerLine) {
-        activeHref = section.href
-      }
-    }
-
-    setActiveNavLink(activeHref)
-  }
-
-  window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true })
-  updateActiveNavOnScroll()
+if (isHomePage) {
+  window.addEventListener('hashchange', () => {
+    setActiveNavLink(window.location.hash || '/')
+  })
 }
 
 document.querySelectorAll('[data-print-page]').forEach(button => {
