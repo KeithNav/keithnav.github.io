@@ -1,0 +1,727 @@
+/* ===================================================
+   KLIMATRIKK – Általános stílusok (body.css)
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary:       #1da8c8;
+  --primary-dark:  #116e88;
+  --primary-light: #e6f4f8;
+  --accent:        #f4a425;
+  --text-dark:     #1a3a4a;
+  --text-gray:     #5a6a75;
+  --white:         #ffffff;
+  --bg-light:      #f0f8fc;
+  --border:        #d4ecf5;
+  --shadow-sm:     0 2px 12px rgba(0, 100, 140, 0.08);
+  --shadow-md:     0 8px 28px rgba(0, 100, 140, 0.14);
+  --shadow-lg:     0 20px 50px rgba(0, 100, 140, 0.18);
+  --radius:        12px;
+  --radius-lg:     20px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1da8c8 0%, #116e88 100%);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 32px rgba(17, 110, 136, 0.28);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.94);
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  z-index: 1200;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 38px rgba(17, 110, 136, 0.34);
+  filter: saturate(1.06);
+}
+
+.back-to-top:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.back-to-top svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.4;
+}
+
+#szolgaltatasok,
+#kapcsolat {
+  scroll-margin-top: 136px;
+}
+
+/* ── Segéd konténer ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Gombok ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(29, 168, 200, 0.35);
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 168, 200, 0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--primary-dark);
+}
+
+/* ── Szekció cím ── */
+.section-title {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.section-title h2 {
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.section-title p {
+  color: var(--text-gray);
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 88vh;
+  background: linear-gradient(140deg, #f5fbfe 0%, #e2f4fb 50%, #cceaf6 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 150px 0 80px;
+  overflow: hidden;
+}
+
+/* Hullám szeparátor alján */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: var(--white);
+  clip-path: ellipse(56% 100% at 50% 100%);
+}
+
+/* Dekor körök a háttérben */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(29, 168, 200, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content { max-width: 540px; }
+
+.hero-content h1 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero-content h1 span { color: var(--primary); }
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  margin-bottom: 36px;
+  line-height: 1.75;
+}
+
+/* Képterület (jobb oldal) */
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 460px;
+}
+
+.hero-visual-glow {
+  position: absolute;
+  inset: 38px 18px 34px 38px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.92) 0%, rgba(182, 228, 246, 0.3) 34%, transparent 68%),
+    linear-gradient(135deg, rgba(122, 201, 232, 0.18) 0%, rgba(29, 168, 200, 0.08) 100%);
+  filter: blur(4px);
+  border-radius: 36px;
+}
+
+.hero-img-card {
+  position: relative;
+  border-radius: 32px;
+  overflow: visible;
+  box-shadow: none;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.hero-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 48px rgba(17, 110, 136, 0.18));
+}
+
+.hero-season-line {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  z-index: 2;
+}
+.season-top { top: 28px; }
+.season-bottom { bottom: 34px; }
+
+.season-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 36px rgba(26, 58, 74, 0.12);
+}
+
+.season-chip svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.season-chip.warm {
+  background: rgba(255, 244, 233, 0.95);
+  color: #d97b12;
+  border: 1px solid rgba(244, 164, 37, 0.22);
+}
+
+.season-chip.cold {
+  background: rgba(239, 249, 255, 0.95);
+  color: #188db1;
+  border: 1px solid rgba(29, 168, 200, 0.22);
+}
+
+/* ============================================================
+   FEATURES (3 kártya)
+   ============================================================ */
+.features {
+  padding: 96px 0;
+  background: var(--white);
+}
+
+.features .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 44px 32px;
+  text-align: center;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow-sm);
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.feature-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+}
+.feature-card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   MIÉRT MI? (why-us)
+   ============================================================ */
+.why-us {
+  padding: 96px 0;
+  background: var(--bg-light);
+}
+
+.why-us .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.why-content h2 {
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--text-dark);
+}
+
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.why-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.why-check {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  box-shadow: 0 4px 12px rgba(29, 168, 200, 0.35);
+}
+.why-check svg {
+  width: 15px;
+  height: 15px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.why-text strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+.why-text p {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Kép / placeholder */
+.why-image-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, #d8eef7 0%, #a8d8e8 60%, #74bdd6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.why-image-backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(17, 110, 136, 0.28) 100%);
+  z-index: 1;
+}
+.why-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+.why-photo {
+  transform: scale(1.04);
+}
+.why-image-badge {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 18px 34px rgba(17, 110, 136, 0.18);
+  max-width: 240px;
+}
+.why-image-badge strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.why-image-badge span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-gray);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   CTA SZEKCIÓ
+   ============================================================ */
+.cta-section {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #116e88 0%, #0b4d62 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 480px;
+  height: 480px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+}
+
+.cta-section .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 420px);
+  gap: 48px;
+  align-items: center;
+}
+
+.cta-content h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cta-content p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  margin-bottom: 36px;
+  line-height: 1.75;
+  max-width: 500px;
+}
+
+.cta-contact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end;
+  justify-self: end;
+  width: 100%;
+}
+
+.cta-contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: fit-content;
+  min-width: 290px;
+  max-width: 100%;
+  padding: 16px 22px 16px 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 36px rgba(4, 37, 48, 0.18);
+  text-align: left;
+  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+}
+
+.cta-contact-card:hover {
+  transform: translateX(-6px) translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.cta-contact-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cta-contact-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: rgba(255,255,255,0.85);
+  stroke-width: 1.8;
+}
+
+.cta-contact-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.cta-contact-copy strong {
+  color: var(--white);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cta-contact-copy span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+}
+
+/* ============================================================
+   ALOLDALAK fejléce
+   ============================================================ */
+.page-header {
+  padding: 164px 0 96px;
+  background: linear-gradient(140deg, #f5fbfe 0%, #cceaf6 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 70px;
+  background: var(--white);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.page-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.page-header p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   RESZPONZÍV
+   ============================================================ */
+@media (max-width: 960px) {
+  .hero .container,
+  .why-us .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero {
+    min-height: auto;
+    text-align: center;
+    padding: 136px 0 132px;
+  }
+  .hero::after {
+    height: 124px;
+  }
+  .hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-content p {
+    max-width: 620px;
+    margin-bottom: 28px;
+  }
+  .hero-content .btn {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-image { display: none; }
+
+  .features .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta-section .container {
+    grid-template-columns: 1fr;
+  }
+  .cta-contact-panel {
+    align-items: stretch;
+    justify-self: stretch;
+    max-width: 520px;
+  }
+
+  .cta-contact-card {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 124px 0 146px;
+  }
+  .hero::after {
+    height: 136px;
+  }
+  .hero-content h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .hero-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 340px;
+  }
+  .hero-content .btn {
+    margin-top: 4px;
+  }
+  .features .container {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .why-us .container { gap: 36px; }
+  .why-image-badge {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+  .back-to-top {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+}
