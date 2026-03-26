@@ -76,6 +76,13 @@ const isSamePageHomeLink = href => {
 }
 
 if (hamburger && mainNav) {
+  const closeMenu = () => {
+    mainNav.classList.remove('open')
+    hamburger.classList.remove('open')
+    hamburger.setAttribute('aria-expanded', 'false')
+    hamburger.setAttribute('aria-label', 'Menü megnyitása')
+  }
+
   hamburger.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open')
     hamburger.classList.toggle('open', isOpen)
@@ -83,13 +90,20 @@ if (hamburger && mainNav) {
     hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása')
   })
 
+  document.addEventListener('pointerdown', event => {
+    if (!mainNav.classList.contains('open')) return
+
+    const target = event.target
+    if (!(target instanceof Node)) return
+    if (mainNav.contains(target) || hamburger.contains(target)) return
+
+    closeMenu()
+  })
+
   // Navigációs linkre kattintáskor zárd be a menüt
   mainNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mainNav.classList.remove('open')
-      hamburger.classList.remove('open')
-      hamburger.setAttribute('aria-expanded', 'false')
-      hamburger.setAttribute('aria-label', 'Menü megnyitása')
+      closeMenu()
     })
   })
 }
