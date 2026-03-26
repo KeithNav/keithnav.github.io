@@ -122,6 +122,7 @@
   background: none;
   border: none;
   border-radius: 8px;
+  touch-action: manipulation;
   transition: background 0.2s;
 }
 .hamburger:hover { background: #e6f4f8; }

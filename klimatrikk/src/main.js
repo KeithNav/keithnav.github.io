@@ -76,6 +76,8 @@ const isSamePageHomeLink = href => {
 }
 
 if (hamburger && mainNav) {
+  let touchToggleHandled = false
+
   const closeMenu = () => {
     mainNav.classList.remove('open')
     hamburger.classList.remove('open')
@@ -83,11 +85,28 @@ if (hamburger && mainNav) {
     hamburger.setAttribute('aria-label', 'Menü megnyitása')
   }
 
-  hamburger.addEventListener('click', () => {
+  const toggleMenu = () => {
     const isOpen = mainNav.classList.toggle('open')
     hamburger.classList.toggle('open', isOpen)
     hamburger.setAttribute('aria-expanded', String(isOpen))
     hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása')
+  }
+
+  hamburger.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse') return
+
+    event.preventDefault()
+    touchToggleHandled = true
+    toggleMenu()
+  })
+
+  hamburger.addEventListener('click', () => {
+    if (touchToggleHandled) {
+      touchToggleHandled = false
+      return
+    }
+
+    toggleMenu()
   })
 
   document.addEventListener('pointerdown', event => {
