@@ -193,6 +193,63 @@ const initializeGalleryLightbox = async () => {
 
 initializeGalleryLightbox()
 
+const counterSection = document.querySelector('[data-counter-section]')
+
+if (counterSection) {
+  const counters = Array.from(counterSection.querySelectorAll('[data-counter]'))
+  let hasAnimatedCounters = false
+
+  const formatCounterValue = (value, suffix = '') => `${value}${suffix}`
+
+  const animateCounter = element => {
+    const targetValue = Number.parseInt(element.dataset.target ?? '0', 10)
+    const suffix = element.dataset.suffix ?? ''
+    const duration = 1700
+    const startTime = performance.now()
+
+    const updateValue = currentTime => {
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+      const currentValue = Math.round(targetValue * easedProgress)
+
+      element.textContent = formatCounterValue(currentValue, suffix)
+
+      if (progress < 1) {
+        window.requestAnimationFrame(updateValue)
+      } else {
+        element.textContent = formatCounterValue(targetValue, suffix)
+      }
+    }
+
+    element.textContent = formatCounterValue(0, suffix)
+    window.requestAnimationFrame(updateValue)
+  }
+
+  const startCounters = () => {
+    if (hasAnimatedCounters) return
+
+    hasAnimatedCounters = true
+    counters.forEach(animateCounter)
+  }
+
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+
+        startCounters()
+        counterObserver.disconnect()
+      })
+    }, {
+      threshold: 0.35,
+    })
+
+    counterObserver.observe(counterSection)
+  } else {
+    startCounters()
+  }
+}
+
 document.querySelectorAll('[data-print-page]').forEach(button => {
   button.addEventListener('click', () => {
     window.print()
