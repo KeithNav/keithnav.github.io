@@ -72,22 +72,6 @@
   transition: opacity 0.35s ease;
 }
 
-.bento-card::before {
-  content: 'Megnyitás';
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  z-index: 1;
-  padding: 7px 11px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a3a4a;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  box-shadow: 0 8px 22px rgba(0, 54, 79, 0.14);
-}
-
 .bento-card:hover::after {
   opacity: 1;
 }
@@ -108,11 +92,6 @@
   }
   .bento-item.tall { grid-row: span 1; }
   .bento-item.large { grid-column: span 2; grid-row: span 1; }
-  .bento-card::before {
-    right: 12px;
-    bottom: 12px;
-    padding: 6px 10px;
-  }
 }
 @media (max-width: 420px) {
   .bento-grid {
