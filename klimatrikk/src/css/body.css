@@ -232,10 +232,8 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-visual-glow {
   position: absolute;
   inset: 38px 18px 34px 38px;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.92) 0%, rgba(182, 228, 246, 0.3) 34%, transparent 68%),
-    linear-gradient(135deg, rgba(122, 201, 232, 0.18) 0%, rgba(29, 168, 200, 0.08) 100%);
-  filter: blur(4px);
+  background: transparent;
+  filter: none;
   border-radius: 36px;
 }
 
@@ -940,13 +938,20 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 640px) {
   .hero {
-    padding: 124px 0 286px;
+    padding: 118px 0 72px;
   }
   .hero::after {
-    height: 196px;
+    height: 124px;
   }
   .hero .container {
-    position: static;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+  }
+  .hero-content {
+    width: 100%;
   }
   .hero-content h1 {
     font-size: clamp(2rem, 8vw, 3rem);
@@ -955,20 +960,37 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 1rem;
     line-height: 1.7;
     max-width: 340px;
+    margin-bottom: 22px;
   }
   .hero-content .btn {
-    margin-top: 4px;
+    margin-top: 0;
   }
   .hero-mobile-image {
     display: block;
-    position: absolute;
-    left: 50%;
-    bottom: -34px;
-    transform: translateX(-50%);
-    width: min(82vw, 290px);
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: min(92vw, 360px);
     aspect-ratio: 1 / 1;
     z-index: 1;
     pointer-events: none;
+    margin: 8px auto 0;
+  }
+  .hero-mobile-image::before {
+    content: '';
+    position: absolute;
+    inset: 8% 4% 10%;
+    border-radius: 36px;
+    background:
+      radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.92) 0%, rgba(226, 243, 250, 0.48) 36%, transparent 72%),
+      linear-gradient(180deg, rgba(198, 232, 246, 0.28) 0%, rgba(198, 232, 246, 0.08) 100%);
+    filter: blur(6px);
+  }
+  .hero-mobile-image img {
+    position: relative;
+    z-index: 1;
+    transform: translateY(4px);
   }
   .features .container {
     grid-template-columns: 1fr;
