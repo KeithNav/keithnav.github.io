@@ -346,7 +346,7 @@ if (counterSection) {
   const animateCounter = element => {
     const targetValue = Number.parseInt(element.dataset.target ?? '0', 10)
     const suffix = element.dataset.suffix ?? ''
-    const duration = 1700
+    const duration = 2800
     const startTime = performance.now()
 
     const updateValue = currentTime => {
