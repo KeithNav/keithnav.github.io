@@ -193,6 +193,116 @@ const initializeGalleryLightbox = async () => {
 
 initializeGalleryLightbox()
 
+const escapeHtml = value => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;')
+
+const getServiceCategory = name => {
+  const normalized = (name ?? '').toLowerCase()
+
+  if (normalized.includes('felmérés')) return 'Felmérés'
+  if (normalized.includes('tisztítása')) return 'Tisztítás'
+  if (normalized.includes('leszerelése')) return 'Leszerelés'
+  if (normalized.includes('előcsövez')) return 'Előcsövezés'
+  if (normalized.includes('tetőre')) return 'Tetős telepítés'
+  if (normalized.includes('telepítése') || normalized.includes('beüzemelése') || normalized.includes('szerelése')) return 'Telepítés'
+
+  return 'Szolgáltatás'
+}
+
+const getServiceBadge = (price, index) => {
+  const normalized = (price ?? '').toLowerCase()
+
+  if (normalized.includes('ingyenes')) return 'Díjmentes'
+  if (normalized.includes('/méter')) return 'Méretarányos'
+  if (index === 0) return 'Kiemelt'
+
+  return 'Tájékoztató ár'
+}
+
+const getServiceMeta = (service, category) => {
+  const details = [category]
+  const normalizedName = (service.name ?? '').toLowerCase()
+  const normalizedPrice = (service.price ?? '').toLowerCase()
+
+  if (normalizedPrice.includes('/méter')) details.push('méter alapú díjazás')
+  if (normalizedName.includes('3,5kw')) details.push('3,5 kW-ig')
+  if (normalizedName.includes('5kw felett')) details.push('5 kW felett')
+  if (normalizedName.includes('tetőre')) details.push('speciális kivitelezés')
+
+  return details.slice(0, 3)
+}
+
+const createPricingCardMarkup = (service, index) => {
+  const category = getServiceCategory(service.name)
+  const badge = getServiceBadge(service.price, index)
+  const meta = getServiceMeta(service, category)
+  const cardClasses = ['service-card']
+
+  if (index === 0) cardClasses.push('is-featured')
+  if ((service.price ?? '').toLowerCase().includes('ingyenes')) cardClasses.push('is-free')
+
+  return `
+    <article class="${cardClasses.join(' ')}">
+      <div class="service-card-top">
+        <span class="service-category">${escapeHtml(category)}</span>
+        <span class="service-badge">${escapeHtml(badge)}</span>
+      </div>
+      <h3 class="service-title">${escapeHtml(service.name ?? '')}</h3>
+      <p class="service-price">${escapeHtml(service.price ?? '')}</p>
+      <p class="service-description">${escapeHtml(service.description ?? '')}</p>
+      <div class="service-meta">
+        ${meta.map(item => `<span class="service-meta-chip">${escapeHtml(item)}</span>`).join('')}
+      </div>
+    </article>
+  `
+}
+
+const initializePricingPage = async () => {
+  const pricingList = document.querySelector('[data-pricing-list]')
+  if (!pricingList) return
+
+  try {
+    const response = await fetch('/arlista/arlista.json', {
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`Price list request failed with status ${response.status}`)
+    }
+
+    const data = await response.json()
+    const services = Array.isArray(data?.arlista) ? data.arlista : []
+
+    if (!services.length) {
+      pricingList.innerHTML = `
+        <div class="pricing-empty">
+          <h3>Az árlista jelenleg nem elérhető</h3>
+          <p>Kérlek, nézz vissza később, vagy kérj közvetlenül ajánlatot a kapcsolat oldalon.</p>
+        </div>
+      `
+      return
+    }
+
+    pricingList.innerHTML = services.map(createPricingCardMarkup).join('')
+  } catch (error) {
+    console.error('Unable to render pricing list:', error)
+    pricingList.innerHTML = `
+      <div class="pricing-empty">
+        <h3>Nem sikerült betölteni az árlistát</h3>
+        <p>Az oldal jelenleg nem tudta kiolvasni a szolgáltatási adatokat. Kérj ajánlatot, és küldünk pontos tájékoztatást.</p>
+      </div>
+    `
+  }
+}
+
+initializePricingPage()
+
 const counterSection = document.querySelector('[data-counter-section]')
 
 if (counterSection) {
