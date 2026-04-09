@@ -174,6 +174,38 @@ if (isHomePage) {
   })
 }
 
+const initializeGallerySkeletons = () => {
+  const galleryImages = Array.from(document.querySelectorAll('.bento-card img'))
+  if (!galleryImages.length) return
+
+  const markLoaded = image => {
+    const card = image.closest('.bento-card')
+    if (!card) return
+
+    card.classList.add('is-loaded')
+  }
+
+  galleryImages.forEach(image => {
+    const card = image.closest('.bento-card')
+    if (!card) return
+
+    if (image.complete && image.naturalWidth > 0) {
+      markLoaded(image)
+      return
+    }
+
+    image.addEventListener('load', () => {
+      markLoaded(image)
+    }, { once: true })
+
+    image.addEventListener('error', () => {
+      markLoaded(image)
+    }, { once: true })
+  })
+}
+
+initializeGallerySkeletons()
+
 const initializeGalleryLightbox = async () => {
   const galleryElement = document.querySelector('.pswp-gallery')
   if (!galleryElement) return
