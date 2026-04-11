@@ -1,58 +1,58 @@
 {
     "arlista": [
         {
+            "id": 0,
+            "name": "Helyszíni felmérés",
+            "price": "Ingyenes",
+            "description": "A helyszíni felmérés során szakértő kollégánk megtekinti a helyszínt, meghallgatja az igényeket és tanácsot ad a megfelelő klímaberendezés kiválasztásához, valamint a telepítés részleteiről."
+        },
+        {
             "id": 1,
             "name": "Klímaberendezés telepítése",
-            "price": "75.000Ft + ÁFA",
+            "price": "75.000Ft",
             "description": "A klímaberendezés telepítése, 2kW - 5kW közötti monosplit kültéri és beltéri egység felszerelése és beüzemelése amely tartalmazza 3 méter hosszig a csövezést."
         },
         {
             "id": 2,
             "name": "Klímaberendezés telepítése tetőre",
-            "price": "100.000Ft + ÁFA",
+            "price": "100.000Ft",
             "description": "A klímaberendezés telepítése tetőre, amely tartalmazza a speciális tetőkonzolt a kültéri és beltéri egység felszerelését és beüzemelését illetve 3 méter hosszig a csövezést."
         },
         {
             "id": 3,
             "name": "Régi klímaberendezés leszerelése",
-            "price": "40.000Ft + ÁFA",
+            "price": "40.000Ft",
             "description": "A régi klímaberendezés leszerelése."
         },
         {
             "id": 4,
             "name": "Plusz csövezés méterenként (ha szükséges)",
-            "price": "15.000Ft + ÁFA/méter",
+            "price": "15.000Ft/méter",
             "description": "A plusz csövezés ára méterenként ami a beltéri és kültéri egységek közötti távolságot jelenti (A telepítés alapára 3 méterig tartalmazza a csövezést)."
         },
         {
             "id": 5,
             "name": "Klíma előcsövezése",
-            "price": "15.000Ft + ÁFA/méter",
+            "price": "15.000Ft/méter",
             "description": "Új építés, illetve felújítás esetén a csövek előzetes elvezetése."
         },
         {
             "id": 6,
             "name": "Klíma szerelése és beüzemelése már meglévő előcsövezésre.",
-            "price": "50.000Ft + ÁFA",
+            "price": "50.000Ft",
             "description": "A klíma szerelésének és beüzemelése meglévő előcsövezésre."
         },
         {
             "id": 7,
             "name": "Klímaberendezés zsákos tisztítása 3,5kW-ig",
-            "price": "20.000Ft + ÁFA",
+            "price": "20.000Ft",
             "description": "A klímaberendezés zsákos tisztítása, fertőtlenítő és gomba/penészölő vegyszerekkel való kezelése."
         },
         {
             "id": 8,
             "name": "Klímaberendezés zsákos tisztítása 5kW felett",
-            "price": "25.000Ft + ÁFA",
+            "price": "25.000Ft",
             "description": "A klímaberendezés zsákos tisztítása, fertőtlenítő és gomba/penészölő vegyszerekkel való kezelése."
-        },
-        {
-            "id": 9,
-            "name": "Helyszíni felmérés",
-            "price": "Ingyenes",
-            "description": "A helyszíni felmérés során szakértő kollégánk megtekinti a helyszínt, meghallgatja az igényeket és tanácsot ad a megfelelő klímaberendezés kiválasztásához, valamint a telepítés részleteiről."
         }
     ]
 }

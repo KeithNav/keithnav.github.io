@@ -239,7 +239,7 @@ const getServiceCategory = name => {
   if (normalized.includes('tisztítása')) return 'Tisztítás'
   if (normalized.includes('leszerelése')) return 'Leszerelés'
   if (normalized.includes('előcsövez')) return 'Előcsövezés'
-  if (normalized.includes('tetőre')) return 'Tetős telepítés'
+  if (normalized.includes('tetőre')) return 'Tetőre telepítés'
   if (normalized.includes('telepítése') || normalized.includes('beüzemelése') || normalized.includes('szerelése')) return 'Telepítés'
 
   return 'Szolgáltatás'
