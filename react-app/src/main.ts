@@ -1,5 +1,24 @@
 import './style.css';
 
+// ─── Smooth scroll without hash in URL ───────────────────────────────────────
+function initSmoothScroll(): void {
+  const navH = parseInt(getComputedStyle(document.documentElement)
+    .getPropertyValue('--nav-h')) || 68;
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector<HTMLElement>(href);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior: 'smooth' });
+      // Keep URL clean – no hash added
+    });
+  });
+}
+
 // ─── Navbar: add .scrolled class on scroll ───────────────────────────────────
 function initNavbar(): void {
   const navbar = document.getElementById('navbar');
@@ -188,6 +207,7 @@ function initVideoLoop(): void {
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  initSmoothScroll();
   initNavbar();
   initMobileMenu();
   initActiveNav();
