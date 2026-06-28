@@ -641,9 +641,9 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
 .proj-icon { font-size: 2.25rem; }
 
 .proj-logo {
-  height: 80px;
+  height: 160px;
   width: auto;
-  max-width: 200px;
+  max-width: 320px;
   object-fit: contain;
   display: block;
 }
