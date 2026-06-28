@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sarmon Bence – IT szakember, logisztikus és webfejlesztő portfóliója. Szakmai tapasztalat, projektek, versenyeredmények." />
+  <title>Sarmon Bence – Portfólió</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header id="navbar">
+    <nav class="nav-inner">
+      <a href="#kezdolap" class="nav-brand">SB<span class="brand-dot">.</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-menu" role="list">
+        <li><a href="#rolam">Rólam</a></li>
+        <li><a href="#tapasztalat">Tapasztalat</a></li>
+        <li><a href="#projektek">Projektek</a></li>
+        <li><a href="#kepessegek">Képességek</a></li>
+        <li><a href="#oktatas">Tanulmányok</a></li>
+        <li><a href="#kapcsolat">Kapcsolat</a></li>
+      </ul>
+
+      <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener" class="nav-linkedin" aria-label="LinkedIn profil">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section id="kezdolap" class="hero">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted playsinline aria-hidden="true">
+        <source src="src/background.mp4" type="video/mp4" />
+      </video>
+      <video class="hero-video" muted playsinline aria-hidden="true">
+        <source src="src/background.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content container">
+      <p class="hero-eyebrow">// Üdvözöllek a CV oldalamon</p>
+      <h1 class="hero-name">Sarmon Bence</h1>
+      <p class="hero-role">
+        <span id="typed-text" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span>
+      </p>
+      <p class="hero-sub">
+        Logisztikus, IT infrastruktúra üzemeltető –
+        proaktív, folyamatosan fejlődő szakember Győrből.
+      </p>
+      <div class="hero-cta">
+        <a href="#rolam" class="btn btn-primary">Ismerd meg a munkámat</a>
+        <a href="#kapcsolat" class="btn btn-ghost">Kapcsolatfelvétel</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">10+</span>
+          <span class="stat-lbl">Év tapasztalat</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-lbl">IT verseny</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-lbl">Élő webprojekt</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#rolam" class="scroll-down" aria-label="Görgets le">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section id="rolam" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// rólam</span>
+        <h2 class="section-title">Ki is vagyok?</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-avatar animate-in">
+          <div class="avatar-wrap">
+            <img src="src/image.jpg" alt="Sarmon Bence" class="avatar-img" />
+          </div>
+          <div class="about-badges">
+            <span class="badge badge-green">● Aktívan keresek lehetőségeket</span>
+          </div>
+        </div>
+
+        <div class="about-body animate-in">
+          <p>
+            A technológia és annak újdonságai iránti érdeklődésem határozza meg a mindennapjaimat –
+            ezeket napi szinten követem különböző szakmai fórumokon. Már diákéveim óta foglalkozom
+            számítógépek és informatikai rendszerek építésével, javításával.
+          </p>
+          <p>
+            Az utóbbi időben elmélyedtem a mesterséges intelligencia, különösen a nagy nyelvi modellek
+            (LLM-ek) világában. Rendszeresen tesztelek különböző AI-alapú eszközöket, és kísérletezek
+            azok gyakorlati alkalmazásával – automatizált tartalomgenerálástól adatelemzésen át technikai
+            dokumentációk gyors előállításáig.
+          </p>
+          <p>
+            Jelenlegi munkám mellett közösségi szakértőként vagyok jelen az
+            <strong>Audi Hungaria Data &amp; AI Community</strong> csoportban, ahol háziversenyt
+            rendeztem, és AI technológiáról publikálok rendszeresen.
+          </p>
+
+          <div class="about-meta">
+            <a href="mailto:sarbence@gmail.com" class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+              sarbence@gmail.com
+            </a>
+            <a href="tel:+36706088039" class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+              +36 70 608 8039
+            </a>
+            <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener" class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <span class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="2,12 12,2 22,12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Győr, Magyarország
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       EXPERIENCE
+  ═══════════════════════════════════════ -->
+  <section id="tapasztalat" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// karrier</span>
+        <h2 class="section-title">Szakmai tapasztalat</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item animate-in">
+          <div class="tl-dot"></div>
+          <div class="tl-body card">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-title">Logisztikus</h3>
+                <p class="tl-company">Audi Hungária – Előszérialogisztika és Változásmenedzsment G/PL-3</p>
+              </div>
+              <span class="tl-date">2018. május – jelenleg</span>
+            </div>
+            <ul class="tl-list">
+              <li>Just-In-Time gyártásszervezési és készletgazdálkodási stratégia alkalmazása</li>
+              <li>SAP vállalatirányítási rendszer – anyagmozgások és készletnyilvántartás kezelése</li>
+              <li>Közvetlen 30 fős raktári csapat irányítása és ellenőrzése</li>
+              <li>Key User feladatok – hibás SAP tranzakciók elhárítása és kezelése</li>
+              <li>Fejlesztési javaslatok megfogalmazása és megvalósítása</li>
+              <li>Vevői auditokra való felkészülés, KPI mutatók nyomonkövetése</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">SAP ERP</span>
+              <span class="tag">JIT</span>
+              <span class="tag">Key User</span>
+              <span class="tag">Csapatvezetés</span>
+              <span class="tag">Logisztika</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item animate-in">
+          <div class="tl-dot"></div>
+          <div class="tl-body card">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-title">Műszakvezető</h3>
+                <p class="tl-company">Syncreon Automotive Kft. – Audi Hungária G/PL-4</p>
+              </div>
+              <span class="tl-date">2016. dec – 2018. máj</span>
+            </div>
+            <ul class="tl-list">
+              <li>Raktározási és anyagkezelési folyamatok üzembiztos működésének biztosítása</li>
+              <li>30 fős raktári csapat közvetlen irányítása és teljesítményének ellenőrzése</li>
+              <li>Raktárkészlet pontosságának fenntartása a vonatkozó szabályzatok szerint</li>
+              <li>SAP raktárnyilvántartási rendszer naprakész és precíz kezelése</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">SAP</span>
+              <span class="tag">Csapatvezetés</span>
+              <span class="tag">Raktárlogisztika</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item animate-in">
+          <div class="tl-dot"></div>
+          <div class="tl-body card">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-title">Ipari IT Technikus</h3>
+                <p class="tl-company">T-Systems Magyarország Zrt. – Audi Hungária G/FP-3</p>
+              </div>
+              <span class="tl-date">2015. aug – 2016. dec</span>
+            </div>
+            <ul class="tl-list">
+              <li>Ipari informatikai szolgáltatások, 24/7 készenléti hibajavítás és ügyeleti támogatás</li>
+              <li>Gyártósorok hardveres és szoftveres támogatása, rövid válaszidővel</li>
+              <li>Új IT eszközök üzembe helyezése, konfigurálása és rendszerbe integrálása</li>
+              <li>Active Directory (AD) tartománykezelő és Hyena adminisztrációs szoftver</li>
+              <li>Távoli kapcsolatkezelés Windows / Linux Server környezetben</li>
+              <li>Incidenskezelés Peregrine Ticketing rendszeren keresztül</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Windows Server</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Active Directory</span>
+              <span class="tag">IT Support 24/7</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════ -->
+  <section id="projektek" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// munkáim</span>
+        <h2 class="section-title">Projektek</h2>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card card animate-in">
+          <div class="proj-top">
+            <img src="src/logojofeher.png" alt="Életkert logó" class="proj-logo" />
+            <div class="proj-links">
+              <a href="https://eletkertjudittal.hu" target="_blank" rel="noopener" class="proj-link" aria-label="Élő weboldal megtekintése">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="proj-title">Életkert</h3>
+          <p class="proj-desc">
+            Őstermelői weboldal fejlesztése és üzemeltetése egy helyi vállalkozó részére.
+            Linux VPS-en futó teljes stack – frontend és backend LLM segítségével, senior mentor támogatásával.
+          </p>
+          <div class="proj-tech">
+            <span class="tag">HTML / CSS / JS</span>
+            <span class="tag">Strapi CMS</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">PM2</span>
+            <span class="tag">Hetzner VPS</span>
+          </div>
+        </article>
+
+        <article class="project-card card animate-in">
+          <div class="proj-top">
+            <img src="src/klimatrikk5.png" alt="Klímatrikk logó" class="proj-logo" />
+            <div class="proj-links">
+              <a href="https://klimatrikk.hu" target="_blank" rel="noopener" class="proj-link" aria-label="Élő weboldal megtekintése">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="proj-title">Klímatrikk</h3>
+          <p class="proj-desc">
+            Egyéni vállalkozás részére készített weboldal fejlesztése, üzemeltetése és arculati tervezése.
+            Google Business integráció, SEO optimalizálás.
+          </p>
+          <div class="proj-tech">
+            <span class="tag">HTML / CSS / JS</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">Hetzner VPS</span>
+            <span class="tag">SEO</span>
+          </div>
+        </article>
+
+        <article class="project-card card animate-in">
+          <div class="proj-top">
+            <span class="proj-icon" aria-hidden="true">🤖</span>
+          </div>
+          <h3 class="proj-title">Audi Data &amp; AI Community</h3>
+          <p class="proj-desc">
+            Közösségi szakértőként az Audi Hungaria Data &amp; AI Community csoportban rendszeresen
+            publikálok AI technológiáról, házi versenyt szerveztem, és kísérletezem az LLM-ek
+            gyakorlati alkalmazásával.
+          </p>
+          <div class="proj-tech">
+            <span class="tag">LLM / GPT</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">AI Automatizáció</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SKILLS
+  ═══════════════════════════════════════ -->
+  <section id="kepessegek" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// tudás</span>
+        <h2 class="section-title">Képességek &amp; Technológiák</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">🌐</span>Webfejlesztés</p>
+          <div class="tag-row">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Strapi CMS</span>
+          </div>
+        </div>
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">🖥️</span>Infrastruktúra &amp; Szerverek</p>
+          <div class="tag-row">
+            <span class="tag">Linux</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">PM2</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Hetzner</span>
+          </div>
+        </div>
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">🔌</span>Hálózatok</p>
+          <div class="tag-row">
+            <span class="tag">Cisco CCNA</span>
+            <span class="tag">Packet Tracer</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">CLI</span>
+          </div>
+        </div>
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">🗄️</span>Adatbázisok &amp; Felhő</p>
+          <div class="tag-row">
+            <span class="tag">MySQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Azure</span>
+            <span class="tag">VMware</span>
+            <span class="tag">VirtualBox</span>
+          </div>
+        </div>
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">🤖</span>AI &amp; Automatizáció</p>
+          <div class="tag-row">
+            <span class="tag">LLM / GPT</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">Tartalomgenerálás</span>
+            <span class="tag">Adatelemzés</span>
+          </div>
+        </div>
+        <div class="skill-cat card animate-in">
+          <p class="skill-cat-head"><span class="sk-icon">📦</span>Vállalati rendszerek</p>
+          <div class="tag-row">
+            <span class="tag">SAP ERP</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">JIT logisztika</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       EDUCATION
+  ═══════════════════════════════════════ -->
+  <section id="oktatas" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// képzés</span>
+        <h2 class="section-title">Tanulmányok</h2>
+      </div>
+
+      <div class="edu-grid">
+        <div class="edu-card card animate-in">
+          <span class="edu-icon" aria-hidden="true">🏫</span>
+          <div>
+            <h3 class="edu-title">IT Rendszer és Alkalmazás Üzemeltető Technikus</h3>
+            <p class="edu-school">Jedlik Ányos Gépipari és Informatikai Technikum</p>
+            <p class="edu-date">2025 szeptember – jelenleg</p>
+            <ul class="edu-list">
+              <li>Windows és Linux szerverek telepítése, üzemeltetése</li>
+              <li>Cisco Network Academy (CCNA) képzések</li>
+              <li>Adatbázis-kezelés (MySQL, PostgreSQL)</li>
+              <li>Felhőszolgáltatások és virtualizáció (VMware, VirtualBox)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edu-card card animate-in">
+          <span class="edu-icon" aria-hidden="true">🔧</span>
+          <div>
+            <h3 class="edu-title">Emelőgépkezelői és Darukezelői OKJ</h3>
+            <p class="edu-school">Mondo-Libro Felnőttképzés</p>
+            <p class="edu-date">2017</p>
+          </div>
+        </div>
+
+        <div class="edu-card card animate-in">
+          <span class="edu-icon" aria-hidden="true">🎓</span>
+          <div>
+            <h3 class="edu-title">Logisztikai Mérnöki (befejezetlen)</h3>
+            <p class="edu-school">Széchenyi István Egyetem</p>
+            <p class="edu-date">2015 – 2016</p>
+          </div>
+        </div>
+
+        <div class="edu-card card animate-in">
+          <span class="edu-icon" aria-hidden="true">📚</span>
+          <div>
+            <h3 class="edu-title">Érettségi – Közgazdasági és Informatikai</h3>
+            <p class="edu-school">Deák Ferenc Közgazdasági és Informatikai Szakközépiskola</p>
+            <p class="edu-date">2011 – 2015</p>
+            <ul class="edu-list">
+              <li>Közgazdasági szakmai tantárgyak (üzleti gazdaságtan, közgazdaságtan, statisztika, adózás)</li>
+              <li>Informatikai szakmai tantárgyak (informatika, programozási alapismeretek, taniroda)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications sub-section -->
+      <div class="certs-wrap">
+        <h3 class="certs-subtitle">Cisco Tanúsítványok</h3>
+        <div class="certs-row">
+          <a href="https://www.credly.com/badges/bc251c96-31c4-4249-b241-efa5671b9037/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
+            <img src="src/operating-systems-basics.png" alt="Operating Systems Basics badge" class="cert-img" />
+            <span>Operating Systems Basics</span>
+          </a>
+          <a href="https://www.credly.com/badges/2383325b-9018-4e13-aa0d-839519285f48/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
+            <img src="src/it-essentials.png" alt="IT Essentials badge" class="cert-img" />
+            <span>IT Essentials</span>
+          </a>
+          <a href="https://www.credly.com/badges/3b93d0e9-7ba4-4bf8-b772-eaeacaa4c9d8/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
+            <img src="src/ccna-introduction-to-networks.png" alt="CCNA: Introduction to Networks badge" class="cert-img" />
+            <span>CCNA: Introduction to Networks</span>
+          </a>
+          <a href="https://www.credly.com/badges/8f2e38c8-0477-44a2-b31b-27fec181e4e4/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
+            <img src="src/ccna-switching-routing-and-wireless-essentials.1.png" alt="CCNA: Switching, Routing &amp; Wireless Essentials badge" class="cert-img" />
+            <span>CCNA: Switching, Routing &amp; Wireless Essentials</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       COMPETITIONS
+  ═══════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// versenyek</span>
+        <h2 class="section-title">Országos IT Megmérettetés</h2>
+        <p class="section-sub">Helyezések az Országos IT Megmérettetés versenysorozaton</p>
+      </div>
+
+      <div class="comp-grid">
+        <div class="comp-item animate-in">
+          <span class="comp-rank top">#29</span>
+          <span class="comp-name">Mobilfejlesztés iOS</span>
+          <span class="comp-of">/ 119</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank top">#31</span>
+          <span class="comp-name">Hálózati ismeretek</span>
+          <span class="comp-of">/ 540</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank top">#36</span>
+          <span class="comp-name">Azure Cloud</span>
+          <span class="comp-of">/ 332</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#54</span>
+          <span class="comp-name">Mobilfejlesztés Android</span>
+          <span class="comp-of">/ 181</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#57</span>
+          <span class="comp-name">Cloud Network Security</span>
+          <span class="comp-of">/ 377</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#61</span>
+          <span class="comp-name">Infrastruktúra automatizáció</span>
+          <span class="comp-of">/ 319</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#76</span>
+          <span class="comp-name">FrontEnd</span>
+          <span class="comp-of">/ 415</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#77</span>
+          <span class="comp-name">Akadálymentes weboldalak</span>
+          <span class="comp-of">/ 335</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#86</span>
+          <span class="comp-name">Frontend</span>
+          <span class="comp-of">/ 640</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#86</span>
+          <span class="comp-name">IT Biztonság</span>
+          <span class="comp-of">/ 539</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#96</span>
+          <span class="comp-name">DevOps</span>
+          <span class="comp-of">/ 384</span>
+        </div>
+        <div class="comp-item animate-in">
+          <span class="comp-rank">#119</span>
+          <span class="comp-name">Nagy Nyelvi Modellek</span>
+          <span class="comp-of">/ 546</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════ -->
+  <section id="kapcsolat" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// kapcsolat</span>
+        <h2 class="section-title">Lépjünk kapcsolatba!</h2>
+        <p class="section-sub">Nyitott vagyok új lehetőségekre, projektekre és szakmai együttműködésekre.</p>
+      </div>
+
+      <div class="contact-cards">
+        <a href="mailto:sarbence@gmail.com" class="contact-card card animate-in">
+          <div class="cc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          </div>
+          <p class="cc-label">Email</p>
+          <p class="cc-val">sarbence@gmail.com</p>
+        </a>
+        <a href="tel:+36706088039" class="contact-card card animate-in">
+          <div class="cc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          </div>
+          <p class="cc-label">Telefon</p>
+          <p class="cc-val">+36 70 608 8039</p>
+        </a>
+        <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener" class="contact-card card animate-in">
+          <div class="cc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <p class="cc-label">LinkedIn</p>
+          <p class="cc-val">bencesarmon-13611698</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">Sarmon Bence</span>
+      <p class="footer-copy">© 2025 Sarmon Bence. Minden jog fenntartva.</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:sarbence@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       COOKIE BANNER
+  ═══════════════════════════════════════ -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie értesítés">
+    <p>Az oldal statisztikai célból cookie-kat használ. <a href="#">Bővebben</a></p>
+    <button id="accept-cookies">Elfogadom</button>
+  </div>
+
+</body>
+</html>
+
