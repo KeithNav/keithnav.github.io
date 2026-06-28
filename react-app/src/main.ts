@@ -205,6 +205,20 @@ function initVideoLoop(): void {
 }
 
 
+// ─── Scroll to top button ─────────────────────────────────────────────────────
+function initScrollTop(): void {
+  const btn = document.getElementById('scroll-top');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
@@ -215,5 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBanner();
   initTyping();
   initVideoLoop();
+  initScrollTop();
 });
 
