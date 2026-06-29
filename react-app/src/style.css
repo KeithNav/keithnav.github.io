@@ -770,6 +770,11 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  transition: transform var(--ease), border-color var(--ease);
+}
+.cert-badge:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-a);
 }
 .cert-img {
   width: 120px;
@@ -846,8 +851,12 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
   text-align: center;
   gap: 0.5rem;
   padding: 2rem 1.5rem;
+  transition: transform var(--ease), border-color var(--ease);
 }
-.contact-card:hover { border-color: var(--border-a); }
+.contact-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-a);
+}
 
 .cc-icon {
   width: 48px;
