@@ -267,6 +267,11 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
   flex-shrink: 0;
   transition: color var(--ease), border-color var(--ease), background var(--ease);
 }
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .nav-linkedin:hover {
   color: var(--accent);
   border-color: var(--border-a);
@@ -811,9 +816,9 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
 ═══════════════════════════════════════════════════════════ */
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  max-width: 860px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
