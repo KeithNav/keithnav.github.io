@@ -34,12 +34,21 @@
       </button>
 
       <ul id="nav-menu" role="list">
-        <li><a href="#rolam">Rólam</a></li>
-        <li><a href="#tapasztalat">Tapasztalat</a></li>
-        <li><a href="#projektek">Projektek</a></li>
-        <li><a href="#kepessegek">Képességek</a></li>
-        <li><a href="#oktatas">Tanulmányok</a></li>
-        <li><a href="#kapcsolat">Kapcsolat</a></li>
+        <li><a href="#rolam" data-i18n="nav.about">Rólam</a></li>
+        <li><a href="#tapasztalat" data-i18n="nav.experience">Tapasztalat</a></li>
+        <li><a href="#projektek" data-i18n="nav.projects">Projektek</a></li>
+        <li><a href="#kepessegek" data-i18n="nav.skills">Képességek</a></li>
+        <li><a href="#oktatas" data-i18n="nav.education">Tanulmányok</a></li>
+        <li><a href="#kapcsolat" data-i18n="nav.contact">Kapcsolat</a></li>
+        <li class="nav-lang-item">
+          <div class="lang-switcher" id="lang-switcher-mobile">
+            <span class="lang-label lang-active" id="lang-hu-label-mobile">HU</span>
+            <button class="lang-toggle-btn" id="lang-toggle-mobile" role="switch" aria-checked="false" aria-label="Nyelváltás / Switch language">
+              <span class="lang-toggle-thumb"></span>
+            </button>
+            <span class="lang-label" id="lang-en-label-mobile">EN</span>
+          </div>
+        </li>
       </ul>
 
       <div class="nav-social">
@@ -73,34 +82,41 @@
     </div>
 
     <div class="hero-content container">
-      <p class="hero-eyebrow">// Üdvözöllek a CV oldalamon</p>
+      <div class="lang-switcher" id="lang-switcher">
+        <span class="lang-label lang-active" id="lang-hu-label">Magyar</span>
+        <button class="lang-toggle-btn" id="lang-toggle" role="switch" aria-checked="false" aria-label="Nyelváltás / Switch language">
+          <span class="lang-toggle-thumb"></span>
+        </button>
+        <span class="lang-label" id="lang-en-label">English</span>
+      </div>
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">// Üdvözöllek a CV oldalamon</p>
       <h1 class="hero-name">Sarmon Bence</h1>
       <p class="hero-role">
         <span id="typed-text" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span>
       </p>
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n="hero.sub">
         Logisztikus, IT infrastruktúra üzemeltető –
         proaktív, folyamatosan fejlődő szakember Győrből.
       </p>
       <div class="hero-cta">
-        <a href="#rolam" class="btn btn-primary">Ismerd meg a munkámat</a>
-        <a href="#kapcsolat" class="btn btn-ghost">Kapcsolatfelvétel</a>
+        <a href="#rolam" class="btn btn-primary" data-i18n="hero.cta.primary">Ismerd meg a munkámat</a>
+        <a href="#kapcsolat" class="btn btn-ghost" data-i18n="hero.cta.ghost">Kapcsolatfelvétel</a>
       </div>
 
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">10+</span>
-          <span class="stat-lbl">Év tapasztalat</span>
+          <span class="stat-lbl" data-i18n="stat.years">Év tapasztalat</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-num">2</span>
-          <span class="stat-lbl">IT verseny</span>
+          <span class="stat-lbl" data-i18n="stat.competitions">IT verseny</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-num">3</span>
-          <span class="stat-lbl">Élő webprojekt</span>
+          <span class="stat-lbl" data-i18n="stat.projects">Élő webprojekt</span>
         </div>
       </div>
     </div>
@@ -118,8 +134,8 @@
   <section id="rolam" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// rólam</span>
-        <h2 class="section-title">Ki is vagyok?</h2>
+        <span class="section-tag" data-i18n="about.tag">// rólam</span>
+        <h2 class="section-title" data-i18n="about.title">Ki is vagyok?</h2>
       </div>
 
       <div class="about-grid">
@@ -128,23 +144,23 @@
             <img src="src/image.jpg" alt="Sarmon Bence" class="avatar-img" />
           </div>
           <div class="about-badges">
-            <span class="badge badge-green">● Aktívan keresek lehetőségeket</span>
+            <span class="badge badge-green" data-i18n="about.badge">● Aktívan keresek lehetőségeket</span>
           </div>
         </div>
 
         <div class="about-body animate-in">
-          <p>
+          <p data-i18n="about.p1">
             A technológia és annak újdonságai iránti érdeklődésem határozza meg a mindennapjaimat –
             ezeket napi szinten követem különböző szakmai fórumokon. Már diákéveim óta foglalkozom
             számítógépek és informatikai rendszerek építésével, javításával.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             Az utóbbi időben elmélyedtem a mesterséges intelligencia, különösen a nagy nyelvi modellek
             (LLM-ek) világában. Rendszeresen tesztelek különböző AI-alapú eszközöket, és kísérletezek
             azok gyakorlati alkalmazásával – automatizált tartalomgenerálástól adatelemzésen át technikai
             dokumentációk gyors előállításáig.
           </p>
-          <p>
+          <p data-i18n-html="about.p3">
             Jelenlegi munkám mellett közösségi szakértőként vagyok jelen az
             <strong>Audi Hungaria Data &amp; AI Community</strong> csoportban, ahol háziversenyt
             rendeztem, és AI technológiáról publikálok rendszeresen.
@@ -169,7 +185,7 @@
             </a>
             <span class="meta-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="2,12 12,2 22,12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              Győr, Magyarország
+              <span data-i18n="about.location">Győr, Magyarország</span>
             </span>
           </div>
         </div>
@@ -183,8 +199,8 @@
   <section id="tapasztalat" class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// karrier</span>
-        <h2 class="section-title">Szakmai tapasztalat</h2>
+        <span class="section-tag" data-i18n="exp.tag">// karrier</span>
+        <h2 class="section-title" data-i18n="exp.title">Szakmai tapasztalat</h2>
       </div>
 
       <div class="timeline">
@@ -194,24 +210,24 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Logisztikai koordinátor</h3>
-                <p class="tl-company">Audi Hungária – Előszérialogisztika és Változásmenedzsment G/PL-3</p>
+                <h3 class="tl-title" data-i18n="exp.job1.title">Logisztikai koordinátor</h3>
+                <p class="tl-company" data-i18n="exp.job1.company">Audi Hungária – Előszérialogisztika és Változásmenedzsment G/PL-3</p>
               </div>
-              <span class="tl-date">2018. május – jelenleg</span>
+              <span class="tl-date" data-i18n="exp.job1.date">2018. május – jelenleg</span>
             </div>
             <ul class="tl-list">
-              <li>Just-In-Time gyártásszervezési és készletgazdálkodási stratégia alkalmazása</li>
-              <li>SAP vállalatirányítási rendszer – anyagmozgások és készletnyilvántartás kezelése</li>
-              <li>Közvetlen 30 fős raktári csapat irányítása és ellenőrzése</li>
-              <li>Key User feladatok – hibás SAP tranzakciók elhárítása és kezelése</li>
-              <li>Fejlesztési javaslatok megfogalmazása és megvalósítása</li>
-              <li>Vevői auditokra való felkészülés, KPI mutatók nyomonkövetése</li>
+              <li data-i18n="exp.job1.li1">Just-In-Time gyártásszervezési és készletgazdálkodási stratégia alkalmazása</li>
+              <li data-i18n="exp.job1.li2">SAP vállalatirányítási rendszer – anyagmozgások és készletnyilvántartás kezelése</li>
+              <li data-i18n="exp.job1.li3">Közvetlen 30 fős raktári csapat irányítása és ellenőrzése</li>
+              <li data-i18n="exp.job1.li4">Key User feladatok – hibás SAP tranzakciók elhárítása és kezelése</li>
+              <li data-i18n="exp.job1.li5">Fejlesztési javaslatok megfogalmazása és megvalósítása</li>
+              <li data-i18n="exp.job1.li6">Vevői auditokra való felkészülés, KPI mutatók nyomonkövetése</li>
             </ul>
             <div class="tag-row">
               <span class="tag">SAP ERP</span>
               <span class="tag">JIT</span>
               <span class="tag">Key User</span>
-              <span class="tag">Logisztika</span>
+              <span class="tag" data-i18n="exp.job1.tag.logistics">Logisztika</span>
             </div>
           </div>
         </div>
@@ -221,21 +237,21 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Műszakvezető</h3>
-                <p class="tl-company">Syncreon Automotive Kft. – Audi Hungária G/PL-4</p>
+                <h3 class="tl-title" data-i18n="exp.job2.title">Műszakvezető</h3>
+                <p class="tl-company" data-i18n="exp.job2.company">Syncreon Automotive Kft. – Audi Hungária G/PL-4</p>
               </div>
-              <span class="tl-date">2016. dec – 2018. máj</span>
+              <span class="tl-date" data-i18n="exp.job2.date">2016. dec – 2018. máj</span>
             </div>
             <ul class="tl-list">
-              <li>Raktározási és anyagkezelési folyamatok üzembiztos működésének biztosítása</li>
-              <li>30 fős raktári csapat közvetlen irányítása és teljesítményének ellenőrzése</li>
-              <li>Raktárkészlet pontosságának fenntartása a vonatkozó szabályzatok szerint</li>
-              <li>SAP raktárnyilvántartási rendszer naprakész és precíz kezelése</li>
+              <li data-i18n="exp.job2.li1">Raktározási és anyagkezelési folyamatok üzembiztos működésének biztosítása</li>
+              <li data-i18n="exp.job2.li2">30 fős raktári csapat közvetlen irányítása és teljesítményének ellenőrzése</li>
+              <li data-i18n="exp.job2.li3">Raktárkészlet pontosságának fenntartása a vonatkozó szabályzatok szerint</li>
+              <li data-i18n="exp.job2.li4">SAP raktárnyilvántartási rendszer naprakész és precíz kezelése</li>
             </ul>
             <div class="tag-row">
               <span class="tag">SAP</span>
-              <span class="tag">Csapatvezetés</span>
-              <span class="tag">Raktárlogisztika</span>
+              <span class="tag" data-i18n="exp.job2.tag.lead">Csapatvezetés</span>
+              <span class="tag" data-i18n="exp.job2.tag.warehouse">Raktárlogisztika</span>
             </div>
           </div>
         </div>
@@ -245,18 +261,18 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Ipari IT Technikus</h3>
-                <p class="tl-company">T-Systems Magyarország Zrt. – Audi Hungária G/FP-3</p>
+                <h3 class="tl-title" data-i18n="exp.job3.title">Ipari IT Technikus</h3>
+                <p class="tl-company" data-i18n="exp.job3.company">T-Systems Magyarország Zrt. – Audi Hungária G/FP-3</p>
               </div>
-              <span class="tl-date">2015. aug – 2016. dec</span>
+              <span class="tl-date" data-i18n="exp.job3.date">2015. aug – 2016. dec</span>
             </div>
             <ul class="tl-list">
-              <li>Ipari informatikai szolgáltatások, 24/7 készenléti hibajavítás és ügyeleti támogatás</li>
-              <li>Gyártósorok hardveres és szoftveres támogatása, rövid válaszidővel</li>
-              <li>Új IT eszközök üzembe helyezése, konfigurálása és rendszerbe integrálása</li>
-              <li>Active Directory (AD) tartománykezelő és Hyena adminisztrációs szoftver</li>
-              <li>Távoli kapcsolatkezelés Windows / Linux Server környezetben</li>
-              <li>Incidenskezelés Peregrine Ticketing rendszeren keresztül</li>
+              <li data-i18n="exp.job3.li1">Ipari informatikai szolgáltatások, 24/7 készenléti hibajavítás és ügyeleti támogatás</li>
+              <li data-i18n="exp.job3.li2">Gyártósorok hardveres és szoftveres támogatása, rövid válaszidővel</li>
+              <li data-i18n="exp.job3.li3">Új IT eszközök üzembe helyezése, konfigurálása és rendszerbe integrálása</li>
+              <li data-i18n="exp.job3.li4">Active Directory (AD) tartománykezelő és Hyena adminisztrációs szoftver</li>
+              <li data-i18n="exp.job3.li5">Távoli kapcsolatkezelés Windows / Linux Server környezetben</li>
+              <li data-i18n="exp.job3.li6">Incidenskezelés Peregrine Ticketing rendszeren keresztül</li>
             </ul>
             <div class="tag-row">
               <span class="tag">Windows Server</span>
@@ -277,8 +293,8 @@
   <section id="projektek" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// munkáim</span>
-        <h2 class="section-title">Projektek</h2>
+        <span class="section-tag" data-i18n="proj.tag">// munkáim</span>
+        <h2 class="section-title" data-i18n="proj.title">Projektek</h2>
       </div>
 
       <div class="projects-grid">
@@ -293,7 +309,7 @@
             </div>
           </div>
           <h3 class="proj-title">Életkert</h3>
-          <p class="proj-desc">
+          <p class="proj-desc" data-i18n="proj.elek.desc">
             Őstermelői weboldal fejlesztése és üzemeltetése egy helyi vállalkozó részére.
             Linux VPS-en futó teljes stack – frontend és backend LLM segítségével, senior mentor támogatásával.
           </p>
@@ -316,7 +332,7 @@
             </div>
           </div>
           <h3 class="proj-title">Klímatrikk</h3>
-          <p class="proj-desc">
+          <p class="proj-desc" data-i18n="proj.klima.desc">
             Egyéni vállalkozás részére készített weboldal fejlesztése, üzemeltetése és arculati tervezése.
             Google Business integráció, SEO optimalizálás.
           </p>
@@ -334,7 +350,7 @@
             <span class="proj-icon" aria-hidden="true">🤖</span>
           </div>
           <h3 class="proj-title">Audi Data &amp; AI Community</h3>
-          <p class="proj-desc">
+          <p class="proj-desc" data-i18n="proj.audi.desc">
             Közösségi szakértőként az Audi Hungaria Data &amp; AI Community csoportban AI technológiát
             népszerűsítek, házi versenyt szerveztem és LLM-eket alkalmazó megoldásokat mutattam be.
           </p>
@@ -355,7 +371,7 @@
             </div>
           </div>
           <h3 class="proj-title">Portfólió weboldal</h3>
-          <p class="proj-desc">
+          <p class="proj-desc" data-i18n="proj.portfolio.desc">
             Saját fejlesztésű portfólió oldal TypeScript és Vite alapokon, teljesen egyedi CSS dizájnnal.
             PWA-támogatás, SVG favicon, reszponzív navigáció és animált szekciók.
           </p>
@@ -378,13 +394,13 @@
   <section id="kepessegek" class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// tudás</span>
-        <h2 class="section-title">Képességek &amp; Technológiák</h2>
+        <span class="section-tag" data-i18n="skills.tag">// tudás</span>
+        <h2 class="section-title" data-i18n="skills.title">Képességek &amp; Technológiák</h2>
       </div>
 
       <div class="skills-grid">
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">🌐</span>Webfejlesztés</p>
+          <p class="skill-cat-head" data-i18n-html="skills.web"><span class="sk-icon">🌐</span>Webfejlesztés</p>
           <div class="tag-row">
             <span class="tag">HTML5</span>
             <span class="tag">CSS3</span>
@@ -394,7 +410,7 @@
           </div>
         </div>
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">🖥️</span>Infrastruktúra &amp; Szerverek</p>
+          <p class="skill-cat-head" data-i18n-html="skills.infra"><span class="sk-icon">🖥️</span>Infrastruktúra &amp; Szerverek</p>
           <div class="tag-row">
             <span class="tag">Linux</span>
             <span class="tag">Windows Server</span>
@@ -405,7 +421,7 @@
           </div>
         </div>
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">🔌</span>Hálózatok</p>
+          <p class="skill-cat-head" data-i18n-html="skills.net"><span class="sk-icon">🔌</span>Hálózatok</p>
           <div class="tag-row">
             <span class="tag">Cisco CCNA</span>
             <span class="tag">Packet Tracer</span>
@@ -414,7 +430,7 @@
           </div>
         </div>
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">🗄️</span>Adatbázisok &amp; Felhő</p>
+          <p class="skill-cat-head" data-i18n-html="skills.db"><span class="sk-icon">🗄️</span>Adatbázisok &amp; Felhő</p>
           <div class="tag-row">
             <span class="tag">MySQL</span>
             <span class="tag">Git, Github</span>
@@ -424,20 +440,20 @@
           </div>
         </div>
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">🤖</span>AI &amp; Automatizáció</p>
+          <p class="skill-cat-head" data-i18n-html="skills.ai"><span class="sk-icon">🤖</span>AI &amp; Automatizáció</p>
           <div class="tag-row">
             <span class="tag">LLM / GPT</span>
             <span class="tag">Prompt Engineering</span>
-            <span class="tag">Tartalomgenerálás</span>
-            <span class="tag">Adatelemzés</span>
+            <span class="tag" data-i18n="skills.ai.t3">Tartalomgenerálás</span>
+            <span class="tag" data-i18n="skills.ai.t4">Adatelemzés</span>
           </div>
         </div>
         <div class="skill-cat card animate-in">
-          <p class="skill-cat-head"><span class="sk-icon">📦</span>Vállalati rendszerek</p>
+          <p class="skill-cat-head" data-i18n-html="skills.enterprise"><span class="sk-icon">📦</span>Vállalati rendszerek</p>
           <div class="tag-row">
             <span class="tag">SAP ERP</span>
             <span class="tag">Active Directory</span>
-            <span class="tag">JIT logisztika</span>
+            <span class="tag" data-i18n="skills.jit">JIT logisztika</span>
           </div>
         </div>
       </div>
@@ -450,8 +466,8 @@
   <section id="oktatas" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// képzés</span>
-        <h2 class="section-title">Tanulmányok</h2>
+        <span class="section-tag" data-i18n="edu.tag">// képzés</span>
+        <h2 class="section-title" data-i18n="edu.title">Tanulmányok</h2>
       </div>
 
       <div class="timeline">
@@ -461,16 +477,16 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">IT Rendszer és Alkalmazás Üzemeltető Technikus</h3>
-                <p class="tl-company">Jedlik Ányos Gépipari és Informatikai Technikum</p>
+                <h3 class="tl-title" data-i18n="edu.item1.title">IT Rendszer és Alkalmazás Üzemeltető Technikus</h3>
+                <p class="tl-company" data-i18n="edu.item1.school">Jedlik Ányos Gépipari és Informatikai Technikum</p>
               </div>
-              <span class="tl-date">2025 szeptember – jelenleg</span>
+              <span class="tl-date" data-i18n="edu.item1.date">2025 szeptember – jelenleg</span>
             </div>
             <ul class="tl-list">
-              <li>Windows és Linux szerverek telepítése, üzemeltetése</li>
-              <li>Cisco Network Academy (CCNA) képzések</li>
-              <li>Adatbázis-kezelés (MySQL, PostgreSQL)</li>
-              <li>Felhőszolgáltatások és virtualizáció (VMware, VirtualBox)</li>
+              <li data-i18n="edu.item1.li1">Windows és Linux szerverek telepítése, üzemeltetése</li>
+              <li data-i18n="edu.item1.li2">Cisco Network Academy (CCNA) képzések</li>
+              <li data-i18n="edu.item1.li3">Adatbázis-kezelés (MySQL, PostgreSQL)</li>
+              <li data-i18n="edu.item1.li4">Felhőszolgáltatások és virtualizáció (VMware, VirtualBox)</li>
             </ul>
           </div>
         </div>
@@ -480,8 +496,8 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Emelőgépkezelői és Darukezelői OKJ</h3>
-                <p class="tl-company">Mondo-Libro Felnőttképzés</p>
+                <h3 class="tl-title" data-i18n="edu.item2.title">Emelőgépkezelői és Darukezelői OKJ</h3>
+                <p class="tl-company" data-i18n="edu.item2.school">Mondo-Libro Felnőttképzés</p>
               </div>
               <span class="tl-date">2017</span>
             </div>
@@ -493,8 +509,8 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Logisztikai Mérnöki (befejezetlen)</h3>
-                <p class="tl-company">Széchenyi István Egyetem</p>
+                <h3 class="tl-title" data-i18n="edu.item3.title">Logisztikai Mérnöki (befejezetlen)</h3>
+                <p class="tl-company" data-i18n="edu.item3.school">Széchenyi István Egyetem</p>
               </div>
               <span class="tl-date">2015 – 2016</span>
             </div>
@@ -506,14 +522,14 @@
           <div class="tl-body card">
             <div class="tl-head">
               <div>
-                <h3 class="tl-title">Érettségi – Közgazdasági és Informatikai</h3>
-                <p class="tl-company">Deák Ferenc Közgazdasági és Informatikai Szakközépiskola</p>
+                <h3 class="tl-title" data-i18n="edu.item4.title">Érettségi – Közgazdasági és Informatikai</h3>
+                <p class="tl-company" data-i18n="edu.item4.school">Deák Ferenc Közgazdasági és Informatikai Szakközépiskola</p>
               </div>
               <span class="tl-date">2011 – 2015</span>
             </div>
             <ul class="tl-list">
-              <li>Közgazdasági szakmai tantárgyak (üzleti gazdaságtan, közgazdaságtan, statisztika, adózás)</li>
-              <li>Informatikai szakmai tantárgyak (informatika, programozási alapismeretek, taniroda)</li>
+              <li data-i18n="edu.item4.li1">Közgazdasági szakmai tantárgyak (üzleti gazdaságtan, közgazdaságtan, statisztika, adózás)</li>
+              <li data-i18n="edu.item4.li2">Informatikai szakmai tantárgyak (informatika, programozási alapismeretek, taniroda)</li>
             </ul>
           </div>
         </div>
@@ -522,8 +538,8 @@
 
       <!-- Certifications sub-section -->
       <div class="certs-wrap">
-        <h3 class="certs-subtitle">Cisco Tanúsítványok</h3>
-        <p class="certs-hint">A badge-re kattintva megnézheted Credly-n a tanúsítványom hitelességét 😊</p>
+        <h3 class="certs-subtitle" data-i18n="certs.title">Cisco Tanúsítványok</h3>
+        <p class="certs-hint" data-i18n="certs.hint">A badge-re kattintva megnézheted Credly-n a tanúsítványom hitelességét 😊</p>
         <div class="certs-row">
           <a href="https://www.credly.com/badges/bc251c96-31c4-4249-b241-efa5671b9037/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
             <img src="src/operating-systems-basics.png" alt="Operating Systems Basics badge" class="cert-img" />
@@ -552,20 +568,20 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// versenyek</span>
-        <h2 class="section-title">Országos IT Megmérettetés</h2>
-        <p class="section-sub">Helyezések az Országos IT Megmérettetés versenysorozaton</p>
+        <span class="section-tag" data-i18n="comp.tag">// versenyek</span>
+        <h2 class="section-title" data-i18n="comp.title">Országos IT Megmérettetés</h2>
+        <p class="section-sub" data-i18n="comp.sub">Helyezések az Országos IT Megmérettetés versenysorozaton</p>
       </div>
 
       <div class="comp-grid">
         <div class="comp-item animate-in">
           <span class="comp-rank top">#29</span>
-          <span class="comp-name">Mobilfejlesztés iOS</span>
+          <span class="comp-name" data-i18n="comp.mobile.ios">Mobilfejlesztés iOS</span>
           <span class="comp-of">/ 119</span>
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank top">#31</span>
-          <span class="comp-name">Hálózati ismeretek</span>
+          <span class="comp-name" data-i18n="comp.network">Hálózati ismeretek</span>
           <span class="comp-of">/ 540</span>
         </div>
         <div class="comp-item animate-in">
@@ -575,7 +591,7 @@
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#54</span>
-          <span class="comp-name">Mobilfejlesztés Android</span>
+          <span class="comp-name" data-i18n="comp.mobile.android">Mobilfejlesztés Android</span>
           <span class="comp-of">/ 181</span>
         </div>
         <div class="comp-item animate-in">
@@ -585,27 +601,27 @@
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#61</span>
-          <span class="comp-name">Infrastruktúra automatizáció</span>
+          <span class="comp-name" data-i18n="comp.infra">Infrastruktúra automatizáció</span>
           <span class="comp-of">/ 319</span>
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#76</span>
-          <span class="comp-name">FrontEnd</span>
+          <span class="comp-name" data-i18n="comp.frontend1">FrontEnd</span>
           <span class="comp-of">/ 415</span>
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#77</span>
-          <span class="comp-name">Akadálymentes weboldalak</span>
+          <span class="comp-name" data-i18n="comp.accessible">Akadálymentes weboldalak</span>
           <span class="comp-of">/ 335</span>
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#86</span>
-          <span class="comp-name">Frontend</span>
+          <span class="comp-name" data-i18n="comp.frontend2">Frontend</span>
           <span class="comp-of">/ 640</span>
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#86</span>
-          <span class="comp-name">IT Biztonság</span>
+          <span class="comp-name" data-i18n="comp.itsec">IT Biztonság</span>
           <span class="comp-of">/ 539</span>
         </div>
         <div class="comp-item animate-in">
@@ -615,7 +631,7 @@
         </div>
         <div class="comp-item animate-in">
           <span class="comp-rank">#119</span>
-          <span class="comp-name">Nagy Nyelvi Modellek</span>
+          <span class="comp-name" data-i18n="comp.llm">Nagy Nyelvi Modellek</span>
           <span class="comp-of">/ 546</span>
         </div>
       </div>
@@ -628,9 +644,9 @@
   <section id="kapcsolat" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// kapcsolat</span>
-        <h2 class="section-title">Lépjünk kapcsolatba!</h2>
-        <p class="section-sub">Nyitott vagyok új lehetőségekre, projektekre és szakmai együttműködésekre.</p>
+        <span class="section-tag" data-i18n="contact.tag">// kapcsolat</span>
+        <h2 class="section-title" data-i18n="contact.title">Lépjünk kapcsolatba!</h2>
+        <p class="section-sub" data-i18n="contact.sub">Nyitott vagyok új lehetőségekre, projektekre és szakmai együttműködésekre.</p>
       </div>
 
       <div class="contact-cards">
@@ -645,7 +661,7 @@
           <div class="cc-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
           </div>
-          <p class="cc-label">Telefon</p>
+          <p class="cc-label" data-i18n="contact.phone">Telefon</p>
           <p class="cc-val">+36 70 608 8039</p>
         </a>
         <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener" class="contact-card card animate-in">
@@ -672,7 +688,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <span class="footer-brand">Sarmon Bence</span>
-      <p class="footer-copy">© 2025 Sarmon Bence. Minden jog fenntartva.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Sarmon Bence. Minden jog fenntartva.</p>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/bence-sarmon-13611698/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/KeithNav" target="_blank" rel="noopener">GitHub</a>
@@ -685,8 +701,8 @@
        COOKIE BANNER
   ═══════════════════════════════════════ -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie értesítés">
-    <p>Az oldal statisztikai célból cookie-kat használ. <a href="#">Bővebben</a></p>
-    <button id="accept-cookies">Elfogadom</button>
+    <p data-i18n-html="cookie.text">Az oldal statisztikai célból cookie-kat használ. <a href="#">Bővebben</a></p>
+    <button id="accept-cookies" data-i18n="cookie.btn">Elfogadom</button>
   </div>
 
   <button id="scroll-top" aria-label="Vissza a tetejére">
