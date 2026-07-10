@@ -155,7 +155,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'comp.frontend2': 'Frontend', 'comp.itsec': 'IT Biztonság', 'comp.llm': 'Nagy Nyelvi Modellek',
     'contact.tag': '// kapcsolat', 'contact.title': 'Lépjünk kapcsolatba!',
     'contact.sub': 'Nyitott vagyok új lehetőségekre, projektekre és szakmai együttműködésekre.',
-    'contact.phone': 'Telefon', 'footer.copy': '© 2025 Sarmon Bence. Minden jog fenntartva.',
+    'contact.phone': 'Telefon', 'footer.copy': '© 2026 Sarmon Bence. Minden jog fenntartva.',
     'cookie.text': 'Az oldal statisztikai célból cookie-kat használ. <a href="#">Bővebben</a>',
     'cookie.btn': 'Elfogadom',
   },
