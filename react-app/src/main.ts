@@ -1,4 +1,6 @@
 import './style.css';
+import darkEletkertLogo from './logojofeher.webp';
+import lightEletkertLogo from './logojo_decreased.png';
 
 // ─── Smooth scroll without hash in URL ───────────────────────────────────────
 function initSmoothScroll(): void {
@@ -29,6 +31,38 @@ function initNavbar(): void {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+}
+
+// ─── Theme switcher ──────────────────────────────────────────────────────────
+type Theme = 'dark' | 'light';
+
+let currentTheme: Theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+
+function applyTheme(theme: Theme): void {
+  currentTheme = theme;
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem('theme', theme);
+
+  const eletkertLogo = document.getElementById('eletkert-logo') as HTMLImageElement | null;
+  if (eletkertLogo) eletkertLogo.src = theme === 'dark' ? darkEletkertLogo : lightEletkertLogo;
+
+  const isDark = theme === 'dark';
+  ['theme-toggle', 'theme-toggle-mobile'].forEach(id => {
+    const button = document.getElementById(id);
+    if (!button) return;
+    button.classList.toggle('is-light', !isDark);
+    button.setAttribute('aria-checked', String(isDark));
+    button.setAttribute('aria-label', isDark ? 'Világos mód bekapcsolása' : 'Sötét mód bekapcsolása');
+  });
+}
+
+function initTheme(): void {
+  ['theme-toggle', 'theme-toggle-mobile'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  });
+  applyTheme(currentTheme);
 }
 
 // ─── Mobile hamburger menu ────────────────────────────────────────────────────
@@ -450,6 +484,7 @@ function initLanguage(): void {
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
+  initTheme();
   initNavbar();
   initMobileMenu();
   initActiveNav();

@@ -15,6 +15,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light';
+    } catch { /* Dark mode remains the fallback. */ }
+  </script>
   <script type="module" src="/src/main.ts"></script>
 </head>
 
@@ -49,6 +54,13 @@
             <span class="lang-label" id="lang-en-label-mobile">EN</span>
           </div>
         </li>
+        <li class="nav-theme-item">
+          <button class="theme-switcher" id="theme-toggle-mobile" type="button" role="switch" aria-checked="true" aria-label="Világos mód bekapcsolása">
+            <span class="theme-option theme-option-dark">Dark</span>
+            <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb">☾</span></span>
+            <span class="theme-option theme-option-light">Light</span>
+          </button>
+        </li>
       </ul>
 
       <div class="nav-social">
@@ -64,6 +76,11 @@
           GitHub
         </a>
       </div>
+      <button class="theme-switcher nav-theme-switcher" id="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Világos mód bekapcsolása">
+        <span class="theme-option theme-option-dark">Dark</span>
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb">☾</span></span>
+        <span class="theme-option theme-option-light">Light</span>
+      </button>
     </nav>
   </header>
 
@@ -301,7 +318,7 @@
 
         <article class="project-card card animate-in">
           <div class="proj-top">
-            <img src="src/logojofeher.webp" alt="Életkert logó" class="proj-logo" />
+            <img src="src/logojofeher.webp" alt="Életkert logó" class="proj-logo" id="eletkert-logo" />
             <div class="proj-links">
               <a href="https://eletkertjudittal.hu" target="_blank" rel="noopener" class="proj-link" aria-label="Élő weboldal megtekintése">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
