@@ -190,6 +190,12 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'contact.tag': '// kapcsolat', 'contact.title': 'Lépjünk kapcsolatba!',
     'contact.sub': 'Nyitott vagyok új lehetőségekre, projektekre és szakmai együttműködésekre.',
     'contact.phone': 'Telefon', 'footer.copy': '© 2026 Sarmon Bence. Minden jog fenntartva.',
+    'contact.form.name': 'Név', 'contact.form.email': 'Email', 'contact.form.subject': 'Tárgy',
+    'contact.form.message': 'Üzenet', 'contact.form.submit': 'Üzenet küldése',
+    'contact.form.sending': 'Küldés folyamatban...',
+    'contact.form.captcha': 'Kérlek, igazold, hogy nem robot vagy.',
+    'contact.form.success': 'Köszönöm, az üzenet sikeresen elküldve.',
+    'contact.form.error': 'Az üzenet küldése nem sikerült. Kérlek, próbáld újra.',
     'cookie.text': 'Az oldal statisztikai célból cookie-kat használ. <a href="#">Bővebben</a>',
     'cookie.btn': 'Elfogadom',
   },
@@ -272,6 +278,12 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'contact.tag': '// contact', 'contact.title': "Let's get in touch!",
     'contact.sub': "I'm open to new opportunities, projects, and professional collaborations.",
     'contact.phone': 'Phone', 'footer.copy': '© 2026 Sarmon Bence. All rights reserved.',
+    'contact.form.name': 'Name', 'contact.form.email': 'Email', 'contact.form.subject': 'Subject',
+    'contact.form.message': 'Message', 'contact.form.submit': 'Send message',
+    'contact.form.sending': 'Sending message...',
+    'contact.form.captcha': 'Please verify that you are not a robot.',
+    'contact.form.success': 'Thank you, your message has been sent successfully.',
+    'contact.form.error': 'Your message could not be sent. Please try again.',
     'cookie.text': 'This site uses cookies for analytics purposes. <a href="#">Learn more</a>',
     'cookie.btn': 'Accept',
   },
@@ -481,6 +493,48 @@ function initLanguage(): void {
   applyLanguage(currentLang);
 }
 
+// ─── Contact form (Web3Forms) ───────────────────────────────────────────────
+function initContactForm(): void {
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitButton = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const status = document.getElementById('contact-form-status');
+  if (!form || !submitButton || !status) return;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const captchaResponse = form.querySelector<HTMLTextAreaElement>('[name="h-captcha-response"]');
+    if (!captchaResponse?.value) {
+      status.className = 'contact-form-status error';
+      status.textContent = TRANSLATIONS[currentLang]['contact.form.captcha'];
+      return;
+    }
+
+    submitButton.disabled = true;
+    status.className = 'contact-form-status';
+    status.textContent = TRANSLATIONS[currentLang]['contact.form.sending'];
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data: { success?: boolean } = await response.json();
+
+      if (!data.success) throw new Error('Web3Forms submission failed');
+
+      form.reset();
+      status.classList.add('success');
+      status.textContent = TRANSLATIONS[currentLang]['contact.form.success'];
+    } catch {
+      status.classList.add('error');
+      status.textContent = TRANSLATIONS[currentLang]['contact.form.error'];
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
@@ -491,6 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initCookieBanner();
   initLanguage();
+  initContactForm();
   initVideoLoop();
   initScrollTop();
 });
