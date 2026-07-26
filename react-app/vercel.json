@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/:lang(hu|en)",
+      "destination": "/index.html"
+    }
+  ]
+}

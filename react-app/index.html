@@ -76,6 +76,13 @@
           GitHub
         </a>
       </div>
+      <div class="lang-switcher nav-lang-switcher" id="lang-switcher">
+        <span class="lang-label lang-active" id="lang-hu-label">Magyar</span>
+        <button class="lang-toggle-btn" id="lang-toggle" role="switch" aria-checked="false" aria-label="Nyelváltás / Switch language">
+          <span class="lang-toggle-thumb"></span>
+        </button>
+        <span class="lang-label" id="lang-en-label">Angol</span>
+      </div>
       <button class="theme-switcher nav-theme-switcher" id="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Világos mód bekapcsolása">
         <span class="theme-option theme-option-dark">Dark</span>
         <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb">☾</span></span>
@@ -99,13 +106,6 @@
     </div>
 
     <div class="hero-content container">
-      <div class="lang-switcher" id="lang-switcher">
-        <span class="lang-label lang-active" id="lang-hu-label">Magyar</span>
-        <button class="lang-toggle-btn" id="lang-toggle" role="switch" aria-checked="false" aria-label="Nyelváltás / Switch language">
-          <span class="lang-toggle-thumb"></span>
-        </button>
-        <span class="lang-label" id="lang-en-label">English</span>
-      </div>
       <p class="hero-eyebrow" data-i18n="hero.eyebrow">// Üdvözöllek a CV oldalamon</p>
       <h1 class="hero-name">Sarmon Bence</h1>
       <p class="hero-role">
@@ -116,25 +116,8 @@
         proaktív, folyamatosan fejlődő szakember Győrből.
       </p>
       <div class="hero-cta">
-        <a href="#rolam" class="btn btn-primary" data-i18n="hero.cta.primary">Ismerd meg a munkámat</a>
+        <a href="#projektek" class="btn btn-primary" data-i18n="hero.cta.primary">Nézd meg a projektjeimet</a>
         <a href="#kapcsolat" class="btn btn-ghost" data-i18n="hero.cta.ghost">Kapcsolatfelvétel</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-lbl" data-i18n="stat.years">Év tapasztalat</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">2</span>
-          <span class="stat-lbl" data-i18n="stat.competitions">IT verseny</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">3</span>
-          <span class="stat-lbl" data-i18n="stat.projects">Élő webprojekt</span>
-        </div>
       </div>
     </div>
 
@@ -158,7 +141,7 @@
       <div class="about-grid">
         <div class="about-avatar animate-in">
           <div class="avatar-wrap">
-            <img src="src/image.jpg" alt="Sarmon Bence" class="avatar-img" />
+            <img src="src/image.webp" alt="Sarmon Bence" class="avatar-img" />
           </div>
           <div class="about-badges">
             <span class="badge badge-green" data-i18n="about.badge">● Aktívan keresek lehetőségeket</span>
@@ -341,7 +324,7 @@
 
         <article class="project-card card animate-in">
           <div class="proj-top">
-            <img src="src/klimatrikk5.png" alt="Klímatrikk logó" class="proj-logo" />
+            <img src="src/klimatrikk5.webp" alt="Klímatrikk logó" class="proj-logo" />
             <div class="proj-links">
               <a href="https://klimatrikk.hu" target="_blank" rel="noopener" class="proj-link" aria-label="Élő weboldal megtekintése">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -380,7 +363,7 @@
 
         <article class="project-card card animate-in">
           <div class="proj-top">
-            <img src="src/pfavicon.png" alt="Portfólió logó" class="proj-logo" />
+            <img src="src/pfavicon.webp" alt="Portfólió logó" class="proj-logo" />
             <div class="proj-links">
               <a href="https://github.com/KeithNav" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub repository">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
@@ -556,22 +539,21 @@
       <!-- Certifications sub-section -->
       <div class="certs-wrap">
         <h3 class="certs-subtitle" data-i18n="certs.title">Cisco Tanúsítványok</h3>
-        <p class="certs-hint" data-i18n="certs.hint">A badge-re kattintva megnézheted Credly-n a tanúsítványom hitelességét 😊</p>
         <div class="certs-row">
           <a href="https://www.credly.com/badges/bc251c96-31c4-4249-b241-efa5671b9037/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
-            <img src="src/operating-systems-basics.png" alt="Operating Systems Basics badge" class="cert-img" />
+            <img src="src/operating-systems-basics.webp" alt="Operating Systems Basics badge" class="cert-img" />
             <span>Operating Systems Basics</span>
           </a>
           <a href="https://www.credly.com/badges/2383325b-9018-4e13-aa0d-839519285f48/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
-            <img src="src/it-essentials.png" alt="IT Essentials badge" class="cert-img" />
+            <img src="src/it-essentials.webp" alt="IT Essentials badge" class="cert-img" />
             <span>IT Essentials</span>
           </a>
           <a href="https://www.credly.com/badges/3b93d0e9-7ba4-4bf8-b772-eaeacaa4c9d8/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
-            <img src="src/ccna-introduction-to-networks.png" alt="CCNA: Introduction to Networks badge" class="cert-img" />
+            <img src="src/ccna-introduction-to-networks.webp" alt="CCNA: Introduction to Networks badge" class="cert-img" />
             <span>CCNA: Introduction to Networks</span>
           </a>
           <a href="https://www.credly.com/badges/8f2e38c8-0477-44a2-b31b-27fec181e4e4/public_url" target="_blank" rel="noopener" class="cert-badge card animate-in">
-            <img src="src/ccna-switching-routing-and-wireless-essentials.1.png" alt="CCNA: Switching, Routing &amp; Wireless Essentials badge" class="cert-img" />
+            <img src="src/ccna-switching-routing-and-wireless-essentials.1.webp" alt="CCNA: Switching, Routing &amp; Wireless Essentials badge" class="cert-img" />
             <span>CCNA: Switching, Routing &amp; Wireless Essentials</span>
           </a>
         </div>
@@ -582,7 +564,7 @@
   <!-- ═══════════════════════════════════════
        COMPETITIONS
   ═══════════════════════════════════════ -->
-  <section class="section section-alt">
+  <section id="versenyek" class="section section-alt">
     <div class="container">
       <div class="section-header">
         <span class="section-tag" data-i18n="comp.tag">// versenyek</span>

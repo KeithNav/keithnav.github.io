@@ -1,6 +1,6 @@
 import './style.css';
 import darkEletkertLogo from './logojofeher.webp';
-import lightEletkertLogo from './logojo_decreased.png';
+import lightEletkertLogo from './logojo_decreased.webp';
 
 // ─── Smooth scroll without hash in URL ───────────────────────────────────────
 function initSmoothScroll(): void {
@@ -116,7 +116,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'nav.skills': 'Képességek', 'nav.education': 'Tanulmányok', 'nav.contact': 'Kapcsolat',
     'hero.eyebrow': '// Üdvözöllek a CV oldalamon',
     'hero.sub': 'Logisztikus, IT infrastruktúra üzemeltető – proaktív, folyamatosan fejlődő szakember Győrből.',
-    'hero.cta.primary': 'Ismerd meg a munkámat', 'hero.cta.ghost': 'Kapcsolatfelvétel',
+    'hero.cta.primary': 'Nézd meg a projektjeimet', 'hero.cta.ghost': 'Kapcsolatfelvétel',
     'stat.years': 'Év tapasztalat', 'stat.competitions': 'IT verseny', 'stat.projects': 'Élő webprojekt',
     'about.tag': '// rólam', 'about.title': 'Ki is vagyok?',
     'about.badge': '● Aktívan keresek lehetőségeket',
@@ -204,7 +204,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'nav.skills': 'Skills', 'nav.education': 'Education', 'nav.contact': 'Contact',
     'hero.eyebrow': '// Welcome to my CV page',
     'hero.sub': 'Logistics coordinator, IT infrastructure specialist – proactive, continuously developing professional from Győr.',
-    'hero.cta.primary': 'Explore my work', 'hero.cta.ghost': 'Get in touch',
+    'hero.cta.primary': 'View my projects', 'hero.cta.ghost': 'Get in touch',
     'stat.years': 'Years of experience', 'stat.competitions': 'IT competitions', 'stat.projects': 'Live web projects',
     'about.tag': '// about me', 'about.title': 'Who am I?',
     'about.badge': '● Actively seeking opportunities',
@@ -294,7 +294,13 @@ const ROLES: Record<Lang, string[]> = {
   en: ['Logistics Coordinator', 'IT Infrastructure Specialist', 'Network & Systems Administrator', 'AI & LLM Enthusiast'],
 };
 
-let currentLang: Lang = (localStorage.getItem('lang') as Lang) || 'hu';
+function getLanguageFromPath(): Lang | null {
+  const pathSegments = window.location.pathname.split('/').filter(Boolean);
+  const language = pathSegments[pathSegments.length - 1];
+  return language === 'hu' || language === 'en' ? language : null;
+}
+
+let currentLang: Lang = getLanguageFromPath() || (localStorage.getItem('lang') as Lang) || 'hu';
 
 // ─── Typing animation ────────────────────────────────────────────────────────
 let typingTimer: ReturnType<typeof setTimeout> | null = null;
@@ -345,6 +351,33 @@ function initScrollReveal(): void {
   );
 
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+}
+
+function initContentOrder(): void {
+  const about = document.getElementById('rolam');
+  const projects = document.getElementById('projektek');
+  const skills = document.getElementById('kepessegek');
+  const experience = document.getElementById('tapasztalat');
+  const education = document.getElementById('oktatas');
+  const competitions = document.getElementById('versenyek');
+  const certificates = education?.querySelector('.certs-wrap');
+
+  if (!about || !projects || !skills || !experience || !education || !competitions || !certificates) return;
+
+  const certificateSection = document.createElement('section');
+  certificateSection.className = 'section section-alt';
+  certificateSection.id = 'tanusitvanyok';
+  const container = document.createElement('div');
+  container.className = 'container';
+  certificateSection.append(container);
+  container.append(certificates);
+
+  about.after(projects);
+  projects.after(skills);
+  skills.after(experience);
+  experience.after(certificateSection);
+  certificateSection.after(competitions);
+  competitions.after(education);
 }
 
 // ─── Cookie banner ───────────────────────────────────────────────────────────
@@ -443,6 +476,10 @@ function applyLanguage(lang: Lang): void {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
+  const languagePath = `/${lang}`;
+  if (window.location.pathname !== languagePath) {
+    window.history.replaceState(null, '', `${languagePath}${window.location.search}${window.location.hash}`);
+  }
 
   // Sync all toggle instances (main hero + mobile nav)
   ['lang-toggle', 'lang-toggle-mobile'].forEach(id => {
@@ -459,6 +496,18 @@ function applyLanguage(lang: Lang): void {
   ['lang-en-label', 'lang-en-label-mobile'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.toggle('lang-active', lang === 'en');
+  });
+
+  const languageLabels = lang === 'hu'
+    ? { hu: 'Magyar', en: 'Angol' }
+    : { hu: 'Hungarian', en: 'English' };
+  ['lang-hu-label', 'lang-hu-label-mobile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = languageLabels.hu;
+  });
+  ['lang-en-label', 'lang-en-label-mobile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = languageLabels.en;
   });
 
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
@@ -537,6 +586,7 @@ function initContactForm(): void {
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  initContentOrder();
   initSmoothScroll();
   initTheme();
   initNavbar();
