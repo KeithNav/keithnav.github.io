@@ -803,23 +803,21 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
   transform: translateY(-6px);
   border-color: var(--border-a);
 }
-.cert-badge::after {
-  content: '\2197';
+.cert-link {
   position: absolute;
   top: 0.75rem;
   right: 0.85rem;
-  display: grid;
+  display: flex;
   width: 1.9rem;
   height: 1.9rem;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   color: var(--text-2);
   background: var(--accent-gl);
   border: 1px solid var(--border-a);
   border-radius: 6px;
-  font-size: 1.1rem;
-  line-height: 1;
 }
-.cert-badge:hover::after { color: var(--accent); }
+.cert-badge:hover .cert-link { color: var(--accent); }
 .cert-img {
   width: 120px;
   height: 120px;
@@ -1343,6 +1341,7 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
   min-height: 36px;
   flex-shrink: 0;
   justify-content: center;
+  font-size: 0.68rem;
 }
 
 .nav-theme-item { display: none; }

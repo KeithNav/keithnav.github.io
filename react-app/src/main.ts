@@ -113,7 +113,7 @@ type Lang = 'hu' | 'en';
 const TRANSLATIONS: Record<Lang, Record<string, string>> = {
   hu: {
     'nav.about': 'Rólam', 'nav.experience': 'Tapasztalat', 'nav.projects': 'Projektek',
-    'nav.skills': 'Képességek', 'nav.education': 'Tanulmányok', 'nav.contact': 'Kapcsolat',
+    'nav.skills': 'Képességek', 'nav.certificates': 'Tanúsítványok', 'nav.competitions': 'Versenyek', 'nav.education': 'Tanulmányok', 'nav.contact': 'Kapcsolat',
     'hero.eyebrow': '// Üdvözöllek a CV oldalamon',
     'hero.sub': 'Logisztikus, IT infrastruktúra üzemeltető – proaktív, folyamatosan fejlődő szakember Győrből.',
     'hero.cta.primary': 'Nézd meg a projektjeimet', 'hero.cta.ghost': 'Kapcsolatfelvétel',
@@ -201,7 +201,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
   },
   en: {
     'nav.about': 'About', 'nav.experience': 'Experience', 'nav.projects': 'Projects',
-    'nav.skills': 'Skills', 'nav.education': 'Education', 'nav.contact': 'Contact',
+    'nav.skills': 'Skills', 'nav.certificates': 'Certificates', 'nav.competitions': 'Competitions', 'nav.education': 'Education', 'nav.contact': 'Contact',
     'hero.eyebrow': '// Welcome to my CV page',
     'hero.sub': 'Logistics coordinator, IT infrastructure specialist – proactive, continuously developing professional from Győr.',
     'hero.cta.primary': 'View my projects', 'hero.cta.ghost': 'Get in touch',
