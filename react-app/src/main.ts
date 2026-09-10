@@ -448,11 +448,12 @@ function initVideoLoop(): void {
     vFrom.addEventListener('timeupdate', onTimeUpdate);
   };
 
-  // Wait for metadata so .duration is available
-  if (videos[0].readyState >= 1) {
+  // Wait until the first frame is actually decoded (not just metadata) so the
+  // video fades in over real footage instead of popping in on a black frame.
+  if (videos[0].readyState >= 2) {
     setup();
   } else {
-    videos[0].addEventListener('loadedmetadata', setup, { once: true });
+    videos[0].addEventListener('loadeddata', setup, { once: true });
   }
 }
 
