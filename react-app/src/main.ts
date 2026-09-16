@@ -157,6 +157,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'proj.klima.desc': 'Egyéni vállalkozás részére készített weboldal fejlesztése, üzemeltetése és arculati tervezése. Google Business integráció, SEO optimalizálás.',
     'proj.audi.desc': 'Közösségi szakértőként az Audi Hungaria Data & AI Community csoportban AI technológiát népszerűsítek, házi versenyt szerveztem és LLM-eket alkalmazó megoldásokat mutattam be.',
     'proj.portfolio.desc': 'Saját fejlesztésű portfólió oldal TypeScript és Vite alapokon, teljesen egyedi CSS dizájnnal. PWA-támogatás, SVG favicon, reszponzív navigáció és animált szekciók.',
+    'proj.pointout.desc': 'Nyílt forráskódú, önhostolható widget, amellyel az ügyfelek közvetlenül az élő weboldalon hagyhatnak valós idejű, vizuális visszajelzéseket.',
     'skills.tag': '// tudás', 'skills.title': 'Képességek & Technológiák',
     'skills.web': '<span class="sk-icon">🌐</span>Webfejlesztés',
     'skills.infra': '<span class="sk-icon">🖥️</span>Infrastruktúra &amp; Szerverek',
@@ -245,6 +246,7 @@ const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     'proj.klima.desc': 'Website development, operation, and brand design for a sole proprietor. Google Business integration, SEO optimization.',
     'proj.audi.desc': 'As a community expert in the Audi Hungaria Data & AI Community group, I promote AI technology, organized an in-house competition, and demonstrated LLM-based solutions.',
     'proj.portfolio.desc': 'Self-developed portfolio website built on TypeScript and Vite with fully custom CSS design. PWA support, SVG favicon, responsive navigation, and animated sections.',
+    'proj.pointout.desc': 'An open-source, self-hostable widget that lets clients leave real-time visual feedback directly on a live website.',
     'skills.tag': '// knowledge', 'skills.title': 'Skills & Technologies',
     'skills.web': '<span class="sk-icon">🌐</span>Web Development',
     'skills.infra': '<span class="sk-icon">🖥️</span>Infrastructure &amp; Servers',
@@ -600,4 +602,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoLoop();
   initScrollTop();
 });
-

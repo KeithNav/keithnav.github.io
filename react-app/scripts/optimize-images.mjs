@@ -8,6 +8,7 @@ const contentImages = new Set([
   'image.jpg',
   'klimatrikk5.png',
   'pfavicon.png',
+  'pointout-logo.png',
   'logojo_decreased.png',
   'operating-systems-basics.png',
   'it-essentials.png',
