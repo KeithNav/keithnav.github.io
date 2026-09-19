@@ -782,12 +782,15 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
 }
 
 .certs-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
 }
 
 .cert-badge {
+  flex: 0 1 calc((100% - 3.75rem) / 4);
+  min-width: 220px;
   position: relative;
   display: flex;
   flex-direction: column;
