@@ -14,6 +14,8 @@ const contentImages = new Set([
   'it-essentials.png',
   'ccna-introduction-to-networks.png',
   'ccna-switching-routing-and-wireless-essentials.1.png',
+  'introduction-to-cybersecurity.png',
+  'introduction-to-modern-ai.png',
 ]);
 
 const files = await readdir(sourceDirectory);
