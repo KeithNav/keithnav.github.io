@@ -9,6 +9,7 @@ const contentImages = new Set([
   'klimatrikk5.png',
   'pfavicon.png',
   'pointout-logo.png',
+  'bellawell-logo.png',
   'logojo_decreased.png',
   'operating-systems-basics.png',
   'it-essentials.png',
